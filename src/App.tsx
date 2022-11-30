@@ -4,6 +4,7 @@ import './App.scss';
 import { Link, Route, Routes } from 'react-router-dom';
 import { HomePage } from './components/HomePage/HomePage';
 import { Phones } from './components/Phones/Phones';
+import { Footer } from './components/Footer';
 
 function App() {
   return (
@@ -23,8 +24,7 @@ function App() {
         <Route path="phones" element={<Phones />} />
       </Routes>
 
-      {/* Footer same too */}
-      <footer></footer>
+      <Footer />
     </div>
   );
 }
