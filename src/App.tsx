@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 
 import './App.scss';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { HomePage } from './components/HomePage/HomePage';
 import { Phones } from './components/Phones/Phones';
+import { Header } from './components/Header/Header';
 
 import { client } from './utils/fetchPhones';
 import { useDispatch } from 'react-redux';
@@ -23,15 +24,8 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        {/* The header is the same for all pages */}
-        <nav>
-          <Link to="phones">Phones</Link>
-          <Link to="/">Home</Link>
-        </nav>
-      </header>
-
       {/* Only content will change here */}
+      <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="phones" element={<Phones />} />
