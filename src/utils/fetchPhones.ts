@@ -8,7 +8,7 @@ async function request(
   method: RequestMethod = 'GET',
   id: number | null
 ) {
-  const options: RequestInit = { method };
+  const options: RequestInit = { method: method };
   options.headers = {
     'Content-Type': 'application/json; charset=UTF-8',
   };
