@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { NavLinkFooter } from './NavLinkFooter/index';
+import { LinkFooter, } from './LinkFooter/index';
 import logo from '../../images/logo.png';
 
 const navFields = [
@@ -22,13 +22,13 @@ export const Footer: React.FC = React.memo(() => (
           <img src={logo} alt="logo Nice Gadgetes" className="logo__img" />
         </Link>
 
-        <nav className="footer__nav">
+        <div className="footer__info">
           <ul className="footer__list">
             {navFields.map(({ title, to, id }) => (
-              <NavLinkFooter key={id} title={title} to={to} />
+              <LinkFooter key={id} title={title} to={to} />
             ))}
           </ul>
-        </nav>
+        </div>
 
         <Link to="#home" className="footer__button--up">
           <p className="footer__back-to-top">Back to top</p>
