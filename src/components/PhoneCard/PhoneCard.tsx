@@ -1,53 +1,31 @@
 import React from 'react';
-
-// type Phone = {
-//   id: number,
-//   categoryId: number,
-//   phoneId: string,
-//   itemId: string,
-//   name: string,
-//   fullPrice: number,
-//   price: number,
-//   screen: string,
-//   capacity: string,
-//   color: string,
-//   ram: string,
-//   year: number,
-//   image: string,
-// }
-
-// type Props = {
-//   phone: Phone
-// }
+import { Phone } from '../../types/Phone';
 
 import './PhoneCard.scss';
 
-export const PhoneCard = () => {
-  // const {
-  //   image,
-  //   itemId,
-  //   name,
-  //   price,
-  //   fullPrice,
-  // } = phone;
+type Props = {
+  phone: Phone;
+};
+
+export const PhoneCard: React.FC<Props> = ({ phone }) => {
+  const { image, itemId, name, price, fullPrice, screen, capacity, ram } =
+    phone;
 
   return (
     <div className="product">
       <img
         className="product__image"
-        src={
-          'https://raw.githubusercontent.com/mate-academy/product_catalog/main/public/img/phones/apple-iphone-xr/coral/00.jpg'
-        }
-        alt="phone"
+        src={`https://raw.githubusercontent.com/mate-academy/product_catalog/main/public/${image}`}
+        alt={itemId}
       />
 
-      <p className="product__name">Iphone 11</p>
+      <p className="product__name">{name}</p>
 
       <div className="product__price-block">
         {
           <>
-            <p className="product__price">$799</p>
-            <p className="product__full-price">$899</p>
+            <p className="product__price">${price}</p>
+            <p className="product__full-price">${fullPrice}</p>
           </>
         }
       </div>
@@ -55,17 +33,17 @@ export const PhoneCard = () => {
       <ul className="product__properties">
         <li className="product__property">
           <p className="product__property-name">Screen</p>
-          <p className="product__property-value">6.1</p>
+          <p className="product__property-value">{screen}</p>
         </li>
 
         <li className="product__property">
           <p className="product__property-name">Capacity</p>
-          <p className="product__property-value">128GB</p>
+          <p className="product__property-value">{capacity}</p>
         </li>
 
         <li className="product__property">
           <p className="product__property-name">RAM</p>
-          <p className="product__property-value">4GB</p>
+          <p className="product__property-value">{ram}</p>
         </li>
       </ul>
 

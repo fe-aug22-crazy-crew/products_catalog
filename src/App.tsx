@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 
-import './App.scss';
 import { Route, Routes } from 'react-router-dom';
 import { HomePage } from './components/HomePage/HomePage';
-import { Phones } from './components/Phones/Phones';
+import { Phones } from './components/Phones';
 import { Header } from './components/Header/Header';
 
 import { client } from './utils/fetchPhones';
