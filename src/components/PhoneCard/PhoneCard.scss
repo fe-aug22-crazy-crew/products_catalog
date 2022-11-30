@@ -19,7 +19,7 @@ $favourite-border: #b4bdc3;
     display: block;
     margin: 0 auto 24px;
   }
-  
+
   &__name {
     font-family: 'Mont', sans-serif;
     font-weight: 600;
@@ -27,16 +27,16 @@ $favourite-border: #b4bdc3;
     line-height: 21px;
     color: $dark-gray;
   }
-  
+
   &__price-block {
     display: flex;
     gap: 8px;
     margin-bottom: 24px;
     padding-bottom: 8px;
-  
-    border-bottom: 1px solid $price-border-color ;
+
+    border-bottom: 1px solid $price-border-color;
   }
-  
+
   &__price {
     margin: 0;
     box-sizing: border-box;
@@ -46,7 +46,7 @@ $favourite-border: #b4bdc3;
     line-height: 140%;
     color: $dark-gray;
   }
-  
+
   &__full-price {
     margin: 0;
     font-family: 'Mont', sans-serif;
@@ -56,7 +56,7 @@ $favourite-border: #b4bdc3;
     text-decoration-line: line-through;
     color: $dark-gray;
   }
-  
+
   &__properties {
     list-style: none;
     padding: 0;
@@ -65,12 +65,12 @@ $favourite-border: #b4bdc3;
     gap: 8px;
     margin-bottom: 16px;
   }
-  
+
   &__property {
     display: flex;
     justify-content: space-between;
   }
-  
+
   &__property-name {
     margin: 0;
     font-family: 'Mont', sans-serif;
@@ -79,10 +79,10 @@ $favourite-border: #b4bdc3;
     line-height: 15px;
     color: $property-name-color;
   }
-  
+
   &__property-value {
     margin: 0;
-    font-family: 'Mont',sans-serif;
+    font-family: 'Mont', sans-serif;
     font-weight: 600;
     font-size: 12px;
     line-height: 15px;
@@ -110,7 +110,6 @@ $favourite-border: #b4bdc3;
     line-height: 21px;
 
     color: $white;
-
 
     background: $dark-gray;
   }
