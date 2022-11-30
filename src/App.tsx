@@ -8,7 +8,9 @@ import { Phones } from './components/Phones/Phones';
 function App() {
   return (
     <div className="App">
-      <header> {/* The header is the same for all pages */}
+      <header>
+        {' '}
+        {/* The header is the same for all pages */}
         <nav>
           <Link to="phones">Phones</Link>
           <Link to="/">Home</Link>
@@ -17,20 +19,12 @@ function App() {
 
       {/* Only content will change here */}
       <Routes>
-        <Route
-          path="/"
-          element={<HomePage />}
-        />
-        <Route
-          path="phones"
-          element={<Phones />}
-        />
+        <Route path="/" element={<HomePage />} />
+        <Route path="phones" element={<Phones />} />
       </Routes>
 
       {/* Footer same too */}
-      <footer>
-
-      </footer>
+      <footer></footer>
     </div>
   );
 }
