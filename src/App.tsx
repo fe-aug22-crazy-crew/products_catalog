@@ -9,6 +9,8 @@ import { client } from './utils/fetchPhones';
 import { useDispatch } from 'react-redux';
 import { actions as phonesActions } from './features/phones';
 
+import { Footer } from './components/Footer';
+
 function App() {
   const dispatch = useDispatch();
 
@@ -37,8 +39,9 @@ function App() {
         <Route path="phones" element={<Phones />} />
       </Routes>
 
-      {/* Footer same too */}
       <footer></footer>
+
+      <Footer />
     </div>
   );
 }

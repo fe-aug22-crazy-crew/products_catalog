@@ -17,10 +17,10 @@ export const phonesReducer = (
   action: Action | AnyAction
 ) => {
   switch (action.type) {
-  case 'phones/ADD':
-    return (phones = action.payload);
+    case 'phones/ADD':
+      return (phones = action.payload);
 
-  default:
-    return phones;
+    default:
+      return phones;
   }
 };
