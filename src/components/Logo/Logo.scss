@@ -1,0 +1,12 @@
+@import '../../styles/mixins';
+
+.logo-img {
+  display: block;
+  height: 21px;
+  width: 64px;
+
+  @include onDesktop {
+    height: 26px;
+    width: 80px;
+  }
+}
