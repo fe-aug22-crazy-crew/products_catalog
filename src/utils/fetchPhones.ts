@@ -1,11 +1,12 @@
-const BASE_URL = 'https://teal-tiramisu-13c82d.netlify.app/.netlify/functions/server/';
+const BASE_URL =
+  'https://teal-tiramisu-13c82d.netlify.app/.netlify/functions/server/';
 
 type RequestMethod = 'GET';
 
 async function request(
   url: string,
   method: RequestMethod = 'GET',
-  id: number | null,
+  id: number | null
 ) {
   const options: RequestInit = { method };
   options.headers = {
@@ -22,13 +23,14 @@ async function request(
     const dataFRomApi = await fetch(link, options);
 
     return dataFRomApi.json();
-  } catch (error: any) {
-    console.log(error.message);
+  } catch (error) {
+    console.log(error);
   }
 
   return null;
 }
 
 export const client = {
-  get: (url: string, method: RequestMethod, id: number | null) => request(url, 'GET', null),
+  get: (url: string, method: RequestMethod, id: number | null) =>
+    request(url, 'GET', null),
 };
