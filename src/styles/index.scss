@@ -6,8 +6,12 @@ html {
   font-family: 'Mont';
 }
 
+
 @import './utils/reset.scss';
 @import './utils/mixins.scss';
+@import './utils/variables.scss';
 @import './font-faces.scss';
+@import '../App.scss';
 @import './blocks/container.scss';
+@import './blocks/notFoundPage.scss';
 @import './blocks/footer.scss';
