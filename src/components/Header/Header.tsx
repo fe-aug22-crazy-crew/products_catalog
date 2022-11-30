@@ -12,10 +12,10 @@ export const Header: React.FC = () => {
     <header className="header">
       <Logo />
       <nav className="header__nav">
-        <Navigation to="/home" text="Home" />
-        <Navigation to="/phones" text="Phones" />
-        <Navigation to="/tablets" text="Tablets" />
-        <Navigation to="/accessories" text="Accessories" />
+        <Navigation to="home" text="Home" />
+        <Navigation to="phones" text="Phones" />
+        <Navigation to="tablets" text="Tablets" />
+        <Navigation to="accessories" text="Accessories" />
       </nav>
       <div className="header__icons">
         <div className="icon-box">
