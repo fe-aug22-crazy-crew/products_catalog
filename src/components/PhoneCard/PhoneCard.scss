@@ -1,0 +1,133 @@
+$dark-gray: #313237;
+$white: #fff;
+$price-border-color: #e2e6e9;
+$property-name-color: #89939a;
+$favourite-border: #b4bdc3;
+
+.product {
+  box-sizing: border-box;
+  padding: 32px;
+  width: 280px;
+
+  &__options {
+    display: flex;
+  }
+
+  &__image {
+    width: 208px;
+    max-height: 250px;
+
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 24px;
+  }
+
+  &__name {
+    font-family: 'Mont', sans-serif;
+    min-height: 42px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $dark-gray;
+  }
+
+  &__price-block {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    padding-bottom: 8px;
+
+    border-bottom: 1px solid $price-border-color;
+  }
+
+  &__price {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Mont', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+    color: $dark-gray;
+  }
+
+  &__full-price {
+    margin: 0;
+    font-family: 'Mont', sans-serif;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: $dark-gray;
+  }
+
+  &__properties {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__property {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__property-name {
+    margin: 0;
+    font-family: 'Mont', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $property-name-color;
+  }
+
+  &__property-value {
+    margin: 0;
+    font-family: 'Mont', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+    color: $dark-gray;
+  }
+
+  &__options {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__cart-adding {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    width: 160px;
+    height: 40px;
+
+    font-family: 'Mont', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: $white;
+
+    background: $dark-gray;
+  }
+
+  &__favourite-adding {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    width: 40px;
+    height: 40px;
+
+    background: $white;
+
+    border: 1px solid $favourite-border;
+  }
+}
