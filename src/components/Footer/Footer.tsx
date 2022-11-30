@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { NavLinkFooter } from './NavLinkFooter/index';
-import logo from '../../images/Logo.png';
-import arrow from '../../images/Arrow.svg';
+import { LinkFooter } from './LinkFooter/index';
+import logo from '../../images/logo.png';
 
 const navFields = [
   {
@@ -23,24 +22,18 @@ export const Footer: React.FC = React.memo(() => (
           <img src={logo} alt="logo Nice Gadgetes" className="logo__img" />
         </Link>
 
-        <nav className="footer__nav">
+        <div className="footer__info">
           <ul className="footer__list">
             {navFields.map(({ title, to, id }) => (
-              <NavLinkFooter key={id} title={title} to={to} />
+              <LinkFooter key={id} title={title} to={to} />
             ))}
           </ul>
-        </nav>
-
-        <div className="footer__extra">
-          <p className="footer__back-to-top">Back to top</p>
-          <Link to="#" className="footer__arrow">
-            <img
-              src={arrow}
-              alt="logo Nice Gadgetes"
-              className="footer__arrow-img"
-            />
-          </Link>
         </div>
+
+        <Link to="#home" className="footer__button--up">
+          <p className="footer__back-to-top">Back to top</p>
+          <div className="footer__arrow"></div>
+        </Link>
       </div>
     </div>
   </footer>
