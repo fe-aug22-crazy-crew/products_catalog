@@ -1,21 +1,15 @@
 import React from 'react';
 
 import './App.scss';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { HomePage } from './components/HomePage/HomePage';
 import { Phones } from './components/Phones/Phones';
+import { Header } from './components/Header/Header';
 
 function App() {
   return (
     <div className="App">
-      <header>
-        {' '}
-        {/* The header is the same for all pages */}
-        <nav>
-          <Link to="phones">Phones</Link>
-          <Link to="/">Home</Link>
-        </nav>
-      </header>
+      <Header />
 
       {/* Only content will change here */}
       <Routes>
