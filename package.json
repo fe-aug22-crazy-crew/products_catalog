@@ -55,9 +55,10 @@
     ]
   },
   "devDependencies": {
-    "@types/scroll-lock": "^2.1.0",
     "@babel/plugin-transform-react-constant-elements": "^7.20.2",
+    "@mate-academy/eslint-config": "0.0.20",
     "@svgr/webpack": "^6.5.1",
+    "@types/scroll-lock": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
     "eslint": "^8.28.0",

@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react';
+/* eslint-disable no-shadow */
+import React, { useEffect, useState } from 'react';
 import 'flexboxgrid2';
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 

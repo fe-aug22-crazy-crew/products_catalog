@@ -7,7 +7,12 @@ type Props = {
   text: string;
   setMenuIsOpen: (value: boolean) => void;
 };
-export const NavigationLink: React.FC<Props> = ({ to, text, setMenuIsOpen }) => (
+
+export const NavigationLink: React.FC<Props> = ({
+  to,
+  text,
+  setMenuIsOpen,
+}) => (
   <NavLink
     to={to}
     className={({ isActive }) =>

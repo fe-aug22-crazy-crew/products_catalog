@@ -1,8 +1,12 @@
 @import '../../styles/index.scss';
+@import '../../styles/container.scss';
 
 .product {
   padding: 32px;
-  width: 280px;
+  width: $card-width;
+  border: 1px solid $c-elements;
+  box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
 
   &__options {
     display: flex;
@@ -19,7 +23,7 @@
 
   &__name {
     min-height: 42px;
-    
+
     @include bodyTextTypography;
     color: $c-primary;
   }
@@ -128,7 +132,6 @@
 
     transition: border 0.3s;
 
-    
     &:hover {
       border: 1px solid $c-primary;
     }
