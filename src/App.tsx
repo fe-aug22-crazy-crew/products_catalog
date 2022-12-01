@@ -15,8 +15,9 @@ import { NotFoundPage } from './components/NotFoundPage';
 function App() {
   const dispatch = useDispatch();
 
-  const getPhones = async () => {
+  const getPhones = async() => {
     const data = await client.get('phones', 'GET', null);
+
     dispatch(phonesActions.add(data));
   };
 
