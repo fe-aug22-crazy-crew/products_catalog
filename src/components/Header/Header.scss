@@ -3,7 +3,6 @@
 
 .header {
   height: 48px;
-  ;
   display: flex;
   padding-left: 16px;
 
@@ -87,8 +86,6 @@
   @include onDesktop {
     height: 64px;
   }
-
-
 }
 
 .is-active {
