@@ -1,0 +1,67 @@
+@mixin h1Typography {
+  font-family: 'Mont', sans-serif;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 41px;
+  letter-spacing: 0.01em;
+
+  @include onPhone {
+    font-size: 32px;
+  }
+}
+
+@mixin h2Typography {
+  font-family: 'Mont', sans-serif;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+@mixin h3Typography {
+  font-family: 'Mont', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+@mixin h4Typography {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+
+  @include onPhone {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+@mixin uppercaseTypography {
+  font-family: 'Mont', sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin buttonsTypography {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin bodyTextTypography {
+  font-family: 'Mont', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin smallTextTypography {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}

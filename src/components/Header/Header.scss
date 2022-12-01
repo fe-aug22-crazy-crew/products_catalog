@@ -1,5 +1,7 @@
-@import '../../styles/index.scss';
-@import url('https://fonts.cdnfonts.com/css/mont');
+@import '../../styles/utils/variables.scss';
+@import '../../styles/utils/mixins/screenWidth.scss';
+@import '../../styles/utils/mixins/typography.scss';
+@import '../../styles/utils/mixins/helpers.scss';
 
 .header {
   height: 48px;
@@ -8,7 +10,9 @@
   margin-bottom: 40px;
 
   align-items: center;
-  box-shadow: 0px 1px 0px $c-elements;
+
+  color: $c-secondary;
+  border-bottom: 1px solid $c-elements;
 
   @include onDesktop {
     height: 64px;
@@ -31,6 +35,15 @@
     display: flex;
     justify-self: end;
     padding: 0;
+  }
+
+  &--menu {
+    justify-content: space-between;
+  }
+
+  &__link {
+    display: inline-block;
+    padding: 15px 15px 13px 19px;
   }
 }
 
@@ -70,15 +83,9 @@
   display: flex;
   align-items: center;
   height: 48px;
-  text-decoration: none;
-  font-family: 'Mont', sans-serif;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 12px;
-  line-height: 11px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: $c-secondary;
+
+  @include resetLinkStyles;
+  @include uppercaseTypography;
 
   @include onPhone {
     display: none;
