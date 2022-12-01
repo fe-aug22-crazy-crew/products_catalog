@@ -3,6 +3,7 @@ import 'flexboxgrid2';
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
 import './Header.scss';
+
 import { Logo } from '../Logo';
 import { Navigation } from './Navigation';
 import favourites from '../../images/favourites.svg';
@@ -30,7 +31,7 @@ export const Header: React.FC = () => {
   };
 
   return (
-    <header className="header">
+    <header className="header" id="top">
       <Logo />
       <nav className="header__nav">
         <Navigation to="/" text="Home" />
@@ -38,7 +39,7 @@ export const Header: React.FC = () => {
         <Navigation to="tablets" text="Tablets" />
         <Navigation to="accessories" text="Accessories" />
       </nav>
-      <div className="header__icons">
+      <div className="header__c-icons">
         <div className="icon-box">
           <img src={favourites} alt="like" className="icon" />
         </div>

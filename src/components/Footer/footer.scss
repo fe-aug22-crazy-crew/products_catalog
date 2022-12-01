@@ -1,7 +1,8 @@
 .footer {
-  color: #89939a;
-  background-color: #ffffff;
-  box-shadow: 0px -1px 0px 0px #e2e6e9;
+  color: $c-secondary;
+  background-color: $c-white;
+  box-shadow: 0px -1px 0px 0px $c-elements;
+  height: 98px;
 
   &__content {
     display: flex;
@@ -44,6 +45,8 @@
   &__item {
     margin-bottom: 16px;
 
+    transition: color 0.3s;
+
     &:last-child {
       margin-right: 0;
       margin-bottom: 32px;
@@ -56,6 +59,10 @@
       &:last-child {
         margin-bottom: 0;
       }
+
+      &:hover {
+        color: $c-primary;
+      }
     }
 
     @include onDesktop {
@@ -66,12 +73,8 @@
   &__link {
     padding-right: 10px;
 
-    text-decoration: none;
-    color: inherit;
-    font-size: 12px;
-    font-weight: 800;
-    line-height: 11px;
-    letter-spacing: 0.04em;
+    @include resetLinkStyles;
+    @include uppercaseTypography;
 
     @include onTablet {
       padding: 4px;
@@ -91,33 +94,43 @@
 
     width: max-content;
 
-    text-decoration: none;
-    color: inherit;
+    @include resetLinkStyles;
 
     @include onTablet {
       margin: 0;
+    }
+
+    &:hover {
+      color: $c-primary;
     }
   }
 
   &__back-to-top {
     margin-right: 16px;
 
-    font-size: 12px;
+    @include smallTextTypography;
+
     font-weight: 700;
-    line-height: 15px;
+
+    transition: color 0.3s;
   }
 
   &__arrow {
     height: 32px;
     width: 32px;
-    border: 1px solid #b4bdc3;
+    border: 1px solid $c-icons;
 
     background-image: url(../../images/arrow-up.svg);
     background-repeat: no-repeat;
     background-size: 6px 10px;
     background-position: center;
+    box-shadow: 0px -1px 0px 0px $c-elements;
 
-    box-shadow: 0px -1px 0px 0px #e2e6e9;
+    transition: border 0.3s;
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
   }
 }
 
