@@ -11,6 +11,6 @@ html {
 @import './utils/variables.scss';
 @import './font-faces.scss';
 @import '../App.scss';
-@import './blocks/container.scss';
-@import './blocks/notFoundPage.scss';
-@import './blocks/footer.scss';
+@import './container.scss';
+@import '../components/NotFoundPage/notFoundPage.scss';
+@import '../components/Footer/footer.scss';
