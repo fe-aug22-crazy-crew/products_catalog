@@ -27,7 +27,6 @@ function App() {
   return (
     <div className="App">
       <Header />
-
       {/* Only content will change here */}
       <Routes>
         <Route path="/" element={<HomePage />} />
