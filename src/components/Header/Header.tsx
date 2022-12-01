@@ -17,7 +17,7 @@ export const Header: React.FC = () => {
         <Navigation to="tablets" text="Tablets" />
         <Navigation to="accessories" text="Accessories" />
       </nav>
-      <div className="header__icons">
+      <div className="header__c-icons">
         <div className="icon-box">
           <img src={favourites} alt="like" className="icon" />
         </div>

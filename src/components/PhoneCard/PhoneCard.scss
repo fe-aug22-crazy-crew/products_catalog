@@ -23,7 +23,7 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
-    color: $primary;
+    color: $c-primary;
   }
 
   &__price-block {
@@ -32,7 +32,7 @@
     margin-bottom: 24px;
     padding-bottom: 8px;
 
-    border-bottom: 1px solid $elements;
+    border-bottom: 1px solid $c-elements;
   }
 
   &__price {
@@ -42,7 +42,7 @@
     font-weight: 700;
     font-size: 22px;
     line-height: 140%;
-    color: $primary;
+    color: $c-primary;
   }
 
   &__full-price {
@@ -52,7 +52,7 @@
     font-size: 22px;
     line-height: 28px;
     text-decoration-line: line-through;
-    color: $primary;
+    color: $c-primary;
   }
 
   &__properties {
@@ -75,7 +75,7 @@
     font-weight: 600;
     font-size: 12px;
     line-height: 15px;
-    color: $secondary;
+    color: $c-secondary;
   }
 
   &__property-value {
@@ -85,7 +85,7 @@
     font-size: 12px;
     line-height: 15px;
     text-align: right;
-    color: $primary;
+    color: $c-primary;
   }
 
   &__options {
@@ -107,9 +107,9 @@
     font-size: 14px;
     line-height: 21px;
 
-    color: $white;
+    color: $c-white;
 
-    background: $primary;
+    background: $c-primary;
   }
 
   &__favourite-adding {
@@ -121,8 +121,8 @@
     width: 40px;
     height: 40px;
 
-    background: $white;
+    background: $c-white;
 
-    border: 1px solid $icons;
+    border: 1px solid $c-icons;
   }
 }

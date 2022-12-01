@@ -5,7 +5,7 @@
   align-items: center;
   height: calc($full-height - $header-height--phone - $footer-height--phone);
 
-  background-color: $white;
+  background-color: $c-white;
 
   @include onTablet {
     height: calc($full-height - $header-height - $footer-height);
@@ -37,13 +37,13 @@
     padding: 10px;
 
     text-decoration: none;
-    color: $white;
+    color: $c-white;
     font-size: 12px;
     font-weight: 700;
     line-height: 21px;
     text-align: center;
 
-    background-color: $primary;
+    background-color: $c-primary;
 
     transition: all 0.3s;
 
@@ -62,9 +62,9 @@
     }
 
     &:active {
-      background-color: $white;
-      border: 1px solid $elements;
-      color: $green;
+      background-color: $c-white;
+      border: 1px solid $c-elements;
+      color: $c-green;
     }
   }
 }

@@ -1,7 +1,7 @@
 .footer {
-  color: $secondary;
-  background-color: $white;
-  box-shadow: 0px -1px 0px 0px $elements;
+  color: $c-secondary;
+  background-color: $c-white;
+  box-shadow: 0px -1px 0px 0px $c-elements;
   height: 98px;
 
   &__content {
@@ -61,7 +61,7 @@
       }
 
       &:hover {
-        color: $primary;
+        color: $c-primary;
       }
     }
 
@@ -106,7 +106,7 @@
     }
 
     &:hover {
-      color: $primary;
+      color: $c-primary;
     }
   }
 
@@ -123,18 +123,18 @@
   &__arrow {
     height: 32px;
     width: 32px;
-    border: 1px solid $icons;
+    border: 1px solid $c-icons;
 
     background-image: url(../../images/arrow-up.svg);
     background-repeat: no-repeat;
     background-size: 6px 10px;
     background-position: center;
-    box-shadow: 0px -1px 0px 0px $elements;
+    box-shadow: 0px -1px 0px 0px $c-elements;
 
     transition: border 0.3s;
 
     &:hover {
-      border: 1px solid $primary;
+      border: 1px solid $c-primary;
     }
   }
 }
