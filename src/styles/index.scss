@@ -4,6 +4,8 @@
 
 html {
   font-family: 'Mont';
+  scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
 @import './utils/reset.scss';
@@ -11,3 +13,5 @@ html {
 @import './font-faces.scss';
 @import './blocks/container.scss';
 @import './blocks/footer.scss';
+@import '../components/Header/BurgerMenu/BurgerMenu.scss';
+@import '../components/Header/BurgerMenu/NavigationLink/NavigationLink.scss';
