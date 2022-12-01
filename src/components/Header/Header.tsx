@@ -1,6 +1,5 @@
 import React from 'react';
 import 'flexboxgrid2';
-import './Header.scss';
 import { Logo } from '../Logo';
 import { Navigation } from './Navigation';
 import favourites from '../../images/favourites.svg';

@@ -7,10 +7,14 @@ html {
 }
 
 @import './utils/reset.scss';
-@import './utils/mixins.scss';
+@import './utils/mixins/screenWidth.scss';
+@import './utils/mixins/helpers.scss';
+@import './utils/mixins/typography.scss';
 @import './utils/variables.scss';
 @import './font-faces.scss';
 @import '../App.scss';
 @import './container.scss';
+@import '../components/Logo/Logo.scss';
+@import '../components/Header/Header.scss';
 @import '../components/NotFoundPage/notFoundPage.scss';
 @import '../components/Footer/footer.scss';

@@ -1,13 +1,12 @@
-@import '../../styles/index.scss';
-@import url('https://fonts.cdnfonts.com/css/mont');
-
 .header {
   height: 48px;
   display: flex;
   padding-left: 16px;
 
   align-items: center;
-  box-shadow: 0px 1px 0px $c-elements;
+
+  color: $c-secondary;
+  border-bottom: 1px solid $c-elements;
 
   @include onDesktop {
     height: 64px;
@@ -69,15 +68,10 @@
   display: flex;
   align-items: center;
   height: 48px;
-  text-decoration: none;
-  font-family: 'Mont', sans-serif;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 12px;
-  line-height: 11px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: $c-secondary;
+
+  @include resetLinkStyles;
+  @include uppercaseTypography;
+
 
   @include onPhone {
     display: none;
