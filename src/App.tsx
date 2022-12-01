@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
 import { HomePage } from './components/HomePage/HomePage';
-import { Phones } from './components/Phones/Phones';
-import { Header } from './components/Header/Header';
+import { Phones } from './components/Phones/';
+import { Header } from './components/Header/';
 
 import { client } from './utils/fetchPhones';
 import { useDispatch } from 'react-redux';
@@ -34,8 +34,6 @@ function App() {
         <Route path="phones" element={<Phones />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-
-      <footer></footer>
 
       <Footer />
     </div>

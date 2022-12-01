@@ -5,7 +5,7 @@
   align-items: center;
   height: calc($full-height - $header-height--phone - $footer-height--phone);
 
-  background-color: #ffffff;
+  background-color: $c-white;
 
   @include onTablet {
     height: calc($full-height - $header-height - $footer-height);
@@ -37,13 +37,13 @@
     padding: 10px;
 
     text-decoration: none;
-    color: #ffffff;
+    color: $c-white;
     font-size: 12px;
     font-weight: 700;
     line-height: 21px;
     text-align: center;
 
-    background-color: #313237;
+    background-color: $c-primary;
 
     transition: all 0.3s;
 
@@ -62,9 +62,9 @@
     }
 
     &:active {
-      background-color: #ffffff;
-      border: 1px solid #e2e6e9;
-      color: #27ae60;
+      background-color: $c-white;
+      border: 1px solid $c-elements;
+      color: $c-green;
     }
   }
 }

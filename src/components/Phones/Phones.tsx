@@ -1,5 +1,5 @@
 import React from 'react';
-import { PhoneCard } from '../../PhoneCard';
+import { PhoneCard } from '../PhoneCard';
 import { useAppSelector } from '../../app/hooks';
 import { Phone } from '../../types/Phone';
 import './Phones.scss';

@@ -1,14 +1,13 @@
-@import '../../styles/mixins';
+@import '../../styles/index.scss';
 @import url('https://fonts.cdnfonts.com/css/mont');
 
 .header {
   height: 48px;
-  box-sizing: border-box;
   display: flex;
   padding-left: 16px;
 
   align-items: center;
-  box-shadow: 0px 1px 0px #e2e6e9;
+  box-shadow: 0px 1px 0px $c-elements;
 
   @include onDesktop {
     height: 64px;
@@ -27,7 +26,7 @@
     }
   }
 
-  &__icons {
+  &__c-icons {
     display: flex;
     justify-self: end;
     padding: 0;
@@ -40,19 +39,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: -1px 0px 0px #e2e6e9;
+  box-shadow: -1px 0px 0px $c-elements;
+
+  @include onPhone {
+    display: none;
+  }
 
   @include onDesktop {
     width: 64px;
     height: 64px;
   }
-  @include onMobile {
-    display: none;
-  }
 
   &__menu {
     display: none;
-    @include onMobile {
+
+    @include onPhone {
       display: flex;
     }
   }
@@ -76,19 +77,19 @@
   line-height: 11px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #89939a;
+  color: $c-secondary;
+
+  @include onPhone {
+    display: none;
+  }
 
   @include onDesktop {
     height: 64px;
   }
-
-  @include onMobile {
-    display: none;
-  }
 }
 
 .is-active {
-  color: #313237;
+  color: $c-primary;
 }
 
 .is-active::after {
@@ -98,5 +99,5 @@
   left: 0;
   right: 0;
   height: 4px;
-  background-color: #313237;
+  background-color: $c-primary;
 }

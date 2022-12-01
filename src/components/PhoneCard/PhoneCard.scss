@@ -1,11 +1,6 @@
-$dark-gray: #313237;
-$white: #fff;
-$price-border-color: #e2e6e9;
-$property-name-color: #89939a;
-$favourite-border: #b4bdc3;
+@import '../../styles/index.scss';
 
 .product {
-  box-sizing: border-box;
   padding: 32px;
   width: 280px;
 
@@ -28,7 +23,7 @@ $favourite-border: #b4bdc3;
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
-    color: $dark-gray;
+    color: $c-primary;
   }
 
   &__price-block {
@@ -37,17 +32,17 @@ $favourite-border: #b4bdc3;
     margin-bottom: 24px;
     padding-bottom: 8px;
 
-    border-bottom: 1px solid $price-border-color;
+    border-bottom: 1px solid $c-elements;
   }
 
   &__price {
     margin: 0;
-    box-sizing: border-box;
+
     font-family: 'Mont', sans-serif;
     font-weight: 700;
     font-size: 22px;
     line-height: 140%;
-    color: $dark-gray;
+    color: $c-primary;
   }
 
   &__full-price {
@@ -57,7 +52,7 @@ $favourite-border: #b4bdc3;
     font-size: 22px;
     line-height: 28px;
     text-decoration-line: line-through;
-    color: $dark-gray;
+    color: $c-primary;
   }
 
   &__properties {
@@ -80,7 +75,7 @@ $favourite-border: #b4bdc3;
     font-weight: 600;
     font-size: 12px;
     line-height: 15px;
-    color: $property-name-color;
+    color: $c-secondary;
   }
 
   &__property-value {
@@ -90,7 +85,7 @@ $favourite-border: #b4bdc3;
     font-size: 12px;
     line-height: 15px;
     text-align: right;
-    color: $dark-gray;
+    color: $c-primary;
   }
 
   &__options {
@@ -112,9 +107,9 @@ $favourite-border: #b4bdc3;
     font-size: 14px;
     line-height: 21px;
 
-    color: $white;
+    color: $c-white;
 
-    background: $dark-gray;
+    background: $c-primary;
   }
 
   &__favourite-adding {
@@ -126,8 +121,8 @@ $favourite-border: #b4bdc3;
     width: 40px;
     height: 40px;
 
-    background: $white;
+    background: $c-white;
 
-    border: 1px solid $favourite-border;
+    border: 1px solid $c-icons;
   }
 }
