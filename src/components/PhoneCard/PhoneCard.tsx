@@ -1,6 +1,5 @@
 import React from 'react';
-import { Phone } from '../types/Phone';
-
+import { Phone } from '../../types/Phone';
 import './PhoneCard.scss';
 
 type Props = {
