@@ -8,6 +8,9 @@ html {
 
 @import './utils/reset.scss';
 @import './utils/mixins.scss';
+@import './utils/variables.scss';
 @import './font-faces.scss';
-@import './blocks/container.scss';
-@import './blocks/footer.scss';
+@import '../App.scss';
+@import './container.scss';
+@import '../components/NotFoundPage/notFoundPage.scss';
+@import '../components/Footer/footer.scss';

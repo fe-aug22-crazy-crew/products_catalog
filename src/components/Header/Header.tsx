@@ -9,7 +9,7 @@ import menu from '../../images/menu.svg';
 
 export const Header: React.FC = () => {
   return (
-    <header className="header">
+    <header className="header" id="top">
       <Logo />
       <nav className="header__nav">
         <Navigation to="home" text="Home" />

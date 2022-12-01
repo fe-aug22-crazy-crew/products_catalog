@@ -30,7 +30,7 @@ export const Footer: React.FC = React.memo(() => (
           </ul>
         </div>
 
-        <Link to="#home" className="footer__button--up">
+        <Link to="#top" className="footer__button--up">
           <p className="footer__back-to-top">Back to top</p>
           <div className="footer__arrow"></div>
         </Link>

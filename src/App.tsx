@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { actions as phonesActions } from './features/phones';
 
 import { Footer } from './components/Footer';
+import { NotFoundPage } from './components/NotFoundPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="phones" element={<Phones />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
 
       <footer></footer>
