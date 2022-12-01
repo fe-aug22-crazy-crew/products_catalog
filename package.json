@@ -54,15 +54,17 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-transform-react-constant-elements": "^7.20.2",
+    "@svgr/webpack": "^6.5.1",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
     "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.11",
+    "husky": "^8.0.0",
     "lint-staged": "^13.0.4",
-    "prettier": "^2.8.0",
-    "husky": "^8.0.0"
+    "prettier": "^2.8.0"
   },
   "lint-staged": {
     "*.js": "npm run lint"

@@ -73,12 +73,8 @@
   &__link {
     padding-right: 10px;
 
-    text-decoration: none;
-    color: inherit;
-    font-size: 12px;
-    font-weight: 800;
-    line-height: 11px;
-    letter-spacing: 0.04em;
+    @include resetLinkStyles;
+    @include uppercaseTypography;
 
     @include onTablet {
       padding: 4px;
@@ -98,8 +94,7 @@
 
     width: max-content;
 
-    text-decoration: none;
-    color: inherit;
+    @include resetLinkStyles;
 
     @include onTablet {
       margin: 0;
@@ -113,9 +108,9 @@
   &__back-to-top {
     margin-right: 16px;
 
-    font-size: 12px;
+    @include smallTextTypography;
+
     font-weight: 700;
-    line-height: 15px;
 
     transition: color 0.3s;
   }
