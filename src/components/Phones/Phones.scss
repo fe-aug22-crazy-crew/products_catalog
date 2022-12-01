@@ -101,15 +101,7 @@
     flex-wrap: wrap;
     padding: 0;
     list-style: none;
-    grid-template-columns: $card-width;
+    grid-template-columns: repeat(auto-fit, $card-width);
     align-items: center;
-
-    @include onTablet {
-      grid-template-columns: repeat(2, $card-width);
-    }
-
-    @include onDesktop {
-      grid-template-columns: repeat(4, $card-width);
-    }
   }
 }
