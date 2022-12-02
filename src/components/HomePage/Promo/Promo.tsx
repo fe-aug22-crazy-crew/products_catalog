@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import SwiperCore, { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { ImageCreator } from './ImageCreator';
 
-import Banner from '../../../images/promo/Banner.jpg';
+import BannerLg from '../../../images/promo/Banner-lg.jpg';
 import Next from '../../../images/promo/next.svg';
 import Prev from '../../../images/promo/prev.svg';
 import BannerPhone from '../../../images/promo/Banner-phone.jpg';
@@ -30,8 +31,10 @@ export const Promo: React.FC = () => {
       }
     }
 
-    if (typeof swiper.params.pagination !== 'boolean'
-      && swiper.params.pagination) {
+    if (
+      typeof swiper.params.pagination !== 'boolean'
+      && swiper.params.pagination
+    ) {
       swiper.params.pagination.el = paginationLabel.current;
     }
   };
@@ -43,7 +46,7 @@ export const Promo: React.FC = () => {
         type="button"
         className="promo__button promo__button--prev"
       >
-        <img src={Prev} alt="prev promo slide button"/>
+        <img src={Prev} alt="prev promo slide button" />
       </button>
       <Swiper
         modules={[Navigation, Pagination]}
@@ -55,34 +58,13 @@ export const Promo: React.FC = () => {
         className="promo__slider"
       >
         <SwiperSlide className="promo__slide">
-          <picture className="promo__pic">
-            <source
-              srcSet={BannerPhone}
-              media="(max-width: 639px)"
-              type="image/jpeg"
-            />
-            <img src={Banner} alt="promo banner" className="promo__img"/>
-          </picture>
+          <ImageCreator photoLg={BannerLg} photoSm={BannerPhone}/>
         </SwiperSlide>
         <SwiperSlide className="promo__slide">
-          <picture className="promo__pic">
-            <source
-              srcSet={BannerPhone}
-              media="(max-width: 639px)"
-              type="image/jpeg"
-            />
-            <img src={Banner} alt="promo banner" className="promo__img"/>
-          </picture>
+          <ImageCreator photoLg={BannerLg} photoSm={BannerPhone}/>
         </SwiperSlide>
         <SwiperSlide className="promo__slide">
-          <picture className="promo__pic">
-            <source
-              srcSet={BannerPhone}
-              media="(max-width: 639px)"
-              type="image/jpeg"
-            />
-            <img src={Banner} alt="promo banner" className="promo__img"/>
-          </picture>
+          <ImageCreator photoLg={BannerLg} photoSm={BannerPhone}/>
         </SwiperSlide>
       </Swiper>
 
@@ -91,9 +73,9 @@ export const Promo: React.FC = () => {
         type="button"
         className="promo__button promo__button--next"
       >
-        <img src={Next} alt="next promo slide button"/>
+        <img src={Next} alt="next promo slide button" />
       </button>
-      <div ref={paginationLabel} className="promo__pagination"/>
+      <div ref={paginationLabel} className="promo__pagination" />
     </section>
   );
 };
