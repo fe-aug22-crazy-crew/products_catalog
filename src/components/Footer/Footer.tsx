@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { LinkFooter } from './LinkFooter/index';
 import logo from '../../images/logo.png';
+import './footer.scss';
 
 const navFields = [
   {

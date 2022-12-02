@@ -1,18 +1,22 @@
 import React from 'react';
 import 'flexboxgrid2';
+import cl from 'classnames';
+import { NavLink } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
+
+import './Header.scss';
+
 import { Logo } from '../Logo';
 import { Navigation } from './Navigation';
 import favourites from '../../images/favourites.svg';
 import shopping from '../../images/shopping.svg';
 import menu from '../../images/menu.svg';
-import { NavLink } from 'react-router-dom';
-import cl from 'classnames';
 import { useAppSelector } from '../../app/hooks';
 import { Phone } from '../../types/Phone';
 
 export const Header: React.FC = () => {
   const favouritePhones: Phone[] = useAppSelector((state) => state.favourites);
+  const countOfFavourites = favouritePhones.length;
 
   return (
     <header className="header" id="top">
@@ -37,7 +41,7 @@ export const Header: React.FC = () => {
             unmountOnExit
           >
             <div className="header__favourite-count">
-              {favouritePhones.length}
+              {countOfFavourites >= 1 && countOfFavourites}
             </div>
           </CSSTransition>
 
