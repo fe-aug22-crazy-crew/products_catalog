@@ -5,7 +5,7 @@ import '../promo.scss';
 type Props = {
   photoLg: any;
   photoSm: any;
-  description: string,
+  description: string;
 };
 
 export const ImageCreator: React.FC<Props> = ({
