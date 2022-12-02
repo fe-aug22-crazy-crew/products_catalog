@@ -4,8 +4,6 @@
 @import '../../styles/utils/mixins/helpers.scss';
 
 .favourites {
-  @include gridForPhones;
-
   padding-bottom: 64px;
   min-height: calc(
     $full-height - $header-height--phone - $footer-height--phone
@@ -26,15 +24,12 @@
   &__count {
     margin-bottom: 40px;
 
-    @include bodyTextTypography;
+    @include buttonsTypography;
     color: $c-secondary;
   }
 
   &__list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: center;
+    @include gridForPhones;
 
     @include onTablet {
       flex-wrap: wrap;
