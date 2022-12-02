@@ -9,6 +9,8 @@ import favourites from '../../../images/favourites.svg';
 import shopping from '../../../images/shopping.svg';
 import closeMenu from '../../../images/Close.svg';
 
+import './BurgerMenu.scss';
+
 type Props = {
   setMenuIsOpen: (value: boolean) => void;
   menuIsOpen: boolean;

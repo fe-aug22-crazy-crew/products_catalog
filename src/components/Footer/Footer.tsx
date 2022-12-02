@@ -3,16 +3,8 @@ import { Link } from 'react-router-dom';
 
 import { LinkFooter } from './LinkFooter/index';
 import logo from '../../images/logo.png';
-
-const navFields = [
-  {
-    title: 'Github',
-    to: 'https://github.com/fe-aug22-crazy-crew/products_catalog',
-    id: 1,
-  },
-  { title: 'Contacts', to: '/index.html', id: 2 },
-  { title: 'Rights', to: '/index.html', id: 3 },
-];
+import { infoFields } from './constants';
+import './footer.scss';
 
 export const Footer: React.FC = React.memo(() => (
   <footer className="page__footer footer">
@@ -24,7 +16,7 @@ export const Footer: React.FC = React.memo(() => (
 
         <div className="footer__info">
           <ul className="footer__list">
-            {navFields.map(({ title, to, id }) => (
+            {infoFields.map(({ title, to, id }) => (
               <LinkFooter key={id} title={title} to={to} />
             ))}
           </ul>

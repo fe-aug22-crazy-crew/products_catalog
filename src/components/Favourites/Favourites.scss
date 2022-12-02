@@ -1,0 +1,43 @@
+@import '../../styles/utils/variables.scss';
+@import '../../styles/utils/mixins/screenWidth.scss';
+@import '../../styles/utils/mixins/typography.scss';
+
+.favourites {
+  scroll-behavior: smooth;
+
+  padding-bottom: 64px;
+  min-height: calc(
+    $full-height - $header-height--phone - $footer-height--phone
+  );
+
+  @include onTablet {
+    padding-bottom: 80px 0;
+    min-height: calc($full-height - $header-height - $footer-height);
+  }
+
+  &__title {
+    margin-bottom: 8px;
+
+    @include h1Typography;
+    color: $c-primary;
+  }
+
+  &__count {
+    margin-bottom: 40px;
+
+    @include bodyTextTypography;
+    color: $c-secondary;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+
+    @include onTablet {
+      flex-wrap: wrap;
+      justify-content: start;
+    }
+  }
+}
