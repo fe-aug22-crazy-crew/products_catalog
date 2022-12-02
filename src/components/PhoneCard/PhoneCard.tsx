@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { useAppSelector } from '../../app/hooks';
 import { actions as favouritesActions } from '../../features/favourites';
 import { Phone } from '../../types/Phone';
 import './PhoneCard.scss';
-import notFavorite from '../../images/favourites.svg';
-import favorite from '../../images/selectedFavourite.svg';
+import notFavourite from '../../images/favourites.svg';
+import favourite from '../../images/selectedFavourite.svg';
+import { FavouriteIcon } from './FavouriteIcon';
 
 type Props = {
   phone: Phone;
@@ -74,11 +76,17 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
           className="product__favourite-adding"
           onClick={() => handleFavourite(phone)}
         >
-          {isSelected ? (
-            <img src={favorite} alt="favorite" />
-          ) : (
-            <img src={notFavorite} alt="notFavorite" />
-          )}
+          <FavouriteIcon 
+            condition={!isSelected}
+            image={notFavourite}
+            alt={'notFavorite'}
+          />
+
+          <FavouriteIcon 
+            condition={isSelected}
+            image={favourite}
+            alt={'favorite'}
+          />
         </button>
       </div>
     </div>

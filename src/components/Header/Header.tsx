@@ -1,5 +1,6 @@
 import React from 'react';
 import 'flexboxgrid2';
+import { CSSTransition } from 'react-transition-group';
 import { Logo } from '../Logo';
 import { Navigation } from './Navigation';
 import favourites from '../../images/favourites.svg';
@@ -23,16 +24,22 @@ export const Header: React.FC = () => {
         <Navigation to="accessories" text="Accessories" />
       </nav>
       <div className="header__c-icons">
-        <NavLink 
+        <NavLink
           to="/favourites"
           className={({ isActive }) =>
-            cl(
-              'icon-box', 
-              { 'is-active': isActive },
-            )}
+            cl('icon-box', { 'is-active': isActive })
+          }
         >
-          {favouritePhones.length > 0 && 
-          <div className='header__favourite-count'>{favouritePhones.length}</div>}
+          <CSSTransition
+            in={favouritePhones.length > 0}
+            timeout={300}
+            classNames="header__favourite-count"
+            unmountOnExit
+          >
+            <div className="header__favourite-count">
+              {favouritePhones.length}
+            </div>
+          </CSSTransition>
 
           <img src={favourites} alt="like" className="icon" />
         </NavLink>

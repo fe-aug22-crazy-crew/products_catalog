@@ -4,6 +4,24 @@
   padding: 32px;
   width: 280px;
 
+  &-enter {
+    opacity: 0;
+  }
+  
+  &-enter-active {
+    opacity: 1;
+    transition: opacity 300ms;
+  }
+
+  &-exit {
+    opacity: 1;
+  }
+
+  &-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+
   &__options {
     display: flex;
   }
@@ -130,6 +148,19 @@
 
     &:hover {
       border: 1px solid $c-primary;
+    }
+
+    &-enter {
+      opacity: 0;
+    }
+
+    &-enter-active {
+      opacity: 1;
+      transition: opacity 300ms, transform 300ms;
+    }
+
+    &-exit {
+      display: none;
     }
   }
 }
