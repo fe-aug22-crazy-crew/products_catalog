@@ -5,13 +5,9 @@ type Props = {
   condition: boolean;
   image: string;
   alt: string;
-}
+};
 
-export const FavouriteIcon: React.FC<Props> = ({ 
-  condition,
-  image, 
-  alt,
-}) => (
+export const FavouriteIcon: React.FC<Props> = ({ condition, image, alt }) => (
   <CSSTransition
     in={condition}
     timeout={300}

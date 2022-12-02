@@ -76,13 +76,13 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
           className="product__favourite-adding"
           onClick={() => handleFavourite(phone)}
         >
-          <FavouriteIcon 
+          <FavouriteIcon
             condition={!isSelected}
             image={notFavourite}
             alt={'notFavorite'}
           />
 
-          <FavouriteIcon 
+          <FavouriteIcon
             condition={isSelected}
             image={favourite}
             alt={'favorite'}
