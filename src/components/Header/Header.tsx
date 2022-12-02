@@ -5,6 +5,7 @@ import { Navigation } from './Navigation';
 import favourites from '../../images/favourites.svg';
 import shopping from '../../images/shopping.svg';
 import menu from '../../images/menu.svg';
+import { Link } from 'react-router-dom';
 
 export const Header: React.FC = () => {
   return (
@@ -17,9 +18,9 @@ export const Header: React.FC = () => {
         <Navigation to="accessories" text="Accessories" />
       </nav>
       <div className="header__c-icons">
-        <div className="icon-box">
+        <Link to="/favourites" className="icon-box">
           <img src={favourites} alt="like" className="icon" />
-        </div>
+        </Link>
         <div className="icon-box">
           <img src={shopping} alt="shop" className="icon" />
         </div>

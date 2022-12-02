@@ -11,6 +11,9 @@ import { actions as phonesActions } from './features/phones';
 
 import { Footer } from './components/Footer';
 import { NotFoundPage } from './components/NotFoundPage';
+import { Favourites } from './components/Favourites';
+import { Phone } from './types/Phone';
+import { actions as favouritesActions } from './features/favourites';
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +22,19 @@ function App() {
     const data = await client.get('phones', 'GET', null);
     dispatch(phonesActions.add(data));
   };
+
+  useEffect(() => {
+    const dataFromLocalStorage = window.localStorage.getItem('favourites');
+    let phones: Phone[] = [];
+
+    if (typeof dataFromLocalStorage === 'string') {
+      phones = JSON.parse(dataFromLocalStorage);
+    }
+
+    if (phones.length > 0) {
+      dispatch(favouritesActions.load(phones));
+    }
+  }, []);
 
   useEffect(() => {
     getPhones();
@@ -32,6 +48,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="phones" element={<Phones />} />
+        <Route path="favourites" element={<Favourites />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
 
