@@ -1,0 +1,17 @@
+@import '../../styles/utils/mixins/screenWidth.scss';
+
+.home_page {
+  &__title {
+    max-width: 1136px;
+    margin: 40px auto;
+    padding: 0 16px;
+
+    @include onTablet {
+      padding: 0 24px;
+    }
+
+    @include onDesktop {
+      padding: 0 32px;
+    }
+  }
+}

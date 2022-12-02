@@ -35,7 +35,7 @@ export const Header: React.FC = () => {
     <header className="header" id="top">
       <Logo />
       <nav className="header__nav">
-        <Navigation to="/" text="Home" />
+        <Navigation to="products_catalog" text="Home" />
         <Navigation to="phones" text="Phones" />
         <Navigation to="tablets" text="Tablets" />
         <Navigation to="accessories" text="Accessories" />
