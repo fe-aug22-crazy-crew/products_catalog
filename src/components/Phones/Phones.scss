@@ -1,8 +1,111 @@
+@import '../../styles/utils/variables.scss';
+@import '../../styles/utils/mixins/screenWidth.scss';
+@import '../../styles/utils/mixins/helpers.scss';
+@import '../../styles/utils/mixins/typography.scss';
+
+
 .phones {
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  align-items: start;
-  justify-content: center;
+  &__title {
+    font-family: 'Mont', sans-serif;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 56px;
+    margin-bottom: 8px;
+  }
+
+  &__selects {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__select {
+    margin-bottom: 24px;
+  }
+
+  &__arrow {
+    position: relative;
+    bottom: 2px;
+  }
+
+  &__sort-type {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    color: $c-primary;
+  }
+
+  &__select-field {
+    display: flex;
+    justify-content: space-between;
+    width: 136px;
+    height: 40px;
+    border: 1px solid $c-icons;
+    padding: 8px 10px;
+    cursor: pointer;
+    position: relative;
+    background-color: $c-white;
+
+    &--sort {
+      @include onTablet {
+        width: 176px;
+      }
+    }
+  }
+
+  &__option {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    color: $c-secondary;
+
+    &:hover {
+      color: $c-primary;
+    }
+  }
+
+  &__options {
+    position: absolute;
+
+    &--hidden-amount {
+      visibility: hidden;
+    }
+
+    &--hidden-sort {
+      visibility: hidden;
+    }
+  }
+
+  &__select-title {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: $c-secondary;
+    margin-bottom: 4px;
+  }
+
+  &__models-count {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $c-secondary;
+    margin-bottom: 40px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: $card-width;
+  }
+
+  &__list {
+    display: grid;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 0;
+    list-style: none;
+    grid-template-columns: repeat(auto-fit, $card-width);
+    align-items: center;
+  }
 }

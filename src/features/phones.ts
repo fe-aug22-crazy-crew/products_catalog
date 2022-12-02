@@ -14,10 +14,11 @@ export const actions = { add };
 
 export const phonesReducer = (
   phones: Phone[] = [],
-  action: Action | AnyAction
+  action: Action | AnyAction,
 ) => {
   switch (action.type) {
   case 'phones/ADD':
+    // eslint-disable-next-line no-param-reassign
     return (phones = action.payload);
 
   default:

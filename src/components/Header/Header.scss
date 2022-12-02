@@ -2,11 +2,13 @@
 @import '../../styles/utils/mixins/screenWidth.scss';
 @import '../../styles/utils/mixins/helpers.scss';
 @import '../../styles/utils/mixins/typography.scss';
+@import '../../styles/utils/mixins/typography.scss';
 
 .header {
   height: 48px;
   display: flex;
   padding-left: 16px;
+  margin-bottom: 40px;
 
   align-items: center;
 
@@ -77,6 +79,15 @@
       top: 18px;
       right: 18px;
     }
+  }
+  
+  &--menu {
+    justify-content: space-between;
+  }
+
+  &__link {
+    display: inline-block;
+    padding: 15px 15px 13px 19px;
   }
 }
 

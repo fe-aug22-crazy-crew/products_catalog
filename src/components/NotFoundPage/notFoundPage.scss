@@ -13,7 +13,9 @@
   background-color: $c-white;
 
   @include onTablet {
-    height: calc($full-height - $header-height - $footer-height);
+    height: calc(
+      $full-height - $header-height - $header-margin - $footer-height
+    );
   }
 
   &__title {

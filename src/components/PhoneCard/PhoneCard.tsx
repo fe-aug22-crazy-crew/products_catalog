@@ -8,14 +8,15 @@ import './PhoneCard.scss';
 import notFavourite from '../../images/favourites.svg';
 import favourite from '../../images/selectedFavourite.svg';
 import { FavouriteIcon } from './FavouriteIcon';
+/* eslint-disable no-shadow */
 
 type Props = {
   phone: Phone;
 };
 
 export const PhoneCard: React.FC<Props> = ({ phone }) => {
-  const { image, itemId, name, price, fullPrice, screen, capacity, ram } =
-    phone;
+  const { image, itemId, name, price, fullPrice, screen, capacity, ram }
+    = phone;
 
   const dispatch = useDispatch();
   const favouritePhones: Phone[] = useAppSelector((state) => state.favourites);
@@ -72,6 +73,7 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
 
       <div className="product__options">
         <div className="product__cart-adding">Add to cart</div>
+
         <button
           className="product__favourite-adding"
           onClick={() => handleFavourite(phone)}

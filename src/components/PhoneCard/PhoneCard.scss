@@ -5,7 +5,10 @@
 
 .product {
   padding: 32px;
-  width: 280px;
+  width: $card-width;
+  border: 1px solid $c-elements;
+  box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
 
   &-enter {
     opacity: 0;

@@ -1,0 +1,32 @@
+.burger_menu__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  width: max-content;
+  padding-bottom: 10px;
+  margin-top: 32px;
+
+  text-decoration: none;
+  font-family: 'Mont', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #89939a;
+}
+
+.is-active {
+  color: #313237;
+}
+
+.is-active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  height: 4px;
+  background-color: #313237;
+}

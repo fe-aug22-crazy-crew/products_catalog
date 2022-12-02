@@ -20,8 +20,9 @@ import { actions as favouritesActions } from './features/favourites';
 function App() {
   const dispatch = useDispatch();
 
-  const getPhones = async () => {
+  const getPhones = async() => {
     const data = await client.get('phones', 'GET', null);
+
     dispatch(phonesActions.add(data));
   };
 
@@ -45,7 +46,6 @@ function App() {
   return (
     <div className="App">
       <Header />
-
       {/* Only content will change here */}
       <Routes>
         <Route path="/products_catalog" element={<HomePage />} />
