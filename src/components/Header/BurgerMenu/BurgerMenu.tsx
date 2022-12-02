@@ -37,7 +37,11 @@ export const BurgerMenu: React.FC<Props> = ({ setMenuIsOpen, menuIsOpen }) => {
         </div>
       </header>
       <nav className="burger_menu__nav">
-        <NavigationLink to="/" text="Home" setMenuIsOpen={setMenuIsOpen} />
+        <NavigationLink
+          to="products_catalog"
+          text="Home"
+          setMenuIsOpen={setMenuIsOpen}
+        />
         <NavigationLink
           to="phones"
           text="Phones"
