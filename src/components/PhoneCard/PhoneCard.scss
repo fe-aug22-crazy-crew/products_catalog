@@ -5,7 +5,8 @@
 
 .product {
   padding: 32px;
-  width: $card-width;
+  // width: $min-card-width;j
+  width: 100%;
   border: 1px solid $c-elements;
   box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
   margin-bottom: 40px;

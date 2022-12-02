@@ -1,3 +1,5 @@
+@import '../../../styles/utils/variables';
+
 .burger_menu {
   position: absolute;
   top: 0;
@@ -9,7 +11,7 @@
 
   transform: translateY(-100%);
 
-  background-color: #ffffff;
+  background-color: $c-white;
 
   transition: transform 0.3s;
 
@@ -44,8 +46,8 @@
     justify-content: center;
     align-items: center;
 
-    border-top: 1px solid #e2e6e9;
-    box-shadow: -1px 0px 0px #e2e6e9;
+    border-top: 1px solid $c-elements;
+    box-shadow: -1px 0px 0px $c-elements;
 
     height: 64px;
     width: 50%;

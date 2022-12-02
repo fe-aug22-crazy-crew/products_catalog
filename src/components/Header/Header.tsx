@@ -1,10 +1,9 @@
 /* eslint-disable no-shadow */
 import React, { useEffect, useState } from 'react';
-import 'flexboxgrid2';
+import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 import cl from 'classnames';
 import { NavLink } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
 import './Header.scss';
 
@@ -13,10 +12,10 @@ import { Navigation } from './Navigation';
 import favourites from '../../images/favourites.svg';
 import shopping from '../../images/shopping.svg';
 import menu from '../../images/menu.svg';
-import { useAppSelector } from '../../app/hooks';
-import { Phone } from '../../types/Phone';
 
 import { BurgerMenu } from './BurgerMenu';
+import { useAppSelector } from '../../app/hooks';
+import { Phone } from '../../types/Phone';
 
 export const Header: React.FC = () => {
   const favouritePhones: Phone[] = useAppSelector((state) => state.favourites);
