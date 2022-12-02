@@ -78,11 +78,7 @@ export const Header: React.FC = () => {
         <div className="icon-box">
           <img src={shopping} alt="shop" className="icon" />
         </div>
-        <a
-          href=""
-          className="icon-box icon-box__menu"
-          onClick={openMenuHandle}
-        >
+        <a href="" className="icon-box icon-box__menu" onClick={openMenuHandle}>
           <img src={menu} alt="menu" className="icon" />
         </a>
       </div>

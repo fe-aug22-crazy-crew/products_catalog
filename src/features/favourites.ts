@@ -24,7 +24,7 @@ export const actions = { add, remove, load };
 
 export const favouriteReducer = (
   favourites: Phone[] = [],
-  action: Action | AnyAction
+  action: Action | AnyAction,
 ) => {
   switch (action.type) {
   case 'favourite/ADD':
