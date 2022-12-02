@@ -2,3 +2,16 @@
   text-decoration: none;
   color: inherit;
 }
+
+@mixin gridForPhones {
+  display: grid;
+    gap: 16px;
+
+    @include onTablet {
+      grid-template-columns: repeat(auto-fit, minmax($min-card-width, 1fr));
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+}
