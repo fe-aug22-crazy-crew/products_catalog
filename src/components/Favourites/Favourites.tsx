@@ -7,13 +7,13 @@ export const Favourites: React.FC = () => {
   const favouritePhones: Phone[] = useAppSelector((state) => state.favourites);
 
   return (
-    <main className='favourites'>
+    <main className="favourites">
       <div className="container">
-        <h1 className='favourites__title'>Favourites</h1>
+        <h1 className="favourites__title">Favourites</h1>
         <p className="favourites__count">{favouritePhones.length} items</p>
 
         <ul className="favourites__list">
-          {favouritePhones.map(favourite => (
+          {favouritePhones.map((favourite) => (
             <PhoneCard key={favourite.id} phone={favourite} />
           ))}
         </ul>

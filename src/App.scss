@@ -1,3 +1,6 @@
+@import './styles/utils/variables.scss';
+
 .App {
   background-color: $c-white;
+  scroll-behavior: smooth;
 }

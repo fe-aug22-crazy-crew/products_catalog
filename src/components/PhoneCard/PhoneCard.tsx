@@ -12,21 +12,13 @@ type Props = {
 };
 
 export const PhoneCard: React.FC<Props> = ({ phone }) => {
-  const { 
-    image, 
-    itemId, 
-    name, 
-    price, 
-    fullPrice, 
-    screen, 
-    capacity, 
-    ram 
-  } = phone;
+  const { image, itemId, name, price, fullPrice, screen, capacity, ram } =
+    phone;
 
   const dispatch = useDispatch();
   const favouritePhones: Phone[] = useAppSelector((state) => state.favourites);
 
-  const isSelected = favouritePhones.some(gadget => gadget.id === phone.id);
+  const isSelected = favouritePhones.some((gadget) => gadget.id === phone.id);
 
   const handleFavourite = (selectedPhone: Phone) => {
     if (!isSelected) {
@@ -39,7 +31,7 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
   useEffect(() => {
     window.localStorage.setItem('favourites', JSON.stringify(favouritePhones));
   }, [favouritePhones]);
- 
+
   return (
     <div className="product">
       <img
@@ -49,7 +41,7 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
       />
 
       <p className="product__name">{name}</p>
-      
+
       <div className="product__price-block">
         {
           <>
@@ -78,10 +70,15 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
 
       <div className="product__options">
         <div className="product__cart-adding">Add to cart</div>
-        <button className="product__favourite-adding" onClick={() => handleFavourite(phone)}>
-          {isSelected 
-            ? <img src={favorite} alt="favorite" />
-            : <img src={notFavorite} alt="notFavorite" />}
+        <button
+          className="product__favourite-adding"
+          onClick={() => handleFavourite(phone)}
+        >
+          {isSelected ? (
+            <img src={favorite} alt="favorite" />
+          ) : (
+            <img src={notFavorite} alt="notFavorite" />
+          )}
         </button>
       </div>
     </div>

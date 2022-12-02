@@ -19,7 +19,7 @@
 
   &__name {
     min-height: 42px;
-    
+
     @include bodyTextTypography;
     color: $c-primary;
   }
@@ -128,7 +128,6 @@
 
     transition: border 0.3s;
 
-    
     &:hover {
       border: 1px solid $c-primary;
     }

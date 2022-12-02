@@ -5,9 +5,14 @@ import { Navigation } from './Navigation';
 import favourites from '../../images/favourites.svg';
 import shopping from '../../images/shopping.svg';
 import menu from '../../images/menu.svg';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import cl from 'classnames';
+import { useAppSelector } from '../../app/hooks';
+import { Phone } from '../../types/Phone';
 
 export const Header: React.FC = () => {
+  const favouritePhones: Phone[] = useAppSelector((state) => state.favourites);
+
   return (
     <header className="header" id="top">
       <Logo />
@@ -18,9 +23,19 @@ export const Header: React.FC = () => {
         <Navigation to="accessories" text="Accessories" />
       </nav>
       <div className="header__c-icons">
-        <Link to="/favourites" className="icon-box">
+        <NavLink 
+          to="/favourites"
+          className={({ isActive }) =>
+            cl(
+              'icon-box', 
+              { 'is-active': isActive },
+            )}
+        >
+          {favouritePhones.length > 0 && 
+          <div className='header__favourite-count'>{favouritePhones.length}</div>}
+
           <img src={favourites} alt="like" className="icon" />
-        </Link>
+        </NavLink>
         <div className="icon-box">
           <img src={shopping} alt="shop" className="icon" />
         </div>

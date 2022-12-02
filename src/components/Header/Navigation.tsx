@@ -6,6 +6,7 @@ type Props = {
   to: string;
   text: string;
 };
+
 export const Navigation: React.FC<Props> = ({ to, text }) => (
   <NavLink
     to={to}
