@@ -1,9 +1,16 @@
 import React from 'react';
-import { useAppSelector } from '../../app/hooks';
-import { Phone } from '../../types/Phone';
+// import { useAppSelector } from '../../app/hooks';
+import { Promo } from './Promo';
+
+import './homePage.scss';
 
 export const HomePage: React.FC = () => {
-  const phones = useAppSelector((state) => state.phones);
+  // const phones = useAppSelector((state) => state.phones);
 
-  return phones.map((phone: Phone) => <h3 key={phone.id}>{phone.phoneId}</h3>);
+  return (
+    <main className="home_page">
+      <h1 className="home_page__title">Welcome to Nice Gadgets store!</h1>
+      <Promo />
+    </main>
+  );
 };

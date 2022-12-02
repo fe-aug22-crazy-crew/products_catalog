@@ -1,0 +1,79 @@
+@import '../../../styles/utils/mixins/screenWidth.scss';
+@import '../../../styles/utils/variables.scss';
+
+.promo {
+  position: relative;
+  display: flex;
+
+  max-width: 1136px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+
+  @include onTablet {
+    padding: 0 24px 40px 24px;
+  }
+
+  @include onDesktop {
+    padding: 0 32px 40px 32px;
+  }
+
+  &__slide {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: $c-white;
+
+    border: 1px solid $c-icons;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    @include onPhone {
+      display: none;
+    }
+  }
+
+  &__pic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: auto;
+  }
+
+  &__img {
+    width: 95%;
+
+    @include onPhone {
+      height: auto;
+      width: 100%;
+    }
+  }
+
+  &__pagination {
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+}
+
+.swiper-pagination-bullet {
+  border-radius: 0 !important;
+  height: 4px !important;
+  width: 14px !important;
+
+  --swiper-theme-color: #313237;
+}
