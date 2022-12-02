@@ -17,11 +17,7 @@ export const Footer: React.FC = React.memo(() => (
         <div className="footer__info">
           <ul className="footer__list">
             {infoFields.map(({ title, to, id }) => (
-              <LinkFooter 
-                key={id} 
-                title={title} 
-                to={to} 
-              />
+              <LinkFooter key={id} title={title} to={to} />
             ))}
           </ul>
         </div>
