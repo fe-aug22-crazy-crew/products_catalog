@@ -58,13 +58,25 @@ export const Promo: React.FC = () => {
         className="promo__slider"
       >
         <SwiperSlide className="promo__slide">
-          <ImageCreator photoLg={BannerLg} photoSm={BannerPhone}/>
+          <ImageCreator
+            photoLg={BannerLg}
+            photoSm={BannerPhone}
+            description={'promo banner'}
+          />
         </SwiperSlide>
         <SwiperSlide className="promo__slide">
-          <ImageCreator photoLg={BannerLg} photoSm={BannerPhone}/>
+          <ImageCreator
+            photoLg={BannerLg}
+            photoSm={BannerPhone}
+            description={'promo banner'}
+          />
         </SwiperSlide>
         <SwiperSlide className="promo__slide">
-          <ImageCreator photoLg={BannerLg} photoSm={BannerPhone}/>
+          <ImageCreator
+            photoLg={BannerLg}
+            photoSm={BannerPhone}
+            description={'promo banner'}
+          />
         </SwiperSlide>
       </Swiper>
 
