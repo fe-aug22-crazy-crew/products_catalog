@@ -41,11 +41,11 @@ export const Slider: React.FC<Props> = ({
         }}
         loop={true}
       >
-        {visiblePhones.map(phone =>
+        {visiblePhones.map((phone) => (
           <SwiperSlide key={phone.id}>
             <PhoneCard phone={phone} />
-          </SwiperSlide>)
-        }
+          </SwiperSlide>
+        ))}
       </Swiper>
     </section>
   );

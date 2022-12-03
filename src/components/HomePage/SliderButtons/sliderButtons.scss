@@ -1,4 +1,4 @@
-@import "../../../styles/utils/variables.scss";
+@import '../../../styles/utils/variables.scss';
 
 .button-box {
   display: flex;
@@ -18,7 +18,7 @@
     background-repeat: no-repeat;
 
     &:hover {
-      border: 1px solid $c-primary
+      border: 1px solid $c-primary;
     }
   }
 

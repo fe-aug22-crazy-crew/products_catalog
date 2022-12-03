@@ -13,14 +13,12 @@ export const HomePage: React.FC = () => {
   return (
     <main className="home_page">
       <h1 className="home_page__title home_page__title--h1">
-          Welcome to Nice Gadgets store!
+        Welcome to Nice Gadgets store!
       </h1>
       <Promo />
 
       <div className="home_page__title-box">
-        <h2 className="home_page__subtitle">
-          Brand new models
-        </h2>
+        <h2 className="home_page__subtitle">Brand new models</h2>
         <SliderButtons
           refClassPrev={'newest_button_prev'}
           refClassNext={'newest_button_next'}
