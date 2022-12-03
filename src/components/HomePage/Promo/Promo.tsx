@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import SwiperCore, { Navigation, Pagination } from 'swiper';
+import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ImageCreator } from './ImageCreator';
 
@@ -49,12 +49,11 @@ export const Promo: React.FC = () => {
         <img src={Prev} alt="prev promo slide button" />
       </button>
       <Swiper
-        modules={[Navigation, Pagination]}
+        modules={[Autoplay, Navigation, Pagination]}
         slidesPerView={1}
         onBeforeInit={onBeforeInit}
         pagination={{ clickable: true }}
-        // onSwiper={(swiper) => }
-        // onSlideChange={() => console.log('slide change')}
+        loop={true}
         className="promo__slider"
       >
         <SwiperSlide className="promo__slide">
