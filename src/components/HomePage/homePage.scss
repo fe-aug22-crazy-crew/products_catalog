@@ -1,3 +1,5 @@
+@import '../../styles/utils/mixins/screenWidth.scss';
+@import '../../styles/utils/mixins/typography.scss';
 @import '../../styles/container.scss';
 @import '../../styles/utils/variables.scss';
 
@@ -7,7 +9,12 @@
     justify-content: space-between;
     margin-bottom: 28px;
   }
+    @include h1Typography;
 
+    @include onTablet {
+      padding: 0 24px;
+    }
+    
   &__button-box {
     display: flex;
   }
@@ -49,6 +56,9 @@
     }
   }
 
+    @include onDesktop {
+      padding: 0;
+      
   &__subtitle {
     display: inline-block;
     font-size: 22px;
@@ -60,5 +70,28 @@
       font-size: 32px;
       line-height: 41px;
     }
+  }
+
+  &__title-box {
+    display: flex;
+    justify-content: space-between;
+
+    max-width: 1136px;
+    margin: 40px auto;
+    padding: 0 16px;
+
+    @include onTablet {
+      padding: 0 24px;
+    }
+
+    @include onDesktop {
+      padding: 0;
+    }
+  }
+
+  &__subtitle {
+    display: inline-block;
+
+    @include h2Typography;
   }
 }

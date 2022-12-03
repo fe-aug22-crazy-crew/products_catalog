@@ -1,0 +1,15 @@
+@import '../../styles/utils/mixins/screenWidth.scss';
+
+.slider {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 0 0 0 17px;
+
+  @include onTablet {
+    padding: 0 0 0 25px;
+  }
+
+  @include onDesktop {
+    padding: 0;
+  }
+}

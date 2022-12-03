@@ -1,0 +1,68 @@
+@import '../../../../styles/utils/variables.scss';
+
+.navigationLinkWithIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  border-top: 1px solid $c-elements;
+  box-shadow: -1px 0px 0px $c-elements;
+
+  height: 64px;
+  width: 50%;
+
+  &__icon-box {
+    position: relative;
+  }
+
+  &__icon {
+    height: 15px;
+    width: 15px;
+  }
+
+  &__display-count {
+    position: absolute;
+    top: -5px;
+    right: -6px;
+
+    height: 14px;
+    width: 14px;
+
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 14px;
+    text-align: center;
+    color: $c-white;
+
+    background-color: $c-red;
+    border-radius: 50%;
+
+    &-enter {
+      opacity: 0;
+    }
+
+    &-enter-active {
+      opacity: 1;
+      transition: opacity 300ms, transform 300ms;
+    }
+
+    &-exit {
+      opacity: 1;
+    }
+
+    &-exit-active {
+      opacity: 0;
+      transition: opacity 300ms, transform 300ms;
+    }
+  }
+}
+
+.is-active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  height: 4px;
+  background-color: #313237;
+}
