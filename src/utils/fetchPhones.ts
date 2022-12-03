@@ -1,14 +1,17 @@
-const BASE_URL =
-  'https://teal-tiramisu-13c82d.netlify.app/.netlify/functions/server/';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+const BASE_URL
+  = 'https://teal-tiramisu-13c82d.netlify.app/.netlify/functions/server/';
 
 type RequestMethod = 'GET';
 
 async function request(
   url: string,
   method: RequestMethod = 'GET',
-  id: number | null
+  id: number | null,
 ) {
+  // eslint-disable-next-line no-undef
   const options: RequestInit = { method: method };
+
   options.headers = {
     'Content-Type': 'application/json; charset=UTF-8',
   };
@@ -24,6 +27,7 @@ async function request(
 
     return dataFRomApi.json();
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.log(error);
   }
 

@@ -1,20 +1,13 @@
+@import './utils/reset.scss';
+@import './font-faces.scss';
+
 * {
   box-sizing: border-box;
 }
 
 html {
   font-family: 'Mont';
+  scroll-behavior: smooth;
 }
 
-@import './utils/reset.scss';
-@import './utils/mixins/screenWidth.scss';
-@import './utils/mixins/helpers.scss';
-@import './utils/mixins/typography.scss';
-@import './utils/variables.scss';
-@import './font-faces.scss';
-@import '../App.scss';
 @import './container.scss';
-@import '../components/Logo/Logo.scss';
-@import '../components/Header/Header.scss';
-@import '../components/NotFoundPage/notFoundPage.scss';
-@import '../components/Footer/footer.scss';

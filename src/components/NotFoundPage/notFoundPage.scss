@@ -1,3 +1,8 @@
+@import '../../styles/utils/variables.scss';
+@import '../../styles/utils/mixins/screenWidth.scss';
+@import '../../styles/utils/mixins/helpers.scss';
+@import '../../styles/utils/mixins/typography.scss';
+
 .notFoundPage {
   display: flex;
   flex-direction: column;
@@ -8,7 +13,9 @@
   background-color: $c-white;
 
   @include onTablet {
-    height: calc($full-height - $header-height - $footer-height);
+    height: calc(
+      $full-height - $header-height - $header-margin - $footer-height
+    );
   }
 
   &__title {

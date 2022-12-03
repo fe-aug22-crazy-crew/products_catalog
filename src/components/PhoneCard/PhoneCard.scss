@@ -1,8 +1,33 @@
-@import '../../styles/index.scss';
+@import '../../styles/utils/variables.scss';
+@import '../../styles/utils/mixins/screenWidth.scss';
+@import '../../styles/utils/mixins/helpers.scss';
+@import '../../styles/utils/mixins/typography.scss';
 
 .product {
   padding: 32px;
-  width: 280px;
+  // width: $min-card-width;j
+  width: 100%;
+  border: 1px solid $c-elements;
+  box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+
+  &-enter {
+    opacity: 0;
+  }
+
+  &-enter-active {
+    opacity: 1;
+    transition: opacity 300ms;
+  }
+
+  &-exit {
+    opacity: 1;
+  }
+
+  &-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
+  }
 
   &__options {
     display: flex;
@@ -19,7 +44,7 @@
 
   &__name {
     min-height: 42px;
-    
+
     @include bodyTextTypography;
     color: $c-primary;
   }
@@ -128,9 +153,21 @@
 
     transition: border 0.3s;
 
-    
     &:hover {
       border: 1px solid $c-primary;
+    }
+
+    &-enter {
+      opacity: 0;
+    }
+
+    &-enter-active {
+      opacity: 1;
+      transition: opacity 300ms, transform 300ms;
+    }
+
+    &-exit {
+      display: none;
     }
   }
 }
