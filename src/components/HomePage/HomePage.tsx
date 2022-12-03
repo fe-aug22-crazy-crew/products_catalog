@@ -1,39 +1,49 @@
 import React from 'react';
 
 import { useAppSelector } from '../../app/hooks';
-import { Slider } from '../../components/Slider';
+import { Slider } from '../Slider';
 import { Promo } from './Promo';
 
-import './HomePage.scss';
 import './homePage.scss';
-{
-  /* Homepage content here */
-}
+import { SliderButtons } from './SliderButtons';
+
 export const HomePage: React.FC = () => {
-  {
-    /* Use this syntax to get data from redux provider*/
-  }
   const phones = useAppSelector((state) => state.phones);
-  //return phones.map((phone: Phone) => <h3 key={phone.id}>{phone.phoneId}</h3>);
 
   return (
-    <>
-      <main className="home_page">
-        <h1 className="home_page__title">Welcome to Nice Gadgets store!</h1>
-        <Promo />
-      </main>
-      <main className="homepage">
-        <div className="container">
-          <div className="homepage__title-box">
-            <h2 className="homepage__subtitle">Hot prices</h2>
-            <div className="homepage__button-box">
-              <div className="homepage__button-prev"></div>
-              <div className="homepage__button-next"></div>
-            </div>
-          </div>
-          <Slider phones={phones} />
-        </div>
-      </main>
-    </>
+    <main className="home_page">
+      <h1 className="home_page__title home_page__title--h1">
+          Welcome to Nice Gadgets store!
+      </h1>
+      <Promo />
+
+      <div className="home_page__title-box">
+        <h2 className="home_page__subtitle">
+          Brand new models
+        </h2>
+        <SliderButtons
+          refClassPrev={'newest_button_prev'}
+          refClassNext={'newest_button_next'}
+        />
+      </div>
+      <Slider
+        phones={phones}
+        prevButtonClass={'.newest_button_prev'}
+        nextButtonClass={'.newest_button_next'}
+      />
+
+      <div className="home_page__title-box">
+        <h2 className="home_page__subtitle">Hot prices</h2>
+        <SliderButtons
+          refClassPrev={'hot_button_prev'}
+          refClassNext={'hot_button_next'}
+        />
+      </div>
+      <Slider
+        phones={phones}
+        prevButtonClass={'.hot_button_prev'}
+        nextButtonClass={'.hot_button_next'}
+      />
+    </main>
   );
 };

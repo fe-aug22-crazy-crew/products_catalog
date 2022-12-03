@@ -1,0 +1,42 @@
+@import "../../../styles/utils/variables.scss";
+
+.button-box {
+  display: flex;
+
+  &__button-prev {
+    position: relative;
+    margin-right: 16px;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $c-icons;
+    cursor: pointer;
+
+    transition: border 0.3s;
+
+    background-image: url(../../../images/sliderleft.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+      border: 1px solid $c-primary
+    }
+  }
+
+  &__button-next {
+    position: relative;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $c-icons;
+    cursor: pointer;
+
+    transition: border 0.3s;
+
+    background-image: url(../../../images/sliderright.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+  }
+}

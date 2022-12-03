@@ -1,7 +1,29 @@
 @import '../../styles/utils/mixins/screenWidth.scss';
+@import '../../styles/utils/mixins/typography.scss';
+@import '../../styles/container.scss';
+@import '../../styles/utils/variables.scss';
 
 .home_page {
   &__title {
+    max-width: 1136px;
+    margin: 40px auto;
+    padding: 0 16px;
+
+    @include h1Typography;
+
+    @include onTablet {
+      padding: 0 24px;
+    }
+
+    @include onDesktop {
+      padding: 0;
+    }
+  }
+
+  &__title-box {
+    display: flex;
+    justify-content: space-between;
+
     max-width: 1136px;
     margin: 40px auto;
     padding: 0 16px;
@@ -11,7 +33,13 @@
     }
 
     @include onDesktop {
-      padding: 0 32px;
+      padding: 0;
     }
+  }
+
+  &__subtitle {
+    display: inline-block;
+
+    @include h2Typography;
   }
 }

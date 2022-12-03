@@ -1,4 +1,5 @@
 @import '../../font-faces.scss';
+@import './screenWidth.scss';
 
 @mixin h1Typography {
   font-family: 'Mont', sans-serif;
@@ -17,6 +18,10 @@
   font-weight: bold;
   font-size: 32px;
   line-height: 41px;
+
+  @include onPhone {
+    font-size: 22px;
+  }
 }
 
 @mixin h3Typography {
