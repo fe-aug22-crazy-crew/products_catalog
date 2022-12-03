@@ -5,7 +5,6 @@ import { Slider } from '../../components/Slider';
 import { Promo } from './Promo';
 
 import './HomePage.scss';
-import './homePage.scss';
 
 export const HomePage: React.FC = () => {
   const phones = useAppSelector((state) => state.phones);
