@@ -4,6 +4,7 @@ import { useAppSelector } from '../../app/hooks';
 import { Slider } from '../../components/Slider';
 import { Promo } from './Promo';
 
+import './homePage.scss';
 import './HomePage.scss';
 
 export const HomePage: React.FC = () => {
