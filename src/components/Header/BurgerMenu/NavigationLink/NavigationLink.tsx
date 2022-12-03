@@ -1,6 +1,7 @@
 import React from 'react';
 import cl from 'classnames';
 import { NavLink } from 'react-router-dom';
+import './NavigationLink.scss';
 
 type Props = {
   to: string;

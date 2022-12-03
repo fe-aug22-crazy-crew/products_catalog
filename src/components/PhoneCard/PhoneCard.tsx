@@ -1,8 +1,14 @@
-/* eslint-disable no-shadow */
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { useAppSelector } from '../../app/hooks';
+import { actions as favouritesActions } from '../../features/favourites';
 import { Phone } from '../../types/Phone';
 import './PhoneCard.scss';
-import favourites from '../../images/favourites.svg';
+import notFavourite from '../../images/favourites.svg';
+import favourite from '../../images/selectedFavourite.svg';
+import { FavouriteIcon } from './FavouriteIcon';
+/* eslint-disable no-shadow */
 
 type Props = {
   phone: Phone;
@@ -11,6 +17,23 @@ type Props = {
 export const PhoneCard: React.FC<Props> = ({ phone }) => {
   const { image, itemId, name, price, fullPrice, screen, capacity, ram }
     = phone;
+
+  const dispatch = useDispatch();
+  const favouritePhones: Phone[] = useAppSelector((state) => state.favourites);
+
+  const isSelected = favouritePhones.some((gadget) => gadget.id === phone.id);
+
+  const handleFavourite = (selectedPhone: Phone) => {
+    if (!isSelected) {
+      dispatch(favouritesActions.add(selectedPhone));
+    } else {
+      dispatch(favouritesActions.remove(selectedPhone));
+    }
+  };
+
+  useEffect(() => {
+    window.localStorage.setItem('favourites', JSON.stringify(favouritePhones));
+  }, [favouritePhones]);
 
   return (
     <div className="product">
@@ -50,9 +73,23 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
 
       <div className="product__options">
         <div className="product__cart-adding">Add to cart</div>
-        <div className="product__favourite-adding">
-          <img src={favourites} alt="favourites-icon" />
-        </div>
+
+        <button
+          className="product__favourite-adding"
+          onClick={() => handleFavourite(phone)}
+        >
+          <FavouriteIcon
+            condition={!isSelected}
+            image={notFavourite}
+            alt={'notFavorite'}
+          />
+
+          <FavouriteIcon
+            condition={isSelected}
+            image={favourite}
+            alt={'favorite'}
+          />
+        </button>
       </div>
     </div>
   );

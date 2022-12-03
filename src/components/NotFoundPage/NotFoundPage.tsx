@@ -1,4 +1,7 @@
 import React from 'react';
+
+import './notFoundPage.scss';
+
 import { Link } from 'react-router-dom';
 
 export const NotFoundPage: React.FC = () => (

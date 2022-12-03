@@ -1,6 +1,9 @@
 /* eslint-disable no-shadow */
 import React, { useEffect, useState } from 'react';
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
+import cl from 'classnames';
+import { NavLink } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 
 import './Header.scss';
 
@@ -11,8 +14,14 @@ import shopping from '../../images/shopping.svg';
 import menu from '../../images/menu.svg';
 
 import { BurgerMenu } from './BurgerMenu';
+import { useAppSelector } from '../../app/hooks';
+import { Phone } from '../../types/Phone';
 
 export const Header: React.FC = () => {
+  const favouritePhones: Phone[] = useAppSelector((state) => state.favourites);
+  const countOfFavourites = favouritePhones.length;
+  const screenWidth = window.innerWidth;
+
   const [menuIsOpen, setMenuIsOpen] = useState(false);
 
   useEffect(() => {
@@ -24,6 +33,12 @@ export const Header: React.FC = () => {
       enablePageScroll();
     }
   }, [menuIsOpen]);
+
+  useEffect(() => {
+    if (window.innerWidth > 639) {
+      setMenuIsOpen(false);
+    }
+  }, [screenWidth]);
 
   const openMenuHandle = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
@@ -40,9 +55,25 @@ export const Header: React.FC = () => {
         <Navigation to="accessories" text="Accessories" />
       </nav>
       <div className="header__c-icons">
-        <div className="icon-box">
+        <NavLink
+          to="/favourites"
+          className={({ isActive }) =>
+            cl('icon-box', { 'is-active': isActive })
+          }
+        >
+          <CSSTransition
+            in={favouritePhones.length > 0}
+            timeout={300}
+            classNames="header__favourite-count"
+            unmountOnExit
+          >
+            <div className="header__favourite-count">
+              {countOfFavourites >= 1 && countOfFavourites}
+            </div>
+          </CSSTransition>
+
           <img src={favourites} alt="like" className="icon" />
-        </div>
+        </NavLink>
         <div className="icon-box">
           <img src={shopping} alt="shop" className="icon" />
         </div>
