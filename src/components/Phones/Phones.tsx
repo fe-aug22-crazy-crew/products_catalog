@@ -18,8 +18,9 @@ export const Phones: React.FC = () => {
   const [amount, setAmount] = useState(24);
   const [isAmountOpen, setIsAmountOpen] = useState(false);
 
-  const [amountOfPages, setAmountOfPages]
-  = useState(Math.ceil(phones.length / amount));
+  const [amountOfPages, setAmountOfPages] = useState(
+    Math.ceil(phones.length / amount),
+  );
 
   const [itemOffset, setItemOffset] = useState(0);
 
@@ -53,7 +54,7 @@ export const Phones: React.FC = () => {
 
   currentItems = phones.slice(itemOffset, endOffset);
 
-  const handlePageClick = (e: { selected: number; }) => {
+  const handlePageClick = (e: { selected: number }) => {
     const newOffset = (e.selected * amount) % phones.length;
 
     window.scrollTo({ top: 0 });
@@ -71,9 +72,7 @@ export const Phones: React.FC = () => {
     <main className="phones">
       <div className="container">
         <h2 className="phones__title">Mobile phones</h2>
-
         <p className="phones__models-count">{`${phones.length} models`}</p>
-
         <div className="phones__selects">
           <Select
             handleOpen={handleSortOpen}
@@ -95,7 +94,6 @@ export const Phones: React.FC = () => {
             fieldType="phones__select-field--amount"
           />
         </div>
-
         <ul className="phones__list">
           {currentItems.map((phone: Phone) => (
             <li key={phone.id} className="phones__item">
@@ -103,13 +101,12 @@ export const Phones: React.FC = () => {
             </li>
           ))}
         </ul>
-
         <ReactPaginate
-          breakLabel='...'
+          breakLabel="..."
           nextLabel={<img src={arrowNext} alt="arrow-next" />}
           onPageChange={handlePageClick}
           marginPagesDisplayed={0}
-          pageRangeDisplayed = {2}
+          pageRangeDisplayed={2}
           pageCount={amountOfPages}
           previousLabel={<img src={arrowPrev} alt="arrow-prev" />}
           containerClassName="pagination"
@@ -118,8 +115,8 @@ export const Phones: React.FC = () => {
           previousLinkClassName="pagination__item"
           nextLinkClassName="pagination__item"
           breakLinkClassName="pagination__item"
-        />;
-
+        />
+        ;
       </div>
     </main>
   );
