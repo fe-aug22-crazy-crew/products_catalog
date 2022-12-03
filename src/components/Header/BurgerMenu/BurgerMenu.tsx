@@ -1,15 +1,16 @@
-/* eslint-disable max-len */
-/* eslint-disable no-shadow */
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import cn from 'classnames';
 
 import { Logo } from '../../Logo';
 import { NavigationLink } from './NavigationLink';
 import favourites from '../../../images/favourites.svg';
-import shopping from '../../../images/shopping.svg';
+import cart from '../../../images/shopping.svg';
 import closeMenu from '../../../images/Close.svg';
 
 import './BurgerMenu.scss';
+import { NavigationLinksWithIcons } from './NavigationLinksWithIcons';
+import { Phone } from '../../../types/Phone';
+import { useAppSelector } from '../../../app/hooks';
 
 type Props = {
   setMenuIsOpen: (value: boolean) => void;
@@ -17,15 +18,32 @@ type Props = {
 };
 
 export const BurgerMenu: React.FC<Props> = ({ setMenuIsOpen, menuIsOpen }) => {
-  const closeMenuHandle = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
+  const favouritePhones: Phone[] = useAppSelector((state) => state.favourites);
+  const countOfFavourites = favouritePhones.length;
+
+  const closeMenuHandle = (eve: React.MouseEvent<HTMLAnchorElement>) => {
+    eve.preventDefault();
     setMenuIsOpen(false);
   };
+
+  const [dimensions, setDimensions] = React.useState(window.innerWidth);
+
+  const handleResize = useCallback(() => {
+    setDimensions(window.innerWidth);
+  }, []);
+
+  useEffect(() => {
+    if (dimensions > 640) {
+      setMenuIsOpen(false);
+    }
+
+    window.addEventListener('resize', handleResize);
+  });
 
   return (
     <section
       className={cn('burger_menu', {
-        'burger_menu--open': menuIsOpen,
+        'burger_menu--open': menuIsOpen && dimensions < 640,
       })}
     >
       <header className="header header--menu">
@@ -61,12 +79,24 @@ export const BurgerMenu: React.FC<Props> = ({ setMenuIsOpen, menuIsOpen }) => {
         />
       </nav>
       <section className="burger_menu__cart-favourites">
-        <a href="" className="burger_menu__container">
-          <img src={favourites} alt="like" className="burger_menu__icon" />
-        </a>
-        <a href="" className="burger_menu__container">
-          <img src={shopping} alt="shop" className="burger_menu__icon" />
-        </a>
+        <NavigationLinksWithIcons
+          to={'/favourites'}
+          img={favourites}
+          altImg={'favourites'}
+          setMenuIsOpen={setMenuIsOpen}
+          styleClass={'display-count'}
+          favourites={countOfFavourites}
+          cart={null}
+        />
+        <NavigationLinksWithIcons
+          to={'/cart'}
+          img={cart}
+          altImg={'cart'}
+          setMenuIsOpen={setMenuIsOpen}
+          styleClass={'display-count'}
+          favourites={null}
+          cart={15} // insert here number of items in the cart
+        />
       </section>
     </section>
   );

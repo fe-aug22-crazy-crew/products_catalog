@@ -39,7 +39,6 @@ export const Slider: React.FC<Props> = ({
           prevEl: prevButtonClass,
           nextEl: nextButtonClass,
         }}
-        loop={true}
       >
         {visiblePhones.map((phone) => (
           <SwiperSlide key={phone.id}>
