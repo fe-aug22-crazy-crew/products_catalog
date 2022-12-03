@@ -30,7 +30,7 @@ function App() {
 
       {/* Only content will change here */}
       <Routes>
-        <Route path="/home" element={<HomePage />} />
+        <Route path="poducts_catalog" element={<HomePage />} />
         <Route path="phones" element={<Phones />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
