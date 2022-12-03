@@ -12,7 +12,7 @@ export const HomePage: React.FC = () => {
 
   return (
     <main className="home_page">
-      <h1 className="home_page__title home_page__title--h1">
+      <h1 className="home_page__title">
         Welcome to Nice Gadgets store!
       </h1>
       <Promo />

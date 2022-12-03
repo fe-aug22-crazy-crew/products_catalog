@@ -3,18 +3,40 @@
 @import '../../styles/container.scss';
 @import '../../styles/utils/variables.scss';
 
-.homepage {
-  &__title-box {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 28px;
-  }
+.home_page {
+  &__title {
     @include h1Typography;
+
+    max-width: 1136px;
+    margin: 40px auto;
+    padding: 0 16px;
 
     @include onTablet {
       padding: 0 24px;
     }
-    
+
+    @include onDesktop {
+      padding: 0;
+    }
+  }
+
+  &__title-box {
+    display: flex;
+    justify-content: space-between;
+
+    max-width: 1136px;
+    margin: 40px auto;
+    padding: 0 16px;
+
+    @include onTablet {
+      padding: 0 24px;
+    }
+
+    @include onDesktop {
+      padding: 0;
+    }
+  }
+
   &__button-box {
     display: flex;
   }
@@ -53,39 +75,6 @@
 
     &:hover {
       border: 1px solid $c-primary;
-    }
-  }
-
-    @include onDesktop {
-      padding: 0;
-      
-  &__subtitle {
-    display: inline-block;
-    font-size: 22px;
-    line-height: 31px;
-    letter-spacing: -1%;
-    font-weight: 800;
-
-    @include onTablet {
-      font-size: 32px;
-      line-height: 41px;
-    }
-  }
-
-  &__title-box {
-    display: flex;
-    justify-content: space-between;
-
-    max-width: 1136px;
-    margin: 40px auto;
-    padding: 0 16px;
-
-    @include onTablet {
-      padding: 0 24px;
-    }
-
-    @include onDesktop {
-      padding: 0;
     }
   }
 
