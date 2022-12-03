@@ -1,17 +1,64 @@
-@import '../../styles/utils/mixins/screenWidth.scss';
+@import '../../styles/container.scss';
+@import '../../styles/utils/variables.scss';
 
-.home_page {
-  &__title {
-    max-width: 1136px;
-    margin: 40px auto;
-    padding: 0 16px;
+.homepage {
+  &__title-box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 28px;
+  }
+
+  &__button-box {
+    display: flex;
+  }
+
+  &__button-prev {
+    position: relative;
+    margin-right: 16px;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $c-icons;
+    cursor: pointer;
+
+    transition: border 0.3s;
+
+    background-image: url(../../images/sliderleft.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+  }
+
+  &__button-next {
+    position: relative;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $c-icons;
+    cursor: pointer;
+
+    transition: border 0.3s;
+
+    background-image: url(../../images/sliderright.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+  }
+
+  &__subtitle {
+    display: inline-block;
+    font-size: 22px;
+    line-height: 31px;
+    letter-spacing: -1%;
+    font-weight: 800;
 
     @include onTablet {
-      padding: 0 24px;
-    }
-
-    @include onDesktop {
-      padding: 0 32px;
+      font-size: 32px;
+      line-height: 41px;
     }
   }
 }

@@ -1,19 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PhoneCard } from '../PhoneCard';
 import { useAppSelector } from '../../app/hooks';
 import { Phone } from '../../types/Phone';
 import './Phones.scss';
-import arrowDown from '../../images/arrow-down.svg';
-import cl from 'classnames';
+import './Pagination.scss';
+import ReactPaginate from 'react-paginate';
+import arrowNext from '../../images/arrow-next.svg';
+import arrowPrev from '../../images/arrow-prev.svg';
+import { Select } from './Select/Select';
 
 export const Phones: React.FC = () => {
+  const phones = useAppSelector((state) => state.phones);
+
   const [sortType, setSortType] = useState('Newest');
   const [isSortOpen, setIsSortOpen] = useState(false);
 
-  const [amount, setAmount] = useState(16);
+  const [amount, setAmount] = useState(24);
   const [isAmountOpen, setIsAmountOpen] = useState(false);
 
-  const phones = useAppSelector((state) => state.phones);
+  const [amountOfPages, setAmountOfPages] = useState(
+    Math.ceil(phones.length / amount),
+  );
+
+  const [itemOffset, setItemOffset] = useState(0);
+
+  const pages: number[] = [];
+
+  let currentItems = phones;
+
+  for (let i = 1; i <= amountOfPages; i++) {
+    pages.push(i);
+  }
 
   const handleAmountSelect = (e: React.MouseEvent) => {
     setAmount(+e.currentTarget.innerHTML);
@@ -25,145 +42,81 @@ export const Phones: React.FC = () => {
     setIsSortOpen(false);
   };
 
+  const handleSortOpen = (newIsSortOpen: boolean) => {
+    setIsSortOpen(newIsSortOpen);
+  };
+
+  const handleAmountOpen = (newIsAmountOpen: boolean) => {
+    setIsAmountOpen(newIsAmountOpen);
+  };
+
+  const endOffset = itemOffset + amount;
+
+  currentItems = phones.slice(itemOffset, endOffset);
+
+  const handlePageClick = (e: { selected: number }) => {
+    const newOffset = (e.selected * amount) % phones.length;
+
+    window.scrollTo({ top: 0 });
+    setItemOffset(newOffset);
+  };
+
+  const sortTypes = ['Newest', 'Oldest', 'Highest price', 'Lowest price'];
+  const amounts = [8, 16, 24];
+
+  useEffect(() => {
+    setAmountOfPages(Math.ceil(phones.length / amount));
+  });
+
   return (
     <main className="phones">
       <div className="container">
         <h2 className="phones__title">Mobile phones</h2>
-
         <p className="phones__models-count">{`${phones.length} models`}</p>
-
         <div className="phones__selects">
-          <div
-            onMouseLeave={() => setIsSortOpen(false)}
-            className="phones__select"
-          >
-            <p className="phones__select-title">Sort by</p>
+          <Select
+            handleOpen={handleSortOpen}
+            title="Sort by"
+            defaultValue={sortType}
+            options={sortTypes}
+            isOpen={isSortOpen}
+            handleSelect={handleSortSelect}
+            fieldType="phones__select-field--sort"
+          />
 
-            <div
-              onClick={() => setIsSortOpen(!isSortOpen)}
-              className="phones__select-field phones__select-field--sort"
-            >
-              <p className="phones__sort-type">{sortType}</p>
-
-              <div className="phones__arrow">
-                <img src={arrowDown} alt="arrow-down" />
-              </div>
-            </div>
-            <div
-              className={cl('phones__options', {
-                'phones__options--hidden-sort': !isSortOpen,
-              })}
-            >
-              <div
-                className={cl(
-                  'phones__select-field',
-                  'phones__select-field--sort',
-                  'phones__option',
-                )}
-                onClick={handleSortSelect}
-              >
-                Newest
-              </div>
-
-              <div
-                className={cl(
-                  'phones__select-field',
-                  'phones__select-field--sort',
-                  'phones__option',
-                )}
-                onClick={handleSortSelect}
-              >
-                Oldest
-              </div>
-
-              <div
-                className={cl(
-                  'phones__select-field',
-                  'phones__select-field--sort',
-                  'phones__option',
-                )}
-                onClick={handleSortSelect}
-              >
-                Highest price
-              </div>
-
-              <div
-                className={cl(
-                  'phones__select-field',
-                  'phones__select-field--sort',
-                  'phones__option',
-                )}
-                onClick={handleSortSelect}
-              >
-                Lowest price
-              </div>
-            </div>
-          </div>
-
-          <div
-            className="phones__select phones__select"
-            onMouseLeave={() => setIsAmountOpen(false)}
-          >
-            <p className="phones__select-title">Items on page</p>
-
-            <div
-              onClick={() => setIsAmountOpen(!isAmountOpen)}
-              className="phones__select-field phones__select-field--amount"
-            >
-              <p className="phones__sort-type">{amount}</p>
-
-              <div className="phones__arrow">
-                <img src={arrowDown} alt="arrow-down" />
-              </div>
-            </div>
-            <div
-              className={cl('phones__options', {
-                'phones__options--hidden-amount': !isAmountOpen,
-              })}
-            >
-              <div
-                className={cl(
-                  'phones__select-field',
-                  'phones__select-field--amount',
-                  'phones__option',
-                )}
-                onClick={handleAmountSelect}
-              >
-                8
-              </div>
-
-              <div
-                className={cl(
-                  'phones__select-field',
-                  'phones__select-field--amount',
-                  'phones__option',
-                )}
-                onClick={handleAmountSelect}
-              >
-                16
-              </div>
-
-              <div
-                className={cl(
-                  'phones__select-field',
-                  'phones__select-field--amount',
-                  'phones__option',
-                )}
-                onClick={handleAmountSelect}
-              >
-                24
-              </div>
-            </div>
-          </div>
+          <Select
+            handleOpen={handleAmountOpen}
+            title="Items on page"
+            defaultValue={amount}
+            options={amounts}
+            isOpen={isAmountOpen}
+            handleSelect={handleAmountSelect}
+            fieldType="phones__select-field--amount"
+          />
         </div>
-
         <ul className="phones__list">
-          {phones.map((phone: Phone) => (
+          {currentItems.map((phone: Phone) => (
             <li key={phone.id} className="phones__item">
               <PhoneCard phone={phone} />
             </li>
           ))}
         </ul>
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel={<img src={arrowNext} alt="arrow-next" />}
+          onPageChange={handlePageClick}
+          marginPagesDisplayed={0}
+          pageRangeDisplayed={2}
+          pageCount={amountOfPages}
+          previousLabel={<img src={arrowPrev} alt="arrow-prev" />}
+          containerClassName="pagination"
+          pageLinkClassName="pagination__item"
+          activeLinkClassName="pagination__item--active"
+          previousLinkClassName="pagination__item"
+          nextLinkClassName="pagination__item"
+          breakLinkClassName="pagination__item"
+        />
+        ;
       </div>
     </main>
   );

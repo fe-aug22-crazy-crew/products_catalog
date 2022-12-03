@@ -31,9 +31,7 @@
   }
 
   &__sort-type {
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 21px;
+    @include buttonsTypography;
     color: $c-primary;
   }
 
@@ -56,9 +54,7 @@
   }
 
   &__option {
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 21px;
+    @include buttonsTypography;
     color: $c-secondary;
 
     &:hover {
@@ -69,28 +65,19 @@
   &__options {
     position: absolute;
 
-    &--hidden-amount {
-      visibility: hidden;
-    }
-
-    &--hidden-sort {
+    &--hidden {
       visibility: hidden;
     }
   }
 
   &__select-title {
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 15px;
+    @include smallTextTypography;
     color: $c-secondary;
     margin-bottom: 4px;
   }
 
   &__models-count {
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
-    color: $c-secondary;
+    @include buttonsTypography;
     margin-bottom: 40px;
   }
 
