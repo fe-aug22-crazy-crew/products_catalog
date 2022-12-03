@@ -48,8 +48,7 @@ function App() {
       <Header />
       {/* Only content will change here */}
       <Routes>
-        <Route path="/products_catalog" element={<HomePage />} />
-        <Route path="/home" element={<HomePage />} />
+        <Route path="poducts_catalog" element={<HomePage />} />
         <Route path="phones" element={<Phones />} />
         <Route path="favourites" element={<Favourites />} />
         <Route path="*" element={<NotFoundPage />} />
