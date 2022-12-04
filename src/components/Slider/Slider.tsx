@@ -47,6 +47,5 @@ export const Slider: React.FC<Props> = ({
         ))}
       </Swiper>
     </section>
-
   );
 };
