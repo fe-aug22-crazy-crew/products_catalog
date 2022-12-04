@@ -16,6 +16,7 @@
   &__content {
     @include onDesktop {
       display: grid;
+      grid-template-columns: repeat(24, 32px);
       gap: 16px;
     }
   }
@@ -45,7 +46,9 @@
     border: 1px solid $c-elements;
 
     @include onDesktop {
-      grid-column: 17/25;
+      grid-column: 17/24;
+      height: 206px;
+      width: 368px;
     }
 
     &-price {

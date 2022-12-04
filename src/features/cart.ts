@@ -1,10 +1,11 @@
 /* eslint-disable max-len */
 import { AnyAction } from '@reduxjs/toolkit';
+import { CartItem } from '../types/CartItem';
 import { Phone } from '../types/Phone';
 
-type addAction = { type: 'cart/ADD'; payload: Phone };
+type addAction = { type: 'cart/ADD'; payload: CartItem };
 type removeAction = { type: 'cart/REMOVE'; payload: Phone };
-type loadAction = { type: 'cart/LOAD'; payload: Phone[] };
+type loadAction = { type: 'cart/LOAD'; payload: CartItem[] };
 type plusOneAction = { type: 'cart/PLUSONE'; payload: Phone };
 type minusOneAction = { type: 'cart/MINUSONE'; payload: Phone };
 
@@ -15,7 +16,7 @@ type Action =
   | plusOneAction
   | minusOneAction;
 
-const add = (phone: Phone): addAction => ({
+const add = (phone: CartItem): addAction => ({
   type: 'cart/ADD',
   payload: phone,
 });
@@ -25,7 +26,7 @@ const remove = (phone: Phone): removeAction => ({
   payload: phone,
 });
 
-const load = (phones: Phone[]): loadAction => ({
+const load = (phones: CartItem[]): loadAction => ({
   type: 'cart/LOAD',
   payload: phones,
 });
@@ -48,13 +49,8 @@ export const actions = {
   minusOne,
 };
 
-type cartItem = {
-  product: Phone;
-  count: number;
-};
-
 export const cartReducer = (
-  cart: cartItem[] = [],
+  cart: CartItem[] = [],
   action: Action | AnyAction,
 ) => {
   switch (action.type) {
@@ -64,39 +60,26 @@ export const cartReducer = (
     return cart.filter((state) => state.product.id !== action.payload.id);
   case 'cart/LOAD':
     return [...action.payload];
-  case 'cart/PLUSONE':
-    return [
-      ...cart,
-      cart.forEach(() => {
-        let foundProduct = cart.find((item) => item.product.id === action.payload.id) || null;
 
-        if (foundProduct) {
-          foundProduct = {
-            ...foundProduct,
-            count: foundProduct.count++,
-          };
-        }
+  case 'cart/PLUSONE': {
+    const foundCartItemInfo = cart.find((item) => item.product.id === action.payload.id) || null;
 
-        return foundProduct;
-      }),
-    ];
+    if (foundCartItemInfo) {
+      foundCartItemInfo.count++;
+    }
 
-  case 'cart/MINUSONE':
-    return [
-      ...cart,
-      cart.forEach(() => {
-        let foundProduct = cart.find((item) => item.product.id === action.payload.id) || null;
+    return [...cart];
+  }
 
-        if (foundProduct) {
-          foundProduct = {
-            ...foundProduct,
-            count: foundProduct.count--,
-          };
-        }
+  case 'cart/MINUSONE': {
+    const foundCartItemInfo = cart.find((item) => item.product.id === action.payload.id) || null;
 
-        return foundProduct;
-      }),
-    ];
+    if (foundCartItemInfo) {
+      foundCartItemInfo.count--;
+    }
+
+    return [...cart];
+  }
 
   default:
     return cart;

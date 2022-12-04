@@ -5,7 +5,6 @@
 
 .product {
   padding: 32px;
-  // width: $min-card-width;j
   width: 100%;
   border: 1px solid $c-elements;
   box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
@@ -117,6 +116,14 @@
 
     width: 160px;
     height: 40px;
+
+    &--added {
+      border: 1px solid $c-elements;
+
+      @include resetLinkStyles;
+      background-color: $c-white;
+      color: $c-green;
+    }
   }
 
   &__favourite-adding {

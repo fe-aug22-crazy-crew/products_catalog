@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { useAppSelector } from '../../app/hooks';
 import { actions as favouritesActions } from '../../features/favourites';
@@ -8,6 +9,8 @@ import './PhoneCard.scss';
 import notFavourite from '../../images/favourites.svg';
 import favourite from '../../images/selectedFavourite.svg';
 import { FavouriteIcon } from './FavouriteIcon';
+import { actions as cartActions } from '../../features/cart';
+import { CartItem } from '../../types/CartItem';
 /* eslint-disable no-shadow */
 
 type Props = {
@@ -20,8 +23,10 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
 
   const dispatch = useDispatch();
   const favouritePhones: Phone[] = useAppSelector((state) => state.favourites);
+  const cart: CartItem[] = useAppSelector((state) => state.cart);
 
-  const isSelected = favouritePhones.some((gadget) => gadget.id === phone.id);
+  const isSelected = favouritePhones.some((product) => product.id === phone.id);
+  const isItInCart = cart.some((itemInfo) => itemInfo.product.id === phone.id);
 
   const handleAddingToFavourites = (selectedPhone: Phone) => {
     if (!isSelected) {
@@ -31,17 +36,24 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
     }
   };
 
-  // const handleAddingToCart = (selectedPhone: Phone) => {
-  //   if (!isSelected) {
-  //     dispatch(favouritesActions.add(selectedPhone));
-  //   } else {
-  //     dispatch(favouritesActions.remove(selectedPhone));
-  //   }
-  // };
+  const handleAddingToCart = (selectedPhone: Phone) => {
+    if (!isItInCart) {
+      const productInCart = {
+        product: selectedPhone,
+        count: 1,
+      };
+
+      dispatch(cartActions.add(productInCart));
+    }
+  };
 
   useEffect(() => {
     window.localStorage.setItem('favourites', JSON.stringify(favouritePhones));
   }, [favouritePhones]);
+
+  useEffect(() => {
+    window.localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   return (
     <div className="product">
@@ -80,10 +92,28 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
       </ul>
 
       <div className="product__options">
-        <button className="product__cart-adding">Add to cart</button>
+        {!isItInCart
+          ? (
+            <button
+              className="product__cart-adding"
+              type="button"
+              onClick={() => handleAddingToCart(phone)}
+            >
+              Add to cart
+            </button>
+          )
+          : (
+            <Link
+              to="/cart"
+              className="product__cart-adding product__cart-adding--added"
+            >
+              Added to cart
+            </Link>
+          )}
 
         <button
           className="product__favourite-adding"
+          type="button"
           onClick={() => handleAddingToFavourites(phone)}
         >
           <FavouriteIcon

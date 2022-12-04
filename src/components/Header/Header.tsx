@@ -3,24 +3,25 @@ import React, { useEffect, useState } from 'react';
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 import cl from 'classnames';
 import { NavLink } from 'react-router-dom';
-import { CSSTransition } from 'react-transition-group';
 
 import './Header.scss';
 
 import { Logo } from '../Logo';
 import { Navigation } from './Navigation';
-import favourites from '../../images/favourites.svg';
+import favouritesImg from '../../images/favourites.svg';
 import shopping from '../../images/shopping.svg';
 import menu from '../../images/menu.svg';
 
 import { BurgerMenu } from './BurgerMenu';
 import { useAppSelector } from '../../app/hooks';
 import { Phone } from '../../types/Phone';
+import { CountInfo } from './CountInfo';
 
 export const Header: React.FC = () => {
-  const favouritePhones: Phone[] = useAppSelector((state) => state.favourites);
-  const countOfFavourites = favouritePhones.length;
-  const screenWidth = window.innerWidth;
+  const favourites: Phone[] = useAppSelector((state) => state.favourites);
+  const cart: Phone[] = useAppSelector((state) => state.cart);
+  const countOfFavourites = favourites.length;
+  const countInCart = cart.length;
 
   const [menuIsOpen, setMenuIsOpen] = useState(false);
 
@@ -33,12 +34,6 @@ export const Header: React.FC = () => {
       enablePageScroll();
     }
   }, [menuIsOpen]);
-
-  useEffect(() => {
-    if (window.innerWidth > 639) {
-      setMenuIsOpen(false);
-    }
-  }, [screenWidth]);
 
   const openMenuHandle = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
@@ -61,25 +56,23 @@ export const Header: React.FC = () => {
             cl('icon-box', { 'is-active': isActive })
           }
         >
-          <CSSTransition
-            in={favouritePhones.length > 0}
-            timeout={300}
-            classNames="header__favourite-count"
-            unmountOnExit
-          >
-            <div className="header__favourite-count">
-              {countOfFavourites >= 1 && countOfFavourites}
-            </div>
-          </CSSTransition>
-
-          <img src={favourites} alt="like" className="icon" />
+          <CountInfo
+            condition={countOfFavourites > 0}
+            count={countOfFavourites}
+          />
+          <img src={favouritesImg} alt="like" className="icon" />
         </NavLink>
+
         <NavLink
           to="/cart"
           className={({ isActive }) =>
             cl('icon-box', { 'is-active': isActive })
           }
         >
+          <CountInfo
+            condition={countInCart > 0}
+            count={countInCart}
+          />
           <img src={shopping} alt="cart" className="icon" />
         </NavLink>
         <a href="" className="icon-box icon-box__menu" onClick={openMenuHandle}>
