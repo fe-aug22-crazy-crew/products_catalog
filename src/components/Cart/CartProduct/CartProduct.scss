@@ -6,12 +6,14 @@
 
 .cart-item {
   display: grid;
+  grid-template-columns: 1fr, repeat(3, minmax(52px, 1fr));
   grid-template-areas:
     'button image title title'
     'count count price price';
   gap: 16px;
   align-items: center;
 
+  margin-bottom: 16px;
   padding: 16px;
   border: 1px solid $c-elements;
 
@@ -20,8 +22,13 @@
 
   @include onTablet {
     @include flex-space-between-center;
+    
 
     padding: 24px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
   }
 
   &__remove-button {
@@ -45,6 +52,7 @@
 
   &__title {
     grid-area: title;
+    justify-self: self-start;
 
     @include resetLinkStyles;
     @include bodyTextTypography;
@@ -85,6 +93,7 @@
 
   &__price {
     grid-area: price;
+    justify-self: end;
     width: 80px;
 
     text-align: right;

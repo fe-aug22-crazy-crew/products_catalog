@@ -92,24 +92,22 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
       </ul>
 
       <div className="product__options">
-        {!isItInCart
-          ? (
-            <button
-              className="product__cart-adding"
-              type="button"
-              onClick={() => handleAddingToCart(phone)}
-            >
-              Add to cart
-            </button>
-          )
-          : (
-            <Link
-              to="/cart"
-              className="product__cart-adding product__cart-adding--added"
-            >
-              Added to cart
-            </Link>
-          )}
+        {!isItInCart ? (
+          <button
+            className="product__cart-adding"
+            type="button"
+            onClick={() => handleAddingToCart(phone)}
+          >
+            Add to cart
+          </button>
+        ) : (
+          <Link
+            to="/cart"
+            className="product__cart-adding product__cart-adding--added"
+          >
+            Added to cart
+          </Link>
+        )}
 
         <button
           className="product__favourite-adding"

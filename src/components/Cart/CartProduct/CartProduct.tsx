@@ -12,7 +12,7 @@ import cn from 'classnames';
 
 type Props = {
   cartItemInfo: CartItem;
-}
+};
 
 export const CartProduct: React.FC<Props> = ({ cartItemInfo }) => {
   const dispatch = useDispatch();
@@ -66,8 +66,7 @@ export const CartProduct: React.FC<Props> = ({ cartItemInfo }) => {
           type="button"
           onClick={() => handleOneLess(product)}
           disabled={count === 1}
-        >
-        </button>
+        ></button>
         <span className="cart-item__count">{count}</span>
         <button
           className="

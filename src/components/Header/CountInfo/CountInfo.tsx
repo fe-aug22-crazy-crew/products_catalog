@@ -6,7 +6,7 @@ import './CountInfo.scss';
 type Props = {
   condition: boolean;
   count: number;
-}
+};
 
 export const CountInfo: React.FC<Props> = ({ condition, count }) => (
   <CSSTransition
@@ -15,8 +15,6 @@ export const CountInfo: React.FC<Props> = ({ condition, count }) => (
     classNames="count-info"
     unmountOnExit
   >
-    <div className="count-info">
-      {count >= 1 && count}
-    </div>
+    <div className="count-info">{count >= 1 && count}</div>
   </CSSTransition>
 );

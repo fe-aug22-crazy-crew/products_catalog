@@ -16,10 +16,11 @@ import { BurgerMenu } from './BurgerMenu';
 import { useAppSelector } from '../../app/hooks';
 import { Phone } from '../../types/Phone';
 import { CountInfo } from './CountInfo';
+import { CartItem } from '../../types/CartItem';
 
 export const Header: React.FC = () => {
   const favourites: Phone[] = useAppSelector((state) => state.favourites);
-  const cart: Phone[] = useAppSelector((state) => state.cart);
+  const cart: CartItem[] = useAppSelector((state) => state.cart);
   const countOfFavourites = favourites.length;
   const countInCart = cart.length;
 
@@ -69,10 +70,7 @@ export const Header: React.FC = () => {
             cl('icon-box', { 'is-active': isActive })
           }
         >
-          <CountInfo
-            condition={countInCart > 0}
-            count={countInCart}
-          />
+          <CountInfo condition={countInCart > 0} count={countInCart} />
           <img src={shopping} alt="cart" className="icon" />
         </NavLink>
         <a href="" className="icon-box icon-box__menu" onClick={openMenuHandle}>

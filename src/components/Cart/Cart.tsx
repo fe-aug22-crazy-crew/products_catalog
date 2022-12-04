@@ -1,19 +1,40 @@
-import React, { useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useMemo, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { useAppSelector } from '../../app/hooks';
+import { actions as cartActions } from '../../features/cart';
 import { CartItem } from '../../types/CartItem';
 
 import './Cart.scss';
 import { CartProduct } from './CartProduct';
+import { ModalWindow } from './CartProduct/ModalWindow';
 
 export const Cart: React.FC = React.memo(() => {
+  const dispatch = useDispatch();
+  const [isBuying, setIsBuying] = useState(false);
   const cart: CartItem[] = useAppSelector((state) => state.cart);
-  const count = useMemo(() => (
-    cart.reduce((acc, curr) => acc + curr.count, 0) || 0), [cart]);
-  const totalPrice = useMemo(() => (
-    cart.reduce((acc, curr) => acc + curr.count * curr.product.price, 0)),
-  [cart]);
+  const count = useMemo(
+    () => cart.reduce((acc, curr) => acc + curr.count, 0) || 0,
+    [cart],
+  );
+
+  const totalPrice = useMemo(
+    () => cart.reduce((acc, curr) => acc + curr.count * curr.product.price, 0),
+    [cart],
+  );
+
+  const handleBuying = () => {
+    setIsBuying(true);
+  };
+
+  const clearCart = () => {
+    dispatch(cartActions.clear());
+  };
+
+  const handleCloseModal = () => {
+    clearCart();
+    setIsBuying(false);
+  };
 
   return (
     <main className="cart">
@@ -22,14 +43,14 @@ export const Cart: React.FC = React.memo(() => {
         <div className="cart__content">
           <ul className="cart__items">
             <TransitionGroup>
-              {cart.map(cartItemInfo => (
+              {cart.map((cartItemInfo) => (
                 <CSSTransition
                   key={cartItemInfo.product.id}
                   timeout={300}
                   classNames="product"
                   unmountOnExit
                 >
-                  <CartProduct cartItemInfo={cartItemInfo}/>
+                  <CartProduct cartItemInfo={cartItemInfo} />
                 </CSSTransition>
               ))}
             </TransitionGroup>
@@ -38,15 +59,28 @@ export const Cart: React.FC = React.memo(() => {
           <div className="cart__total">
             <p className="cart__total-price">{`$${totalPrice}`}</p>
             <p className="cart__total-description">
-              {count
-                ? `Total for ${count} items`
-                : 'No items in cart yet '}
+              {count ? `Total for ${count} items` : 'No items in cart yet '}
               {!count && <span>&#x1F625;</span>}
             </p>
-            <Link to="/products_catalog " className="cart__button-buy">
+            <button
+              className="cart__button-buy"
+              onClick={handleBuying}
+            >
               Checkout
-            </Link>
+            </button>
           </div>
+
+          <CSSTransition
+            timeout={300}
+            classNames="product"
+            in={isBuying && cart.length > 0}
+            unmountOnExit
+          >
+            <ModalWindow
+              handleCloseModal={handleCloseModal}
+              clearCart={clearCart}
+            />
+          </CSSTransition>
         </div>
       </div>
     </main>
