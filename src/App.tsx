@@ -22,9 +22,9 @@ import { actions as favouritesActions } from './features/favourites';
 function App() {
   const dispatch = useDispatch();
   const defaultSearchParams = new URLSearchParams({
-    'qr': 'newest',
-    'limit': '8',
-    'pg': '1',
+    qr: 'newest',
+    limit: '8',
+    pg: '1',
   });
 
   const [searchParams, setSearchParams] = useSearchParams(defaultSearchParams);
@@ -62,8 +62,12 @@ function App() {
       {/* Only content will change here */}
       <Routes>
         <Route path="products_catalog" element={<HomePage />} />
-        <Route path="phones" element={
-          <Phones handleSearchParamsChange={handleSearchParamsChange} />} />
+        <Route
+          path="phones"
+          element={
+            <Phones handleSearchParamsChange={handleSearchParamsChange} />
+          }
+        />
         <Route path="favourites" element={<Favourites />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

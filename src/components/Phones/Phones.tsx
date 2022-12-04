@@ -88,11 +88,13 @@ export const Phones: React.FC<Props> = ({ handleSearchParamsChange }) => {
 
     const qr = getQuery(sortType);
 
-    handleSearchParamsChange(new URLSearchParams({
-      qr,
-      'limit': e.currentTarget.innerHTML,
-      'pg': String(currentPage),
-    }));
+    handleSearchParamsChange(
+      new URLSearchParams({
+        qr,
+        limit: e.currentTarget.innerHTML,
+        pg: String(currentPage),
+      }),
+    );
   };
 
   const handleSortSelect = (e: React.MouseEvent) => {
@@ -101,11 +103,13 @@ export const Phones: React.FC<Props> = ({ handleSearchParamsChange }) => {
 
     const qr = getQuery(e.currentTarget.innerHTML);
 
-    handleSearchParamsChange(new URLSearchParams({
-      qr,
-      'limit': String(amount),
-      'pg': String(currentPage),
-    }));
+    handleSearchParamsChange(
+      new URLSearchParams({
+        qr,
+        limit: String(amount),
+        pg: String(currentPage),
+      }),
+    );
   };
 
   const handleSortOpen = (newIsSortOpen: boolean) => {
@@ -130,8 +134,8 @@ export const Phones: React.FC<Props> = ({ handleSearchParamsChange }) => {
 
     const paramsObj = new URLSearchParams({
       qr,
-      'limit': String(amount),
-      'pg': String(pg),
+      limit: String(amount),
+      pg: String(pg),
     });
 
     handleSearchParamsChange(paramsObj);
