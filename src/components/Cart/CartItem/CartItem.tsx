@@ -8,7 +8,7 @@ import minus from '../../../images/minus.svg';
 export const CartItem: React.FC = () => {
   return (
     <li>
-      <Link to='' className="cart__item cart-item">
+      <Link to="" className="cart__item cart-item">
         <div className="cart-item__remove-button"></div>
 
         <img className="cart-item__image" />
@@ -26,7 +26,8 @@ export const CartItem: React.FC = () => {
             <img src={minus} alt="minus" />
           </div>
           <span className="cart-item__count">1</span>
-          <div className="
+          <div
+            className="
           cart-item__count-button
           cart-item__count-button--more"
           ></div>

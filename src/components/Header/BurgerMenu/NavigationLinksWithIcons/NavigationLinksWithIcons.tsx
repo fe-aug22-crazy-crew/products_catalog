@@ -43,16 +43,10 @@ export const NavigationLinksWithIcons: React.FC<Props> = ({
           classNames={className}
           unmountOnExit
         >
-          <div className={className}>
-            {count >= 1 && count}
-          </div>
+          <div className={className}>{count >= 1 && count}</div>
         </CSSTransition>
 
-        <img
-          src={img}
-          alt={altImg}
-          className="navigationLinkWithIcon__icon"
-        />
+        <img src={img} alt={altImg} className="navigationLinkWithIcon__icon" />
       </div>
     </NavLink>
   );

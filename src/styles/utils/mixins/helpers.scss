@@ -18,7 +18,8 @@
 
 @mixin mainHeight {
   min-height: calc(
-    $full-height - $header-height--phone - $header-margin - $footer-height--phone
+    $full-height - $header-height--phone - $header-margin -
+      $footer-height--phone
   );
 
   background-color: $c-white;
@@ -54,6 +55,23 @@
   }
 }
 
+@mixin secondaryButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  background: $c-white;
+
+  border: 1px solid $c-icons;
+
+  transition: border 0.3s;
+
+  &:hover {
+    border: 1px solid $c-primary;
+  }
+}
+
 @mixin flex-center {
   display: flex;
   justify-content: center;
@@ -65,4 +83,3 @@
   justify-content: space-between;
   align-items: center;
 }
-

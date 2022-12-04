@@ -6,9 +6,9 @@
 
 .cart-item {
   display: grid;
-  grid-template-areas: 
-  "button image title title"
-  "count count price price";
+  grid-template-areas:
+    'button image title title'
+    'count count price price';
   gap: 16px;
   align-items: center;
 

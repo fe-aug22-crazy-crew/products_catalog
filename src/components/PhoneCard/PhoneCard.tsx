@@ -23,13 +23,21 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
 
   const isSelected = favouritePhones.some((gadget) => gadget.id === phone.id);
 
-  const handleFavourite = (selectedPhone: Phone) => {
+  const handleAddingToFavourites = (selectedPhone: Phone) => {
     if (!isSelected) {
       dispatch(favouritesActions.add(selectedPhone));
     } else {
       dispatch(favouritesActions.remove(selectedPhone));
     }
   };
+
+  // const handleAddingToCart = (selectedPhone: Phone) => {
+  //   if (!isSelected) {
+  //     dispatch(favouritesActions.add(selectedPhone));
+  //   } else {
+  //     dispatch(favouritesActions.remove(selectedPhone));
+  //   }
+  // };
 
   useEffect(() => {
     window.localStorage.setItem('favourites', JSON.stringify(favouritePhones));
@@ -72,11 +80,11 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
       </ul>
 
       <div className="product__options">
-        <div className="product__cart-adding">Add to cart</div>
+        <button className="product__cart-adding">Add to cart</button>
 
         <button
           className="product__favourite-adding"
-          onClick={() => handleFavourite(phone)}
+          onClick={() => handleAddingToFavourites(phone)}
         >
           <FavouriteIcon
             condition={!isSelected}

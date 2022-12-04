@@ -113,29 +113,17 @@
 
   &__cart-adding {
     @include primaryButton;
+    border: none;
 
     width: 160px;
     height: 40px;
   }
 
   &__favourite-adding {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+    @include secondaryButton;
 
     width: 40px;
     height: 40px;
-
-    background: $c-white;
-
-    border: 1px solid $c-icons;
-
-    transition: border 0.3s;
-
-    &:hover {
-      border: 1px solid $c-primary;
-    }
 
     &-enter {
       opacity: 0;
