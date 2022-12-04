@@ -6,15 +6,14 @@ import { Promo } from './Promo';
 
 import './homePage.scss';
 import { SliderButtons } from './SliderButtons';
+import { Categories } from './Categories';
 
 export const HomePage: React.FC = () => {
   const phones = useAppSelector((state) => state.phones);
 
   return (
     <main className="home_page">
-      <h1 className="home_page__title">
-        Welcome to Nice Gadgets store!
-      </h1>
+      <h1 className="home_page__title">Welcome to Nice Gadgets store!</h1>
       <Promo />
 
       <div className="home_page__title-box">
@@ -29,6 +28,8 @@ export const HomePage: React.FC = () => {
         prevButtonClass={'.newest_button_prev'}
         nextButtonClass={'.newest_button_next'}
       />
+
+      <Categories />
 
       <div className="home_page__title-box">
         <h2 className="home_page__subtitle">Hot prices</h2>
