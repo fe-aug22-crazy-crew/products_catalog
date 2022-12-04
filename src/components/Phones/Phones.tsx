@@ -9,7 +9,11 @@ import arrowNext from '../../images/arrow-next.svg';
 import arrowPrev from '../../images/arrow-prev.svg';
 import { Select } from './Select/Select';
 
-export const Phones: React.FC = () => {
+type Props = {
+  handleSearchParamsChange: (newParams: URLSearchParams) => void;
+};
+
+export const Phones: React.FC<Props> = ({ handleSearchParamsChange }) => {
   const phones = useAppSelector((state) => state.phones);
 
   const [sortType, setSortType] = useState('Newest');
@@ -17,6 +21,7 @@ export const Phones: React.FC = () => {
 
   const [amount, setAmount] = useState(24);
   const [isAmountOpen, setIsAmountOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const [amountOfPages, setAmountOfPages] = useState(
     Math.ceil(phones.length / amount),
@@ -24,22 +29,83 @@ export const Phones: React.FC = () => {
 
   const [itemOffset, setItemOffset] = useState(0);
 
-  const pages: number[] = [];
-
   let currentItems = phones;
 
-  for (let i = 1; i <= amountOfPages; i++) {
-    pages.push(i);
-  }
+  const sortedPhones: Phone[] = phones.sort((phoneA: Phone, phoneB: Phone) => {
+    switch (sortType) {
+    case 'Newest':
+      if (phoneA.year !== phoneB.year) {
+        return phoneB.year - phoneA.year;
+      } else {
+        return phoneA.id - phoneB.id;
+      }
+
+    case 'Oldest':
+      if (phoneA.year !== phoneB.year) {
+        return phoneA.year - phoneB.year;
+      } else {
+        return phoneA.id - phoneB.id;
+      }
+
+    case 'Highest price':
+      if (phoneA.price !== phoneB.price) {
+        return phoneB.price - phoneA.price;
+      } else {
+        return phoneA.id - phoneB.id;
+      }
+
+    case 'Lowest price':
+      if (phoneA.year !== phoneB.year) {
+        return phoneA.year - phoneB.year;
+      } else {
+        return phoneA.id - phoneB.id;
+      }
+    }
+  });
+
+  const getQuery = (newQuery: string) => {
+    switch (newQuery) {
+    case 'Newest':
+      return 'newest';
+
+    case 'Oldest':
+      return 'oldest';
+
+    case 'Highest price':
+      return 'expensive';
+
+    case 'Lowest price':
+      return 'cheapest';
+
+    default:
+      return '';
+    }
+  };
 
   const handleAmountSelect = (e: React.MouseEvent) => {
     setAmount(+e.currentTarget.innerHTML);
     setIsAmountOpen(false);
+
+    const qr = getQuery(sortType);
+
+    handleSearchParamsChange(new URLSearchParams({
+      qr,
+      'limit': e.currentTarget.innerHTML,
+      'pg': String(currentPage),
+    }));
   };
 
   const handleSortSelect = (e: React.MouseEvent) => {
     setSortType(e.currentTarget.innerHTML);
     setIsSortOpen(false);
+
+    const qr = getQuery(e.currentTarget.innerHTML);
+
+    handleSearchParamsChange(new URLSearchParams({
+      qr,
+      'limit': String(amount),
+      'pg': String(currentPage),
+    }));
   };
 
   const handleSortOpen = (newIsSortOpen: boolean) => {
@@ -52,10 +118,23 @@ export const Phones: React.FC = () => {
 
   const endOffset = itemOffset + amount;
 
-  currentItems = phones.slice(itemOffset, endOffset);
+  currentItems = sortedPhones.slice(itemOffset, endOffset);
 
   const handlePageClick = (e: { selected: number }) => {
     const newOffset = (e.selected * amount) % phones.length;
+    const pg = newOffset / amount + 1;
+
+    setCurrentPage(pg);
+
+    const qr = getQuery(sortType);
+
+    const paramsObj = new URLSearchParams({
+      qr,
+      'limit': String(amount),
+      'pg': String(pg),
+    });
+
+    handleSearchParamsChange(paramsObj);
 
     window.scrollTo({ top: 0 });
     setItemOffset(newOffset);
