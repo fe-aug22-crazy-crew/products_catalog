@@ -15,3 +15,54 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+@mixin mainHeight {
+  min-height: calc(
+    $full-height - $header-height--phone - $header-margin - $footer-height--phone
+  );
+
+  background-color: $c-white;
+
+  @include onTablet {
+    min-height: calc(
+      $full-height - $header-height - $header-margin - $footer-height
+    );
+  }
+}
+
+@mixin primaryButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  @include buttonsTypography;
+
+  color: $c-white;
+  background: $c-primary;
+
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0px 3px 13px 0px #17203166;
+  }
+
+  &:active {
+    background-color: $c-white;
+    border: 1px solid $c-elements;
+    color: $c-green;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-space-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+

@@ -1,0 +1,80 @@
+@import '../../../styles/utils/variables.scss';
+@import '../../../styles/utils/mixins/screenWidth.scss';
+@import '../../../styles/utils/mixins/helpers.scss';
+@import '../../../styles/utils/mixins/typography.scss';
+@import '../../../styles/utils/mixins/typography.scss';
+
+.cart-item {
+  display: grid;
+  grid-template-areas: 
+  "button image title title"
+  "count count price price";
+  gap: 16px;
+  align-items: center;
+
+  padding: 16px;
+
+  color: $c-primary;
+  @include resetLinkStyles;
+
+  @include onTablet {
+    @include flex-space-between-center;
+
+    padding: 24px;
+  }
+
+  &__remove-button {
+    grid-area: button;
+    margin-right: 16px;
+    height: 16px;
+    width: 16px;
+    background: url(../../../images/removeButton.svg) no-repeat center;
+  }
+
+  &__image {
+    grid-area: image;
+    @include flex-center;
+    height: 66px;
+    width: 66px;
+  }
+
+  &__title {
+    grid-area: title;
+    @include bodyTextTypography;
+    font-weight: 600;
+
+    @include onTablet {
+      width: 176px;
+    }
+
+    @include onDesktop {
+      width: max-content;
+    }
+  }
+
+  &__count-block {
+    grid-area: count;
+    @include flex-space-between-center;
+    width: 96px;
+  }
+
+  &__count-button {
+    height: 32px;
+    width: 32px;
+    border: 1px solid $c-icons;
+
+    &--more {
+      background: url(../../../images/plus.svg) no-repeat center;
+    }
+
+    &--less {
+      @include flex-center;
+    }
+  }
+
+  &__price {
+    grid-area: price;
+    text-align: right;
+    @include h3Typography;
+  }
+}

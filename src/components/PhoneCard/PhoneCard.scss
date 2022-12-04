@@ -112,30 +112,10 @@
   }
 
   &__cart-adding {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+    @include primaryButton;
 
     width: 160px;
     height: 40px;
-
-    @include buttonsTypography;
-
-    color: $c-white;
-    background: $c-primary;
-
-    transition: all 0.3s;
-
-    &:hover {
-      box-shadow: 0px 3px 13px 0px #17203166;
-    }
-
-    &:active {
-      background-color: $c-white;
-      border: 1px solid $c-elements;
-      color: $c-green;
-    }
   }
 
   &__favourite-adding {

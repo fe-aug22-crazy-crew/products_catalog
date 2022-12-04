@@ -1,0 +1,80 @@
+@import '../../styles/utils/variables.scss';
+@import '../../styles/utils/mixins/screenWidth.scss';
+@import '../../styles/utils/mixins/helpers.scss';
+@import '../../styles/utils/mixins/typography.scss';
+@import '../../styles/utils/mixins/typography.scss';
+
+.cart {
+  @include mainHeight;
+
+  &__title {
+    margin-bottom: 32px;
+
+    @include h1Typography;
+  }
+
+  &__content {
+    @include onDesktop {
+      display: grid;
+      gap: 16px;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    margin-bottom: 32px;
+
+    list-style: none;
+
+    @include onDesktop {
+      grid-column: 1/17;
+    }
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 56px;
+    padding: 24px;
+    border: 1px solid $c-elements;
+
+    @include onDesktop {
+      grid-column: 17/25;
+    }
+
+    &-price {
+      @include h2Typography;
+    }
+
+    &-description {
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      width: 100%;
+      border-bottom: 1px solid $c-elements;
+
+      @include bodyTextTypography;
+      font-weight: 600;
+      color: $c-secondary;
+      text-align: center;
+
+      @include onDesktop {
+        padding-bottom: 24px;
+        padding-bottom: 24px;
+      }
+    }
+  }
+
+  &__button-buy {
+    padding: 14px 0;
+    width: 100%;
+
+    @include resetLinkStyles;
+    @include primaryButton;
+  }
+}

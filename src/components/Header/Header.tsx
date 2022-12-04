@@ -74,9 +74,14 @@ export const Header: React.FC = () => {
 
           <img src={favourites} alt="like" className="icon" />
         </NavLink>
-        <div className="icon-box">
-          <img src={shopping} alt="shop" className="icon" />
-        </div>
+        <NavLink
+          to="/cart"
+          className={({ isActive }) =>
+            cl('icon-box', { 'is-active': isActive })
+          }
+        >
+          <img src={shopping} alt="cart" className="icon" />
+        </NavLink>
         <a href="" className="icon-box icon-box__menu" onClick={openMenuHandle}>
           <img src={menu} alt="menu" className="icon" />
         </a>

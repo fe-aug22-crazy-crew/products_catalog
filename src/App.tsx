@@ -16,6 +16,7 @@ import { NotFoundPage } from './components/NotFoundPage';
 import { Favourites } from './components/Favourites';
 import { Phone } from './types/Phone';
 import { actions as favouritesActions } from './features/favourites';
+import { Cart } from './components/Cart';
 
 function App() {
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ function App() {
         <Route path="products_catalog" element={<HomePage />} />
         <Route path="phones" element={<Phones />} />
         <Route path="favourites" element={<Favourites />} />
+        <Route path="cart" element={<Cart />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
 
