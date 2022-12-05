@@ -17,9 +17,7 @@ type Props = {
   totalItems: number;
 };
 
-export const Phones: React.FC<Props> = ({
-  totalItems,
-}) => {
+export const Phones: React.FC<Props> = ({ totalItems }) => {
   const dispatch = useDispatch();
   const phones = useAppSelector((state) => state.phones);
   const query = useAppSelector((state) => state.query);
@@ -84,11 +82,15 @@ export const Phones: React.FC<Props> = ({
 
     const qr = getQr(sortType);
 
-    dispatch(queryActions.add(new URLSearchParams({
-      qr,
-      limit: e.currentTarget.innerHTML,
-      pg: String(currentPage),
-    })));
+    dispatch(
+      queryActions.add(
+        new URLSearchParams({
+          qr,
+          limit: e.currentTarget.innerHTML,
+          pg: String(currentPage),
+        }),
+      ),
+    );
   };
 
   const handleSortSelect = (e: React.MouseEvent) => {
@@ -99,11 +101,15 @@ export const Phones: React.FC<Props> = ({
 
     currentPage = 1;
 
-    dispatch(queryActions.add(new URLSearchParams({
-      qr,
-      limit: String(amount),
-      pg: String(currentPage),
-    })));
+    dispatch(
+      queryActions.add(
+        new URLSearchParams({
+          qr,
+          limit: String(amount),
+          pg: String(currentPage),
+        }),
+      ),
+    );
   };
 
   const handleSortOpen = (newIsSortOpen: boolean) => {
@@ -121,11 +127,15 @@ export const Phones: React.FC<Props> = ({
 
     const qr = getQr(sortType);
 
-    dispatch(queryActions.add(new URLSearchParams({
-      qr,
-      limit: String(amount),
-      pg: String(currentPage),
-    })));
+    dispatch(
+      queryActions.add(
+        new URLSearchParams({
+          qr,
+          limit: String(amount),
+          pg: String(currentPage),
+        }),
+      ),
+    );
 
     window.scrollTo({ top: 0 });
   };
