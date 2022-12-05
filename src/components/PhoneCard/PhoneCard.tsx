@@ -57,13 +57,17 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
 
   return (
     <div className="product">
-      <img
-        className="product__image"
-        src={`https://raw.githubusercontent.com/mate-academy/product_catalog/main/public/${image}`}
-        alt={itemId}
-      />
+      <Link
+        to='/phone_page'
+      >
+        <img
+          className="product__image"
+          src={`https://raw.githubusercontent.com/mate-academy/product_catalog/main/public/${image}`}
+          alt={itemId}
+        />
 
-      <p className="product__name">{name}</p>
+        <p className="product__name">{name}</p>
+      </Link>
 
       <div className="product__price-block">
         {

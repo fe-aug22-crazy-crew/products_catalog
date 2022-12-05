@@ -23,7 +23,11 @@
 
   &__models-count {
     @include buttonsTypography;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
   }
 
   &__item {

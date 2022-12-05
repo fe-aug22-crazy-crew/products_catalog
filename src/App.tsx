@@ -22,6 +22,7 @@ import { useAppSelector } from './app/hooks';
 import { Cart } from './components/Cart';
 import { actions as cartActions } from './features/cart';
 import { CartItem } from './types/CartItem';
+import { PhonePage } from './components/PhonePage/PhonePage';
 
 function App() {
   const dispatch = useDispatch();
@@ -93,6 +94,7 @@ function App() {
         <Route path="favourites" element={<Favourites />} />
         <Route path="cart" element={<Cart />} />
         <Route path="*" element={<NotFoundPage />} />
+        <Route path='phone_page' element={<PhonePage />} />
       </Routes>
 
       <Footer />
