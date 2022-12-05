@@ -54,10 +54,7 @@ export const actions = {
   clear,
 };
 
-export const cartReducer = (
-  cart: CartItem[] = [],
-  action: Action,
-) => {
+export const cartReducer = (cart: CartItem[] = [], action: Action) => {
   switch (action.type) {
   case 'cart/ADD':
     return [...cart, action.payload];
@@ -66,27 +63,29 @@ export const cartReducer = (
   case 'cart/LOAD':
     return [...action.payload];
 
-  case 'cart/PLUSONE': {
-    const foundCartItemInfo
-        = cart.find((state) => state.product.id === action.payload.id) || null;
+  case 'cart/PLUSONE':
+    return cart.map(item => {
+      if (item.product.id === action.payload.id) {
+        return {
+          ...item,
+          count: item.count + 1,
+        };
+      }
 
-    if (foundCartItemInfo) {
-      foundCartItemInfo.count++;
-    }
+      return item;
+    });
 
-    return [...cart];
-  }
+  case 'cart/MINUSONE':
+    return cart.map(item => {
+      if (item.product.id === action.payload.id) {
+        return {
+          ...item,
+          count: item.count - 1,
+        };
+      }
 
-  case 'cart/MINUSONE': {
-    const foundCartItemInfo
-        = cart.find((state) => state.product.id === action.payload.id) || null;
-
-    if (foundCartItemInfo) {
-      foundCartItemInfo.count--;
-    }
-
-    return [...cart];
-  }
+      return item;
+    });
 
   case 'cart/CLEARAll':
     return [];

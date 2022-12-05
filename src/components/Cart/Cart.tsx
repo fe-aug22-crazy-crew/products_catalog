@@ -62,10 +62,7 @@ export const Cart: React.FC = React.memo(() => {
               {count ? `Total for ${count} items` : 'No items in cart yet '}
               {!count && <span>&#x1F625;</span>}
             </p>
-            <button
-              className="cart__button-buy"
-              onClick={handleBuying}
-            >
+            <button className="cart__button-buy" onClick={handleBuying}>
               Checkout
             </button>
           </div>

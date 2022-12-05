@@ -6,7 +6,7 @@ import './ModalWindow.scss';
 type Props = {
   handleCloseModal: () => void;
   clearCart: () => void;
-}
+};
 
 export const ModalWindow: React.FC<Props> = ({
   handleCloseModal,
