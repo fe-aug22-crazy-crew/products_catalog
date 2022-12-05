@@ -3,11 +3,13 @@ import { PhoneCard } from '../PhoneCard';
 import { useAppSelector } from '../../app/hooks';
 import { Phone } from '../../types/Phone';
 import './Phones.scss';
+import './Select/Select.scss';
 import './Pagination.scss';
 import ReactPaginate from 'react-paginate';
 import arrowNext from '../../images/arrow-next.svg';
 import arrowPrev from '../../images/arrow-prev.svg';
 import { Select } from './Select/Select';
+import cl from 'classnames';
 
 type Props = {
   handleSearchParamsChange: (newParams: URLSearchParams) => void;
@@ -139,6 +141,9 @@ export const Phones: React.FC<Props> = ({
     setAmountOfPages(Math.ceil(totalItems / amount));
   });
 
+  const isNextDisabled = currentPage === amountOfPages;
+  const isPrevDisabled = currentPage === 1;
+
   return (
     <main className="phones">
       <div className="container">
@@ -152,7 +157,7 @@ export const Phones: React.FC<Props> = ({
             options={sortTypes}
             isOpen={isSortOpen}
             handleSelect={handleSortSelect}
-            fieldType="phones__select-field--sort"
+            fieldType="select__field--sort"
           />
 
           <Select
@@ -162,7 +167,7 @@ export const Phones: React.FC<Props> = ({
             options={amounts}
             isOpen={isAmountOpen}
             handleSelect={handleAmountSelect}
-            fieldType="phones__select-field--amount"
+            fieldType="select__field--amount"
           />
         </div>
         <ul className="phones__list">
@@ -183,8 +188,12 @@ export const Phones: React.FC<Props> = ({
           containerClassName="pagination"
           pageLinkClassName="pagination__item"
           activeLinkClassName="pagination__item--active"
-          previousLinkClassName="pagination__item"
-          nextLinkClassName="pagination__item"
+          previousLinkClassName={cl('pagination__item', {
+            'pagination__item--disabled': isPrevDisabled,
+          })}
+          nextLinkClassName={cl('pagination__item', {
+            'pagination__item--disabled': isNextDisabled,
+          })}
           breakLinkClassName="pagination__item"
           forcePage={currentPage - 1}
         />

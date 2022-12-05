@@ -1,0 +1,61 @@
+@import '../../../styles/utils/mixins/typography.scss';
+@import '../../../styles/utils/mixins/screenWidth.scss';
+@import '../../../styles/utils/variables.scss';
+
+.select {
+  margin-bottom: 24px;
+
+  &__arrow {
+    transition: transform 0.3s;
+
+    &--up {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__sort-type {
+    @include buttonsTypography;
+    color: $c-primary;
+  }
+
+  &__field {
+    display: flex;
+    justify-content: space-between;
+    width: 136px;
+    height: 40px;
+    border: 1px solid $c-icons;
+    padding: 8px 10px;
+    cursor: pointer;
+    position: relative;
+    background-color: $c-white;
+
+    &--sort {
+      @include onTablet {
+        width: 176px;
+      }
+    }
+  }
+
+  &__option {
+    @include buttonsTypography;
+    color: $c-secondary;
+
+    &:hover {
+      color: $c-primary;
+    }
+  }
+
+  &__options {
+    position: absolute;
+
+    &--hidden {
+      visibility: hidden;
+    }
+  }
+
+  &__title {
+    @include smallTextTypography;
+    color: $c-secondary;
+    margin-bottom: 4px;
+  }
+}

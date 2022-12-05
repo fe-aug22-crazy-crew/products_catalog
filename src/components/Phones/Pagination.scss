@@ -25,7 +25,7 @@
     line-height: 21px;
     color: $c-primary;
 
-    border: 1px solid $c-elements;
+    border: 1px solid $c-icons;
 
     &:hover {
       border-color: $c-primary;
@@ -35,6 +35,15 @@
     &--active {
       background-color: $c-primary;
       color: $c-white;
+    }
+
+    &--disabled {
+      opacity: 0.5;
+      
+      &:hover {
+        border-color: $c-icons;
+        cursor: initial;
+      }
     }
   }
 }
