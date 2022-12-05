@@ -2,14 +2,16 @@
 
 .slider {
   max-width: 1136px;
-  margin: 0 auto;
+  margin: 0 auto 16px;
   padding: 0 0 0 17px;
 
   @include onTablet {
+    margin-bottom: 24px;
     padding: 0 0 0 25px;
   }
 
   @include onDesktop {
+    margin-bottom: 40px;
     padding: 0;
   }
 }

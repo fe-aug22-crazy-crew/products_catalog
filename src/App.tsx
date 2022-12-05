@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect } from 'react';
 
 import './App.scss';
 
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useSearchParams } from 'react-router-dom';
 import { HomePage } from './components/HomePage/HomePage';
 import { Phones } from './components/Phones/';
 import { Header } from './components/Header/';
@@ -22,6 +24,17 @@ import { CartItem } from './types/CartItem';
 
 function App() {
   const dispatch = useDispatch();
+  const defaultSearchParams = new URLSearchParams({
+    qr: 'newest',
+    limit: '8',
+    pg: '1',
+  });
+
+  const [searchParams, setSearchParams] = useSearchParams(defaultSearchParams);
+
+  const handleSearchParamsChange = (newParams: URLSearchParams) => {
+    setSearchParams(newParams);
+  };
 
   const getPhones = async() => {
     const data = await client.get('phones', 'GET', null);
@@ -62,7 +75,12 @@ function App() {
       {/* Only content will change here */}
       <Routes>
         <Route path="products_catalog" element={<HomePage />} />
-        <Route path="phones" element={<Phones />} />
+        <Route
+          path="phones"
+          element={
+            <Phones handleSearchParamsChange={handleSearchParamsChange} />
+          }
+        />
         <Route path="favourites" element={<Favourites />} />
         <Route path="cart" element={<Cart />} />
         <Route path="*" element={<NotFoundPage />} />

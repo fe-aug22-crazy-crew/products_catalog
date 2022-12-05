@@ -51,10 +51,9 @@ export const Promo: React.FC = () => {
       <Swiper
         modules={[Navigation, Pagination]}
         slidesPerView={1}
+        loop={true}
         onBeforeInit={onBeforeInit}
         pagination={{ clickable: true }}
-        // onSwiper={(swiper) => }
-        // onSlideChange={() => console.log('slide change')}
         className="promo__slider"
       >
         <SwiperSlide className="promo__slide">

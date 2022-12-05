@@ -64,7 +64,7 @@ export const cartReducer = (cart: CartItem[] = [], action: Action) => {
     return [...action.payload];
 
   case 'cart/PLUSONE':
-    return cart.map(item => {
+    return cart.map((item) => {
       if (item.product.id === action.payload.id) {
         return {
           ...item,
@@ -76,7 +76,7 @@ export const cartReducer = (cart: CartItem[] = [], action: Action) => {
     });
 
   case 'cart/MINUSONE':
-    return cart.map(item => {
+    return cart.map((item) => {
       if (item.product.id === action.payload.id) {
         return {
           ...item,
