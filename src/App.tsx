@@ -18,6 +18,9 @@ import { NotFoundPage } from './components/NotFoundPage';
 import { Favourites } from './components/Favourites';
 import { Phone } from './types/Phone';
 import { actions as favouritesActions } from './features/favourites';
+import { Cart } from './components/Cart';
+import { actions as cartActions } from './features/cart';
+import { CartItem } from './types/CartItem';
 
 function App() {
   const dispatch = useDispatch();
@@ -40,15 +43,25 @@ function App() {
   };
 
   useEffect(() => {
-    const dataFromLocalStorage = window.localStorage.getItem('favourites');
-    let phones: Phone[] = [];
+    const favouritesData = window.localStorage.getItem('favourites');
+    const cartData = window.localStorage.getItem('cart');
+    let favourite: Phone[] = [];
+    let cart: CartItem[] = [];
 
-    if (typeof dataFromLocalStorage === 'string') {
-      phones = JSON.parse(dataFromLocalStorage);
+    if (typeof favouritesData === 'string') {
+      favourite = JSON.parse(favouritesData);
     }
 
-    if (phones.length > 0) {
-      dispatch(favouritesActions.load(phones));
+    if (typeof cartData === 'string') {
+      cart = JSON.parse(cartData);
+    }
+
+    if (favourite.length > 0) {
+      dispatch(favouritesActions.load(favourite));
+    }
+
+    if (cart.length > 0) {
+      dispatch(cartActions.load(cart));
     }
   }, []);
 
@@ -69,6 +82,7 @@ function App() {
           }
         />
         <Route path="favourites" element={<Favourites />} />
+        <Route path="cart" element={<Cart />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
 

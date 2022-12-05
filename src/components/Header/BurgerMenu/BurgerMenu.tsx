@@ -4,13 +4,14 @@ import cn from 'classnames';
 import { Logo } from '../../Logo';
 import { NavigationLink } from './NavigationLink';
 import favourites from '../../../images/favourites.svg';
-import cart from '../../../images/shopping.svg';
+import cartImg from '../../../images/shopping.svg';
 import closeMenu from '../../../images/Close.svg';
 
 import './BurgerMenu.scss';
 import { NavigationLinksWithIcons } from './NavigationLinksWithIcons';
 import { Phone } from '../../../types/Phone';
 import { useAppSelector } from '../../../app/hooks';
+import { CartItem } from '../../../types/CartItem';
 
 type Props = {
   setMenuIsOpen: (value: boolean) => void;
@@ -19,6 +20,7 @@ type Props = {
 
 export const BurgerMenu: React.FC<Props> = ({ setMenuIsOpen, menuIsOpen }) => {
   const favouritePhones: Phone[] = useAppSelector((state) => state.favourites);
+  const cart: CartItem[] = useAppSelector((state) => state.cart);
   const countOfFavourites = favouritePhones.length;
 
   const closeMenuHandle = (eve: React.MouseEvent<HTMLAnchorElement>) => {
@@ -90,12 +92,12 @@ export const BurgerMenu: React.FC<Props> = ({ setMenuIsOpen, menuIsOpen }) => {
         />
         <NavigationLinksWithIcons
           to={'/cart'}
-          img={cart}
+          img={cartImg}
           altImg={'cart'}
           setMenuIsOpen={setMenuIsOpen}
           styleClass={'display-count'}
           favourites={null}
-          cart={15} // insert here number of items in the cart
+          cart={cart.length}
         />
       </section>
     </section>
