@@ -1,27 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import { Slider } from '../Slider';
 import { Promo } from './Promo';
 
 import './homePage.scss';
 import { SliderButtons } from './SliderButtons';
-import { client } from '../../utils/fetchPhones';
 import { useAppSelector } from '../../app/hooks';
 
 export const HomePage: React.FC = () => {
-  const [hotPhones, setHotPhones] = useState([]);
-
-  const getHotPhones = async() => {
-    const data = await client.get('phones/hot', 'GET', null);
-
-    setHotPhones(data);
-  };
-
-  const newestPhones = useAppSelector(state => state.phones);
-
-  useEffect(() => {
-    getHotPhones();
-  }, []);
+  const newestPhones = useAppSelector(state => state.newestPhones);
+  const hotPhones = useAppSelector(state => state.hotPhones);
 
   return (
     <main className="home_page">
