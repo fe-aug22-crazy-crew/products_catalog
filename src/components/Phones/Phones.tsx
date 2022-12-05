@@ -60,15 +60,17 @@ export const Phones: React.FC<Props> = ({
     }
   };
 
-  const [sortType, setSortType]
-  = useState(getSortType(searchParams.get('qr') || 'newest'));
+  const [sortType, setSortType] = useState(
+    getSortType(searchParams.get('qr') || 'newest'),
+  );
 
   const [isSortOpen, setIsSortOpen] = useState(false);
 
   const [amount, setAmount] = useState(Number(searchParams.get('limit')) || 24);
   const [isAmountOpen, setIsAmountOpen] = useState(false);
-  const [currentPage, setCurrentPage]
-  = useState(Number(searchParams.get('pg')) || 1);
+  const [currentPage, setCurrentPage] = useState(
+    Number(searchParams.get('pg')) || 1,
+  );
 
   const [amountOfPages, setAmountOfPages] = useState(
     Math.ceil(totalItems / amount),

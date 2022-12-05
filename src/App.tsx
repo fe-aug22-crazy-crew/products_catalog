@@ -35,7 +35,7 @@ function App() {
     setSearchParams(newParams);
   };
 
-  const getPhones = async () => {
+  const getPhones = async() => {
     const data = await client.get('phones?' + searchParams, 'GET', null);
 
     dispatch(phonesActions.add(data.rows));
