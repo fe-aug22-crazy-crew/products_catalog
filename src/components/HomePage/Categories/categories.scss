@@ -35,31 +35,28 @@
 
   &__image-block {
     display: flex;
+    flex-direction: column;
+
     margin-bottom: 24px;
 
-    transition: transform 0.3s linear;
+    overflow: hidden;
 
-    &:hover {
+    &:hover .categories__image {
       cursor: pointer;
-      transform: scale(105%);
-    }
-
-    &--phones {
-      background-color: #6d6474;
-    }
-
-    &--tablets {
-      background-color: #8d8d92;
-    }
-
-    &--accessories {
-      background-color: #d53c51;
+      transform: scale(110%);
     }
   }
 
   &__image {
+    transition: transform 0.3s linear;
+
     height: auto;
     width: 100%;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: black;
   }
 
   &__count {
