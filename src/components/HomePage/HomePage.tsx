@@ -6,9 +6,9 @@ import { Promo } from './Promo';
 import './homePage.scss';
 import { SliderButtons } from './SliderButtons';
 import { client } from '../../utils/fetchPhones';
+import { useAppSelector } from '../../app/hooks';
 
 export const HomePage: React.FC = () => {
-  const [newestPhones, setNewestPhones] = useState([]);
   const [hotPhones, setHotPhones] = useState([]);
 
   const getHotPhones = async() => {
@@ -17,15 +17,10 @@ export const HomePage: React.FC = () => {
     setHotPhones(data);
   };
 
-  const getNewestPhones = async() => {
-    const data = await client.get('phones/new', 'GET', null);
-
-    setNewestPhones(data);
-  };
+  const newestPhones = useAppSelector(state => state.phones);
 
   useEffect(() => {
     getHotPhones();
-    getNewestPhones();
   }, []);
 
   return (

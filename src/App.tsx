@@ -18,6 +18,7 @@ import { NotFoundPage } from './components/NotFoundPage';
 import { Favourites } from './components/Favourites';
 import { Phone } from './types/Phone';
 import { actions as favouritesActions } from './features/favourites';
+import { actions as newestPhonesActions } from './features/newestPhones';
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,12 @@ function App() {
     dispatch(phonesActions.add(data));
   };
 
+  const getNewestPhones = async() => {
+    const data = await client.get('phones/new', 'GET', null);
+
+    dispatch(newestPhonesActions.add(data));
+  };
+
   useEffect(() => {
     const dataFromLocalStorage = window.localStorage.getItem('favourites');
     let phones: Phone[] = [];
@@ -54,6 +61,7 @@ function App() {
 
   useEffect(() => {
     getPhones();
+    getNewestPhones();
   }, []);
 
   return (
