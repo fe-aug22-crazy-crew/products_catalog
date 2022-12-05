@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
 
 import './navigationLinksWithIcons.scss';
-import { CSSTransition } from 'react-transition-group';
+import { CountInfo } from '../../CountInfo';
 
 type Props = {
   to: string;
@@ -20,13 +20,10 @@ export const NavigationLinksWithIcons: React.FC<Props> = ({
   img,
   altImg,
   setMenuIsOpen,
-  styleClass,
   favourites,
   cart,
 }) => {
   const count = favourites || cart || 0;
-
-  const className = `navigationLinkWithIcon__${styleClass}`;
 
   return (
     <NavLink
@@ -37,14 +34,7 @@ export const NavigationLinksWithIcons: React.FC<Props> = ({
       onClick={() => setMenuIsOpen(false)}
     >
       <div className="navigationLinkWithIcon__icon-box">
-        <CSSTransition
-          in={count > 0}
-          timeout={300}
-          classNames={className}
-          unmountOnExit
-        >
-          <div className={className}>{count >= 1 && count}</div>
-        </CSSTransition>
+        <CountInfo condition={count > 0} count={count} burgerMenu={true}/>
 
         <img src={img} alt={altImg} className="navigationLinkWithIcon__icon" />
       </div>
