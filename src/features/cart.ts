@@ -56,41 +56,41 @@ export const actions = {
 
 export const cartReducer = (cart: CartItem[] = [], action: Action) => {
   switch (action.type) {
-    case 'cart/ADD':
-      return [...cart, action.payload];
-    case 'cart/REMOVE':
-      return cart.filter((state) => state.product.id !== action.payload.id);
-    case 'cart/LOAD':
-      return [...action.payload];
+  case 'cart/ADD':
+    return [...cart, action.payload];
+  case 'cart/REMOVE':
+    return cart.filter((state) => state.product.id !== action.payload.id);
+  case 'cart/LOAD':
+    return [...action.payload];
 
-    case 'cart/PLUSONE':
-      return cart.map((item) => {
-        if (item.product.id === action.payload.id) {
-          return {
-            ...item,
-            count: item.count + 1,
-          };
-        }
+  case 'cart/PLUSONE':
+    return cart.map((item) => {
+      if (item.product.id === action.payload.id) {
+        return {
+          ...item,
+          count: item.count + 1,
+        };
+      }
 
-        return item;
-      });
+      return item;
+    });
 
-    case 'cart/MINUSONE':
-      return cart.map((item) => {
-        if (item.product.id === action.payload.id) {
-          return {
-            ...item,
-            count: item.count - 1,
-          };
-        }
+  case 'cart/MINUSONE':
+    return cart.map((item) => {
+      if (item.product.id === action.payload.id) {
+        return {
+          ...item,
+          count: item.count - 1,
+        };
+      }
 
-        return item;
-      });
+      return item;
+    });
 
-    case 'cart/CLEARAll':
-      return [];
+  case 'cart/CLEARAll':
+    return [];
 
-    default:
-      return cart;
+  default:
+    return cart;
   }
 };

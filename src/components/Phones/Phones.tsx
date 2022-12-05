@@ -26,44 +26,44 @@ export const Phones: React.FC<Props> = ({
 
   const getQuery = (newQuery: string) => {
     switch (newQuery) {
-      case 'Newest':
-        return 'newest';
+    case 'Newest':
+      return 'newest';
 
-      case 'Oldest':
-        return 'oldest';
+    case 'Oldest':
+      return 'oldest';
 
-      case 'Highest price':
-        return 'expensive';
+    case 'Highest price':
+      return 'expensive';
 
-      case 'Lowest price':
-        return 'cheapest';
+    case 'Lowest price':
+      return 'cheapest';
 
-      default:
-        return '';
+    default:
+      return '';
     }
   };
 
   const getSortType = (newQuery: string) => {
     switch (newQuery) {
-      case 'newest':
-        return 'Newest';
+    case 'newest':
+      return 'Newest';
 
-      case 'oldest':
-        return 'Oldest';
+    case 'oldest':
+      return 'Oldest';
 
-      case 'expensive':
-        return 'Highest price';
+    case 'expensive':
+      return 'Highest price';
 
-      case 'cheapest':
-        return 'Lowest price';
+    case 'cheapest':
+      return 'Lowest price';
 
-      default:
-        return '';
+    default:
+      return '';
     }
   };
 
   const [sortType, setSortType] = useState(
-    getSortType(searchParams.get('qr') || 'newest')
+    getSortType(searchParams.get('qr') || 'newest'),
   );
 
   const [isSortOpen, setIsSortOpen] = useState(false);
@@ -71,11 +71,11 @@ export const Phones: React.FC<Props> = ({
   const [amount, setAmount] = useState(Number(searchParams.get('limit')) || 24);
   const [isAmountOpen, setIsAmountOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(
-    Number(searchParams.get('pg')) || 1
+    Number(searchParams.get('pg')) || 1,
   );
 
   const [amountOfPages, setAmountOfPages] = useState(
-    Math.ceil(totalItems / amount)
+    Math.ceil(totalItems / amount),
   );
 
   const handleAmountSelect = (e: React.MouseEvent) => {
@@ -89,7 +89,7 @@ export const Phones: React.FC<Props> = ({
         qr,
         limit: e.currentTarget.innerHTML,
         pg: String(currentPage),
-      })
+      }),
     );
   };
 
@@ -104,7 +104,7 @@ export const Phones: React.FC<Props> = ({
         qr,
         limit: String(amount),
         pg: String(currentPage),
-      })
+      }),
     );
   };
 
