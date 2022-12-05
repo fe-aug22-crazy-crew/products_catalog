@@ -60,6 +60,7 @@ export const Header: React.FC = () => {
           <CountInfo
             condition={countOfFavourites > 0}
             count={countOfFavourites}
+            burgerMenu={false}
           />
           <img src={favouritesImg} alt="like" className="icon" />
         </NavLink>
@@ -70,7 +71,11 @@ export const Header: React.FC = () => {
             cl('icon-box', { 'is-active': isActive })
           }
         >
-          <CountInfo condition={countInCart > 0} count={countInCart} />
+          <CountInfo
+            condition={countInCart > 0}
+            count={countInCart}
+            burgerMenu={false}
+          />
           <img src={shopping} alt="cart" className="icon" />
         </NavLink>
         <a href="" className="icon-box icon-box__menu" onClick={openMenuHandle}>
