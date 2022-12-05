@@ -18,26 +18,18 @@ import { NotFoundPage } from './components/NotFoundPage';
 import { Favourites } from './components/Favourites';
 import { Phone } from './types/Phone';
 import { actions as favouritesActions } from './features/favourites';
-import { useAppSelector } from './app/hooks';
 import { Cart } from './components/Cart';
 import { actions as cartActions } from './features/cart';
 import { CartItem } from './types/CartItem';
 import { PhonePage } from './components/PhonePage/PhonePage';
+import { useAppSelector } from './app/hooks';
 
 function App() {
   const dispatch = useDispatch();
-  const defaultSearchParams = new URLSearchParams({
-    qr: 'newest',
-    limit: '24',
-    pg: '1',
-  });
 
-  const [searchParams, setSearchParams] = useSearchParams(defaultSearchParams);
+  const query = useAppSelector((state) => state.query);
   const [totalItems, setTotalItems] = useState(0);
-
-  const handleSearchParamsChange = (newParams: URLSearchParams) => {
-    setSearchParams(newParams);
-  };
+  const [searchParams, setSearchParams] = useSearchParams(query);
 
   const getPhones = async() => {
     const data = await client.get('phones?' + searchParams, 'GET', null);
@@ -70,6 +62,10 @@ function App() {
   }, []);
 
   useEffect(() => {
+    setSearchParams(query);
+  }, [query]);
+
+  useEffect(() => {
     getPhones();
   }, [searchParams]);
 
@@ -81,16 +77,7 @@ function App() {
         <Route path="products_catalog" element={<HomePage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="home" element={<HomePage />} />
-        <Route
-          path="phones"
-          element={
-            <Phones
-              handleSearchParamsChange={handleSearchParamsChange}
-              totalItems={totalItems}
-              searchParams={searchParams}
-            />
-          }
-        />
+        <Route path="phones" element={<Phones totalItems={totalItems} />} />
         <Route path="favourites" element={<Favourites />} />
         <Route path="cart" element={<Cart />} />
         <Route path="*" element={<NotFoundPage />} />

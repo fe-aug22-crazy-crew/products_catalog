@@ -10,22 +10,22 @@ import arrowNext from '../../images/arrow-next.svg';
 import arrowPrev from '../../images/arrow-prev.svg';
 import { Select } from './Select/Select';
 import cl from 'classnames';
+import { actions as queryActions } from '../../features/query';
+import { useDispatch } from 'react-redux';
 
 type Props = {
-  handleSearchParamsChange: (newParams: URLSearchParams) => void;
   totalItems: number;
-  searchParams: URLSearchParams;
 };
 
 export const Phones: React.FC<Props> = ({
-  handleSearchParamsChange,
   totalItems,
-  searchParams,
 }) => {
+  const dispatch = useDispatch();
   const phones = useAppSelector((state) => state.phones);
+  const query = useAppSelector((state) => state.query);
 
-  const getQuery = (newQuery: string) => {
-    switch (newQuery) {
+  const getQr = (newQr: string) => {
+    switch (newQr) {
     case 'Newest':
       return 'newest';
 
@@ -43,8 +43,8 @@ export const Phones: React.FC<Props> = ({
     }
   };
 
-  const getSortType = (newQuery: string) => {
-    switch (newQuery) {
+  const getSortType = (newQr: string) => {
+    switch (newQr) {
     case 'newest':
       return 'Newest';
 
@@ -63,16 +63,14 @@ export const Phones: React.FC<Props> = ({
   };
 
   const [sortType, setSortType] = useState(
-    getSortType(searchParams.get('qr') || 'newest'),
+    getSortType(query.get('qr') || 'newest'),
   );
 
   const [isSortOpen, setIsSortOpen] = useState(false);
 
-  const [amount, setAmount] = useState(Number(searchParams.get('limit')) || 24);
+  const [amount, setAmount] = useState(Number(query.get('limit')) || 24);
   const [isAmountOpen, setIsAmountOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState(
-    Number(searchParams.get('pg')) || 1,
-  );
+  let currentPage = Number(query.get('pg')) || 1;
 
   const [amountOfPages, setAmountOfPages] = useState(
     Math.ceil(totalItems / amount),
@@ -82,30 +80,30 @@ export const Phones: React.FC<Props> = ({
     setAmount(+e.currentTarget.innerHTML);
     setIsAmountOpen(false);
 
-    const qr = getQuery(sortType);
+    currentPage = 1;
 
-    handleSearchParamsChange(
-      new URLSearchParams({
-        qr,
-        limit: e.currentTarget.innerHTML,
-        pg: String(currentPage),
-      }),
-    );
+    const qr = getQr(sortType);
+
+    dispatch(queryActions.add(new URLSearchParams({
+      qr,
+      limit: e.currentTarget.innerHTML,
+      pg: String(currentPage),
+    })));
   };
 
   const handleSortSelect = (e: React.MouseEvent) => {
     setSortType(e.currentTarget.innerHTML);
     setIsSortOpen(false);
 
-    const qr = getQuery(e.currentTarget.innerHTML);
+    const qr = getQr(e.currentTarget.innerHTML);
 
-    handleSearchParamsChange(
-      new URLSearchParams({
-        qr,
-        limit: String(amount),
-        pg: String(currentPage),
-      }),
-    );
+    currentPage = 1;
+
+    dispatch(queryActions.add(new URLSearchParams({
+      qr,
+      limit: String(amount),
+      pg: String(currentPage),
+    })));
   };
 
   const handleSortOpen = (newIsSortOpen: boolean) => {
@@ -118,19 +116,17 @@ export const Phones: React.FC<Props> = ({
 
   const handlePageClick = (e: { selected: number }) => {
     const newOffset = (e.selected * amount) % totalItems;
-    const pg = newOffset / amount + 1;
 
-    setCurrentPage(pg);
+    currentPage = newOffset / amount + 1;
 
-    const qr = getQuery(sortType);
+    const qr = getQr(sortType);
 
-    const paramsObj = new URLSearchParams({
+    dispatch(queryActions.add(new URLSearchParams({
       qr,
       limit: String(amount),
-      pg: String(pg),
-    });
+      pg: String(currentPage),
+    })));
 
-    handleSearchParamsChange(paramsObj);
     window.scrollTo({ top: 0 });
   };
 
