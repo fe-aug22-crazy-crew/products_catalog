@@ -1,0 +1,68 @@
+@import '../../../styles/utils/mixins/screenWidth';
+@import '../../../styles/utils/mixins/typography';
+
+.categories {
+  max-width: 1136px;
+  margin: 0 auto 56px;
+  padding: 0 16px;
+
+  @include onTablet {
+    margin-bottom: 64px;
+    padding: 0 24px;
+  }
+
+  @include onDesktop {
+    margin-bottom: 80px;
+    padding: 0;
+  }
+
+  &__title {
+    @include h2Typography;
+    margin-bottom: 24px;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+
+    @include onTablet {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__image-block {
+    display: flex;
+    margin-bottom: 24px;
+
+    transition: transform 0.3s linear;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(105%);
+    }
+
+    &--phones {
+      background-color: #6d6474;
+    }
+
+    &--tablets {
+      background-color: #8d8d92;
+    }
+
+    &--accessories {
+      background-color: #d53c51;
+    }
+  }
+
+  &__image {
+    height: auto;
+    width: 100%;
+  }
+
+  &__count {
+    color: #89939a;
+  }
+}
