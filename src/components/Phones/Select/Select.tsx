@@ -32,9 +32,11 @@ export const Select: React.FC<Props> = ({
       >
         <p className="select__sort-type">{defaultValue}</p>
 
-        <div className={cl('select__arrow', {
-          'select__arrow--up': isOpen,
-        })}>
+        <div
+          className={cl('select__arrow', {
+            'select__arrow--up': isOpen,
+          })}
+        >
           <img src={arrowDown} alt="arrow" />
         </div>
       </div>
