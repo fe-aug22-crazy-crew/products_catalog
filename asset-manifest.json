@@ -1,12 +1,15 @@
 {
   "files": {
-    "main.css": "/home/static/css/main.28d95365.css",
-    "main.js": "/home/static/js/main.cc9560d0.js",
+    "main.css": "/home/static/css/main.b735bbf4.css",
+    "main.js": "/home/static/js/main.0dc974f2.js",
     "static/js/787.81037485.chunk.js": "/home/static/js/787.81037485.chunk.js",
     "static/media/logo.svg": "/home/static/media/logo.91a19eb81636d7dc4f91314b104aaee1.svg",
     "static/media/Mont-Regular.ttf": "/home/static/media/Mont-Regular.e797167c18f9897bb607.ttf",
     "static/media/Mont-Bold.ttf": "/home/static/media/Mont-Bold.3675b597d3ffb2b75168.ttf",
     "static/media/Banner-lg.jpg": "/home/static/media/Banner-lg.ca78b2e6a7e0b72cdfab.jpg",
+    "static/media/acs.png": "/home/static/media/acs.ceac5a16c668432a34a0.png",
+    "static/media/tablets.png": "/home/static/media/tablets.a1aff0fe1c1693fcea55.png",
+    "static/media/phones.png": "/home/static/media/phones.9e913039f5c6a4866001.png",
     "static/media/Banner-phone.jpg": "/home/static/media/Banner-phone.386cecd69d3d8c309082.jpg",
     "static/media/shopping.svg": "/home/static/media/shopping.f9632dca8fdaed9bb696b99ac28006ba.svg",
     "static/media/favourites.svg": "/home/static/media/favourites.aee683ecfaf735ee937427f00838bf0f.svg",
@@ -25,12 +28,12 @@
     "static/media/prev.svg": "/home/static/media/prev.f8da456077b13aabd737f29d77535f12.svg",
     "static/media/minus.svg": "/home/static/media/minus.3c43a86b437245eeda6e.svg",
     "static/media/minusDisabled.svg": "/home/static/media/minusDisabled.4b7c4fa33c66c0b35185.svg",
-    "main.28d95365.css.map": "/home/static/css/main.28d95365.css.map",
-    "main.cc9560d0.js.map": "/home/static/js/main.cc9560d0.js.map",
+    "main.b735bbf4.css.map": "/home/static/css/main.b735bbf4.css.map",
+    "main.0dc974f2.js.map": "/home/static/js/main.0dc974f2.js.map",
     "787.81037485.chunk.js.map": "/home/static/js/787.81037485.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.28d95365.css",
-    "static/js/main.cc9560d0.js"
+    "static/css/main.b735bbf4.css",
+    "static/js/main.0dc974f2.js"
   ]
 }
