@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { useAppSelector } from '../../app/hooks';
 import { Slider } from '../Slider';
 import { Promo } from './Promo';
 
 import './homePage.scss';
 import { SliderButtons } from './SliderButtons';
+import { client } from '../../utils/fetchPhones';
 
 export const HomePage: React.FC = () => {
-  const phones = useAppSelector((state) => state.phones);
+  const [newestPhones, setNewestPhones] = useState([]);
+  const [hotPhones, setHotPhones] = useState([]);
+
+  const getHotPhones = async() => {
+    const data = await client.get('phones/hot', 'GET', null);
+
+    setHotPhones(data);
+  };
+
+  const getNewestPhones = async() => {
+    const data = await client.get('phones/new', 'GET', null);
+
+    setNewestPhones(data);
+  };
+
+  useEffect(() => {
+    getHotPhones();
+    getNewestPhones();
+  }, []);
 
   return (
     <main className="home_page">
@@ -23,7 +41,7 @@ export const HomePage: React.FC = () => {
         />
       </div>
       <Slider
-        phones={phones}
+        phones={newestPhones}
         prevButtonClass={'.newest_button_prev'}
         nextButtonClass={'.newest_button_next'}
       />
@@ -36,7 +54,7 @@ export const HomePage: React.FC = () => {
         />
       </div>
       <Slider
-        phones={phones}
+        phones={hotPhones}
         prevButtonClass={'.hot_button_prev'}
         nextButtonClass={'.hot_button_next'}
       />
