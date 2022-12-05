@@ -61,7 +61,7 @@ export const CartProduct: React.FC<Props> = ({ cartItemInfo }) => {
             'cart-item__count-button-less',
             {
               'cart-item__count-button-less--disabled': count === 1,
-            },
+            }
           )}
           type="button"
           onClick={() => handleOneLess(product)}

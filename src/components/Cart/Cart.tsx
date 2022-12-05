@@ -15,12 +15,12 @@ export const Cart: React.FC = React.memo(() => {
   const cart: CartItem[] = useAppSelector((state) => state.cart);
   const count = useMemo(
     () => cart.reduce((acc, curr) => acc + curr.count, 0) || 0,
-    [cart],
+    [cart]
   );
 
   const totalPrice = useMemo(
     () => cart.reduce((acc, curr) => acc + curr.count * curr.product.price, 0),
-    [cart],
+    [cart]
   );
 
   const handleBuying = () => {

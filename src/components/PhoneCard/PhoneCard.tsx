@@ -18,8 +18,8 @@ type Props = {
 };
 
 export const PhoneCard: React.FC<Props> = ({ phone }) => {
-  const { image, itemId, name, price, fullPrice, screen, capacity, ram }
-    = phone;
+  const { image, itemId, name, price, fullPrice, screen, capacity, ram } =
+    phone;
 
   const dispatch = useDispatch();
   const favouritePhones: Phone[] = useAppSelector((state) => state.favourites);

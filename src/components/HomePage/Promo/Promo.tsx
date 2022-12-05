@@ -32,8 +32,8 @@ export const Promo: React.FC = () => {
     }
 
     if (
-      typeof swiper.params.pagination !== 'boolean'
-      && swiper.params.pagination
+      typeof swiper.params.pagination !== 'boolean' &&
+      swiper.params.pagination
     ) {
       swiper.params.pagination.el = paginationLabel.current;
     }
