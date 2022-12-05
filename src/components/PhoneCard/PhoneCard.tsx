@@ -60,7 +60,7 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
       <Link to="/phone_page">
         <img
           className="product__image"
-          src={`https://raw.githubusercontent.com/mate-academy/product_catalog/main/public/${image}`}
+          src={`https://teal-tiramisu-13c82d.netlify.app/${image}`}
           alt={itemId}
         />
 
