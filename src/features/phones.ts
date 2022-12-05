@@ -19,7 +19,7 @@ export const phonesReducer = (
   switch (action.type) {
   case 'phones/ADD':
     // eslint-disable-next-line no-param-reassign
-    return (phones = action.payload);
+    return action.payload;
 
   default:
     return phones;
