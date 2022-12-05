@@ -25,11 +25,16 @@
     justify-content: space-between;
 
     padding: 24px;
-    width: 368px;
-    height: 206px;
+    width: 288px;
+    height: 180px;
     border: 1px solid $c-icons;
     background-color: #fff;
     box-shadow: 0px 3px 13px 0px #17203166;
+
+    @include onDesktop {
+      width: 368px;
+      height: 206px;
+    }
   }
 
   &__message {
