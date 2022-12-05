@@ -94,7 +94,7 @@ function App() {
         <Route path="favourites" element={<Favourites />} />
         <Route path="cart" element={<Cart />} />
         <Route path="*" element={<NotFoundPage />} />
-        <Route path='phone_page' element={<PhonePage />} />
+        <Route path="phone_page" element={<PhonePage />} />
       </Routes>
 
       <Footer />
