@@ -47,6 +47,7 @@ export const Categories: React.FC = () => {
           <h4>Accessories</h4>
           <p className="categories__count">{'115 models'}</p>
         </div>
+
       </div>
     </section>
   );

@@ -6,7 +6,8 @@ import { Promo } from './Promo';
 
 import './homePage.scss';
 import { SliderButtons } from './SliderButtons';
-// import { Categories } from './Categories';
+
+import { Categories } from './Categories';
 
 export const HomePage: React.FC = () => {
   const phones = useAppSelector((state) => state.phones);
@@ -29,7 +30,7 @@ export const HomePage: React.FC = () => {
         nextButtonClass={'.newest_button_next'}
       />
 
-      {/* <Categories /> */}
+      <Categories />
 
       <div className="home_page__title-box">
         <h2 className="home_page__subtitle">Hot prices</h2>
