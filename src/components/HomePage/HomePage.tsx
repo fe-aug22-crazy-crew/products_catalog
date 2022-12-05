@@ -1,16 +1,17 @@
 import React from 'react';
 
-import { useAppSelector } from '../../app/hooks';
 import { Slider } from '../Slider';
 import { Promo } from './Promo';
 
 import './homePage.scss';
 import { SliderButtons } from './SliderButtons';
+import { useAppSelector } from '../../app/hooks';
 
 import { Categories } from './Categories';
 
 export const HomePage: React.FC = () => {
-  const phones = useAppSelector((state) => state.phones);
+  const newestPhones = useAppSelector(state => state.newestPhones);
+  const hotPhones = useAppSelector(state => state.hotPhones);
 
   return (
     <main className="home_page">
@@ -25,7 +26,7 @@ export const HomePage: React.FC = () => {
         />
       </div>
       <Slider
-        phones={phones}
+        phones={newestPhones}
         prevButtonClass={'.newest_button_prev'}
         nextButtonClass={'.newest_button_next'}
       />
@@ -40,7 +41,7 @@ export const HomePage: React.FC = () => {
         />
       </div>
       <Slider
-        phones={phones}
+        phones={hotPhones}
         prevButtonClass={'.hot_button_prev'}
         nextButtonClass={'.hot_button_next'}
       />
