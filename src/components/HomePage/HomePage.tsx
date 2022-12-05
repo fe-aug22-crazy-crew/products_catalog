@@ -6,6 +6,7 @@ import { Promo } from './Promo';
 
 import './homePage.scss';
 import { SliderButtons } from './SliderButtons';
+
 import { Categories } from './Categories';
 
 export const HomePage: React.FC = () => {
