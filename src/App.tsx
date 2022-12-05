@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 import './App.scss';
 
-import { Route, Routes, useSearchParams } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { HomePage } from './components/HomePage/HomePage';
 import { Phones } from './components/Phones/';
 import { Header } from './components/Header/';
@@ -29,10 +29,9 @@ function App() {
 
   const query = useAppSelector((state) => state.query);
   const [totalItems, setTotalItems] = useState(0);
-  const [searchParams, setSearchParams] = useSearchParams(query);
 
   const getPhones = async() => {
-    const data = await client.get('phones?' + searchParams, 'GET', null);
+    const data = await client.get('phones?' + query, 'GET', null);
 
     dispatch(phonesActions.add(data.rows));
     setTotalItems(data.count);
@@ -62,12 +61,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    setSearchParams(query);
-  }, [query]);
-
-  useEffect(() => {
     getPhones();
-  }, [searchParams]);
+  }, [query]);
 
   return (
     <div className="App">
