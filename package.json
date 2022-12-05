@@ -1,6 +1,6 @@
 {
   "name": "products_catalog",
-  "homepage": "https://fe-aug22-crazy-crew.github.io/products_catalog",
+  "homepage": "https://fe-aug22-crazy-crew.github.io/home",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,6 +16,7 @@
     "@types/react-transition-group": "^4.4.5",
     "@types/swiper": "^6.0.0",
     "classnames": "^2.3.2",
+    "css-select-base-adapter": "^0.1.1",
     "gh-pages": "^4.0.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",

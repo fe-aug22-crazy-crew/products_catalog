@@ -21,64 +21,13 @@
     gap: 16px;
   }
 
-  &__select {
-    margin-bottom: 24px;
-  }
-
-  &__arrow {
-    position: relative;
-    bottom: 2px;
-  }
-
-  &__sort-type {
-    @include buttonsTypography;
-    color: $c-primary;
-  }
-
-  &__select-field {
-    display: flex;
-    justify-content: space-between;
-    width: 136px;
-    height: 40px;
-    border: 1px solid $c-icons;
-    padding: 8px 10px;
-    cursor: pointer;
-    position: relative;
-    background-color: $c-white;
-
-    &--sort {
-      @include onTablet {
-        width: 176px;
-      }
-    }
-  }
-
-  &__option {
-    @include buttonsTypography;
-    color: $c-secondary;
-
-    &:hover {
-      color: $c-primary;
-    }
-  }
-
-  &__options {
-    position: absolute;
-
-    &--hidden {
-      visibility: hidden;
-    }
-  }
-
-  &__select-title {
-    @include smallTextTypography;
-    color: $c-secondary;
-    margin-bottom: 4px;
-  }
-
   &__models-count {
     @include buttonsTypography;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
   }
 
   &__item {

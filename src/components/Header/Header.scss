@@ -38,49 +38,6 @@
     padding: 0;
   }
 
-  &__favourite-count {
-    position: absolute;
-    top: 18px;
-    right: 18px;
-
-    height: 14px;
-    width: 14px;
-
-    font-size: 9px;
-    font-weight: 700;
-    line-height: 14px;
-    text-align: center;
-    color: $c-white;
-
-    background-color: $c-red;
-    border-radius: 50%;
-
-    &-enter {
-      opacity: 0;
-    }
-    &-enter-active {
-      opacity: 1;
-      transition: opacity 300ms, transform 300ms;
-    }
-    &-exit {
-      opacity: 1;
-    }
-    &-exit-active {
-      opacity: 0;
-      transition: opacity 300ms, transform 300ms;
-    }
-
-    @include onTablet {
-      top: 10px;
-      right: 10px;
-    }
-
-    @include onDesktop {
-      top: 18px;
-      right: 18px;
-    }
-  }
-
   &--menu {
     justify-content: space-between;
   }

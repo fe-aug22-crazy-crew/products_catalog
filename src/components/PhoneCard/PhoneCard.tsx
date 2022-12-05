@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { useAppSelector } from '../../app/hooks';
 import { actions as favouritesActions } from '../../features/favourites';
@@ -8,6 +9,8 @@ import './PhoneCard.scss';
 import notFavourite from '../../images/favourites.svg';
 import favourite from '../../images/selectedFavourite.svg';
 import { FavouriteIcon } from './FavouriteIcon';
+import { actions as cartActions } from '../../features/cart';
+import { CartItem } from '../../types/CartItem';
 /* eslint-disable no-shadow */
 
 type Props = {
@@ -20,10 +23,12 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
 
   const dispatch = useDispatch();
   const favouritePhones: Phone[] = useAppSelector((state) => state.favourites);
+  const cart: CartItem[] = useAppSelector((state) => state.cart);
 
-  const isSelected = favouritePhones.some((gadget) => gadget.id === phone.id);
+  const isSelected = favouritePhones.some((product) => product.id === phone.id);
+  const isItInCart = cart.some((itemInfo) => itemInfo.product.id === phone.id);
 
-  const handleFavourite = (selectedPhone: Phone) => {
+  const handleAddingToFavourites = (selectedPhone: Phone) => {
     if (!isSelected) {
       dispatch(favouritesActions.add(selectedPhone));
     } else {
@@ -31,19 +36,36 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
     }
   };
 
+  const handleAddingToCart = (selectedPhone: Phone) => {
+    if (!isItInCart) {
+      const productInCart = {
+        product: selectedPhone,
+        count: 1,
+      };
+
+      dispatch(cartActions.add(productInCart));
+    }
+  };
+
   useEffect(() => {
     window.localStorage.setItem('favourites', JSON.stringify(favouritePhones));
   }, [favouritePhones]);
 
+  useEffect(() => {
+    window.localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
   return (
     <div className="product">
-      <img
-        className="product__image"
-        src={`https://raw.githubusercontent.com/mate-academy/product_catalog/main/public/${image}`}
-        alt={itemId}
-      />
+      <Link to="/phone_page">
+        <img
+          className="product__image"
+          src={`https://teal-tiramisu-13c82d.netlify.app/${image}`}
+          alt={itemId}
+        />
 
-      <p className="product__name">{name}</p>
+        <p className="product__name">{name}</p>
+      </Link>
 
       <div className="product__price-block">
         {
@@ -72,11 +94,27 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
       </ul>
 
       <div className="product__options">
-        <div className="product__cart-adding">Add to cart</div>
+        {!isItInCart ? (
+          <button
+            className="product__cart-adding"
+            type="button"
+            onClick={() => handleAddingToCart(phone)}
+          >
+            Add to cart
+          </button>
+        ) : (
+          <Link
+            to="/cart"
+            className="product__cart-adding product__cart-adding--added"
+          >
+            Added to cart
+          </Link>
+        )}
 
         <button
           className="product__favourite-adding"
-          onClick={() => handleFavourite(phone)}
+          type="button"
+          onClick={() => handleAddingToFavourites(phone)}
         >
           <FavouriteIcon
             condition={!isSelected}
