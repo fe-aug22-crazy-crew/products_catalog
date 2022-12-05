@@ -17,7 +17,11 @@ import { Footer } from './components/Footer';
 import { NotFoundPage } from './components/NotFoundPage';
 import { Favourites } from './components/Favourites';
 import { Phone } from './types/Phone';
+
 import { actions as favouritesActions } from './features/favourites';
+import { actions as newestPhonesActions } from './features/newestPhones';
+import { actions as hotPhonesActions } from './features/hotPhones';
+
 import { useAppSelector } from './app/hooks';
 import { Cart } from './components/Cart';
 import { actions as cartActions } from './features/cart';
@@ -46,6 +50,18 @@ function App() {
     setTotalItems(data.count);
   };
 
+  const getNewestPhones = async() => {
+    const data = await client.get('phones/new', 'GET', null);
+
+    dispatch(newestPhonesActions.add(data));
+  };
+
+  const getHotPhones = async() => {
+    const data = await client.get('phones/hot', 'GET', null);
+
+    dispatch(hotPhonesActions.add(data));
+  };
+
   useEffect(() => {
     const favouritesData = window.localStorage.getItem('favourites');
     const cartData = window.localStorage.getItem('cart');
@@ -67,6 +83,11 @@ function App() {
     if (cart.length > 0) {
       dispatch(cartActions.load(cart));
     }
+  }, []);
+  
+  useEffect(() => {
+    getNewestPhones();
+    getHotPhones();
   }, []);
 
   useEffect(() => {
