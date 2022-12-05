@@ -11,57 +11,16 @@ import { Select } from './Select/Select';
 
 type Props = {
   handleSearchParamsChange: (newParams: URLSearchParams) => void;
+  totalItems: number;
+  searchParams: URLSearchParams;
 };
 
-export const Phones: React.FC<Props> = ({ handleSearchParamsChange }) => {
+export const Phones: React.FC<Props> = ({
+  handleSearchParamsChange,
+  totalItems,
+  searchParams,
+}) => {
   const phones = useAppSelector((state) => state.phones);
-
-  const [sortType, setSortType] = useState('Newest');
-  const [isSortOpen, setIsSortOpen] = useState(false);
-
-  const [amount, setAmount] = useState(24);
-  const [isAmountOpen, setIsAmountOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const [amountOfPages, setAmountOfPages] = useState(
-    Math.ceil(phones.length / amount),
-  );
-
-  const [itemOffset, setItemOffset] = useState(0);
-
-  let currentItems = phones;
-
-  const sortedPhones: Phone[] = phones.sort((phoneA: Phone, phoneB: Phone) => {
-    switch (sortType) {
-    case 'Newest':
-      if (phoneA.year !== phoneB.year) {
-        return phoneB.year - phoneA.year;
-      } else {
-        return phoneA.id - phoneB.id;
-      }
-
-    case 'Oldest':
-      if (phoneA.year !== phoneB.year) {
-        return phoneA.year - phoneB.year;
-      } else {
-        return phoneA.id - phoneB.id;
-      }
-
-    case 'Highest price':
-      if (phoneA.price !== phoneB.price) {
-        return phoneB.price - phoneA.price;
-      } else {
-        return phoneA.id - phoneB.id;
-      }
-
-    case 'Lowest price':
-      if (phoneA.year !== phoneB.year) {
-        return phoneA.year - phoneB.year;
-      } else {
-        return phoneA.id - phoneB.id;
-      }
-    }
-  });
 
   const getQuery = (newQuery: string) => {
     switch (newQuery) {
@@ -81,6 +40,39 @@ export const Phones: React.FC<Props> = ({ handleSearchParamsChange }) => {
       return '';
     }
   };
+
+  const getSortType = (newQuery: string) => {
+    switch (newQuery) {
+    case 'newest':
+      return 'Newest';
+
+    case 'oldest':
+      return 'Oldest';
+
+    case 'expensive':
+      return 'Highest price';
+
+    case 'cheapest':
+      return 'Lowest price';
+
+    default:
+      return '';
+    }
+  };
+
+  const [sortType, setSortType]
+  = useState(getSortType(searchParams.get('qr') || 'newest'));
+
+  const [isSortOpen, setIsSortOpen] = useState(false);
+
+  const [amount, setAmount] = useState(Number(searchParams.get('limit')) || 24);
+  const [isAmountOpen, setIsAmountOpen] = useState(false);
+  const [currentPage, setCurrentPage]
+  = useState(Number(searchParams.get('pg')) || 1);
+
+  const [amountOfPages, setAmountOfPages] = useState(
+    Math.ceil(totalItems / amount),
+  );
 
   const handleAmountSelect = (e: React.MouseEvent) => {
     setAmount(+e.currentTarget.innerHTML);
@@ -120,12 +112,8 @@ export const Phones: React.FC<Props> = ({ handleSearchParamsChange }) => {
     setIsAmountOpen(newIsAmountOpen);
   };
 
-  const endOffset = itemOffset + amount;
-
-  currentItems = sortedPhones.slice(itemOffset, endOffset);
-
   const handlePageClick = (e: { selected: number }) => {
-    const newOffset = (e.selected * amount) % phones.length;
+    const newOffset = (e.selected * amount) % totalItems;
     const pg = newOffset / amount + 1;
 
     setCurrentPage(pg);
@@ -139,23 +127,21 @@ export const Phones: React.FC<Props> = ({ handleSearchParamsChange }) => {
     });
 
     handleSearchParamsChange(paramsObj);
-
     window.scrollTo({ top: 0 });
-    setItemOffset(newOffset);
   };
 
   const sortTypes = ['Newest', 'Oldest', 'Highest price', 'Lowest price'];
   const amounts = [8, 16, 24];
 
   useEffect(() => {
-    setAmountOfPages(Math.ceil(phones.length / amount));
+    setAmountOfPages(Math.ceil(totalItems / amount));
   });
 
   return (
     <main className="phones">
       <div className="container">
         <h2 className="phones__title">Mobile phones</h2>
-        <p className="phones__models-count">{`${phones.length} models`}</p>
+        <p className="phones__models-count">{`${totalItems} models`}</p>
         <div className="phones__selects">
           <Select
             handleOpen={handleSortOpen}
@@ -178,7 +164,7 @@ export const Phones: React.FC<Props> = ({ handleSearchParamsChange }) => {
           />
         </div>
         <ul className="phones__list">
-          {currentItems.map((phone: Phone) => (
+          {phones.map((phone: Phone) => (
             <li key={phone.id} className="phones__item">
               <PhoneCard phone={phone} />
             </li>
@@ -198,8 +184,8 @@ export const Phones: React.FC<Props> = ({ handleSearchParamsChange }) => {
           previousLinkClassName="pagination__item"
           nextLinkClassName="pagination__item"
           breakLinkClassName="pagination__item"
+          forcePage={currentPage - 1}
         />
-        ;
       </div>
     </main>
   );
