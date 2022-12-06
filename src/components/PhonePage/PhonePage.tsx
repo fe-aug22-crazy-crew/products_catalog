@@ -3,9 +3,10 @@ import { Info } from './Info/Info';
 
 export const PhonePage: React.FC = () => {
   return (
-    <>
-      <h1>Phone Page</h1>
-      <Info />
-    </>
+    <main>
+      <div className="container">
+        <Info />
+      </div>
+    </main>
   );
 };

@@ -1,0 +1,73 @@
+@import '../../../styles/utils/mixins/typography.scss';
+@import '../../../styles/utils/mixins/screenWidth.scss';
+@import '../../../styles/utils/variables.scss';
+
+
+
+.info {
+  @include onDesktop {
+    display: flex;
+    justify-content: space-between;
+    gap: 65px;
+  }
+
+  &__article {
+    width: 100%;
+    margin-bottom: 56px;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__title {
+    @include h3Typography;
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid $c-gray;
+    color: $c-primary;
+
+    &--specs {
+      margin-bottom: 28px;
+    }
+  }
+
+  &__subtitle {
+    @include h4Typography;
+    margin-bottom: 16px;
+    color: $c-primary;
+  }
+
+  &__text {
+    @include bodyTextTypography;
+    color: $c-secondary;
+  }
+
+  &__list {
+    list-style: none;
+  }
+
+  &__property {
+    @include bodyTextTypography;
+    color: $c-secondary;
+  }
+
+  &__value {
+    @include bodyTextTypography;
+    color: $c-primary;
+  }
+
+  &__paragraph {
+    margin-bottom: 32px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+}
