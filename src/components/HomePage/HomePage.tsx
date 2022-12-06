@@ -10,8 +10,8 @@ import { useAppSelector } from '../../app/hooks';
 import { Categories } from './Categories';
 
 export const HomePage: React.FC = () => {
-  const newestPhones = useAppSelector(state => state.newestPhones);
-  const hotPhones = useAppSelector(state => state.hotPhones);
+  const newestPhones = useAppSelector((state) => state.newestPhones);
+  const hotPhones = useAppSelector((state) => state.hotPhones);
 
   return (
     <main className="home_page">

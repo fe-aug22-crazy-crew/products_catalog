@@ -2,8 +2,6 @@
 @import '../../../styles/utils/mixins/screenWidth.scss';
 @import '../../../styles/utils/variables.scss';
 
-
-
 .info {
   @include onDesktop {
     display: flex;
