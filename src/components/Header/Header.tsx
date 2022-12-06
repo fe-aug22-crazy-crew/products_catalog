@@ -1,4 +1,3 @@
-/* eslint-disable no-shadow */
 import React, { useEffect, useState } from 'react';
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 import cl from 'classnames';
@@ -36,8 +35,8 @@ export const Header: React.FC = () => {
     }
   }, [menuIsOpen]);
 
-  const openMenuHandle = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
+  const openMenuHandle = (openEvent: React.MouseEvent<HTMLAnchorElement>) => {
+    openEvent.preventDefault();
     setMenuIsOpen(true);
   };
 
