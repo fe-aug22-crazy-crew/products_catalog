@@ -34,7 +34,7 @@ export const NavigationLinksWithIcons: React.FC<Props> = ({
       onClick={() => setMenuIsOpen(false)}
     >
       <div className="navigationLinkWithIcon__icon-box">
-        <CountInfo condition={count > 0} count={count} burgerMenu={true}/>
+        <CountInfo condition={count > 0} count={count} burgerMenu={true} />
 
         <img src={img} alt={altImg} className="navigationLinkWithIcon__icon" />
       </div>

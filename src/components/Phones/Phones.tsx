@@ -70,9 +70,8 @@ export const Phones: React.FC<Props> = ({
 
   const [amount, setAmount] = useState(Number(searchParams.get('limit')) || 24);
   const [isAmountOpen, setIsAmountOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState(
-    Number(searchParams.get('pg')) || 1,
-  );
+
+  let currentPage = Number(searchParams.get('pg')) || 1;
 
   const [amountOfPages, setAmountOfPages] = useState(
     Math.ceil(totalItems / amount),
@@ -83,6 +82,8 @@ export const Phones: React.FC<Props> = ({
     setIsAmountOpen(false);
 
     const qr = getQuery(sortType);
+
+    currentPage = 1;
 
     handleSearchParamsChange(
       new URLSearchParams({
@@ -98,6 +99,8 @@ export const Phones: React.FC<Props> = ({
     setIsSortOpen(false);
 
     const qr = getQuery(e.currentTarget.innerHTML);
+
+    currentPage = 1;
 
     handleSearchParamsChange(
       new URLSearchParams({
@@ -118,16 +121,14 @@ export const Phones: React.FC<Props> = ({
 
   const handlePageClick = (e: { selected: number }) => {
     const newOffset = (e.selected * amount) % totalItems;
-    const pg = newOffset / amount + 1;
-
-    setCurrentPage(pg);
-
     const qr = getQuery(sortType);
+
+    currentPage = newOffset / amount + 1;
 
     const paramsObj = new URLSearchParams({
       qr,
       limit: String(amount),
-      pg: String(pg),
+      pg: String(currentPage),
     });
 
     handleSearchParamsChange(paramsObj);
