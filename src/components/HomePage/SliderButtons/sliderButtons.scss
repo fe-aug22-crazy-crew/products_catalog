@@ -46,4 +46,9 @@
 .swiper-button-disabled {
   opacity: 0.5;
   background-color: $c-white;
+
+  &:hover {
+    border-color: $c-icons;
+    cursor: initial;
+  }
 }
