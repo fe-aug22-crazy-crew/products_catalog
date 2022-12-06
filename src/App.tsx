@@ -84,7 +84,7 @@ function App() {
       dispatch(cartActions.load(cart));
     }
   }, []);
-  
+
   useEffect(() => {
     getNewestPhones();
     getHotPhones();
