@@ -11,15 +11,20 @@ import favourite from '../../images/selectedFavourite.svg';
 import { FavouriteIcon } from './FavouriteIcon';
 import { actions as cartActions } from '../../features/cart';
 import { CartItem } from '../../types/CartItem';
-/* eslint-disable no-shadow */
 
 type Props = {
   phone: Phone;
 };
 
 export const PhoneCard: React.FC<Props> = ({ phone }) => {
-  const { image, itemId, name, price, fullPrice, screen, capacity, ram }
-    = phone;
+  const {
+    image, itemId,
+    name: phoneName,
+    price, fullPrice,
+    screen: phoneScreen,
+    capacity,
+    ram,
+  } = phone;
 
   const dispatch = useDispatch();
   const favouritePhones: Phone[] = useAppSelector((state) => state.favourites);
@@ -64,7 +69,7 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
           alt={itemId}
         />
 
-        <p className="product__name">{name}</p>
+        <p className="product__name">{phoneName}</p>
       </Link>
 
       <div className="product__price-block">
@@ -79,7 +84,7 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
       <ul className="product__properties">
         <li className="product__property">
           <p className="product__property-name">Screen</p>
-          <p className="product__property-value">{screen}</p>
+          <p className="product__property-value">{phoneScreen}</p>
         </li>
 
         <li className="product__property">
