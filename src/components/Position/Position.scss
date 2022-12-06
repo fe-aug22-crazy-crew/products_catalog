@@ -1,0 +1,37 @@
+@import '../../styles/utils/variables.scss';
+@import '../../styles/utils/mixins/screenWidth.scss';
+@import '../../styles/utils/mixins/typography.scss';
+@import '../../styles/utils/mixins/helpers.scss';
+
+.position {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 40px;
+
+  &__icon {
+    height: 16px;
+    width: 16px;
+
+    &-home {
+      background: url(../../images/Home.svg) no-repeat center;
+    }
+
+    &-arrow {
+      background: url(../../images/arrow-right.svg) no-repeat center;
+    }
+  }
+
+  &__name {
+    @include resetLinkStyles;
+    @include smallTextTypography;
+    color: $c-primary;
+    line-height: 15px;
+
+    &--current {
+      color: $c-secondary;
+    }
+  }
+  
+}

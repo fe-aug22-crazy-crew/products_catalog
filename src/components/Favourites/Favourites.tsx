@@ -6,6 +6,7 @@ import { useAppSelector } from '../../app/hooks';
 import { Phone } from '../../types/Phone';
 import { PhoneCard } from '../PhoneCard';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { Position } from '../Position';
 
 export const Favourites: React.FC = () => {
   const favouritePhones: Phone[] = useAppSelector((state) => state.favourites);
@@ -13,6 +14,8 @@ export const Favourites: React.FC = () => {
   return (
     <main className="favourites">
       <div className="container">
+        <Position />
+
         <h1 className="favourites__title">Favourites</h1>
         {!favouritePhones.length ? (
           <p className="favourites__count">No items yet &#x1F622;</p>
