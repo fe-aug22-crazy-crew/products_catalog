@@ -6,10 +6,10 @@ import './Breadcrumbs.scss';
 
 export const Breadcrumbs: React.FC = () => {
   const position = window.location.pathname;
-  const steps = position
-    .slice(1)
-    .split('/');
-  const formatSteps = steps.map(word => word[0].toUpperCase() + word.slice(1));
+  const steps = position.slice(1).split('/');
+  const formatSteps = steps.map(
+    (word) => word[0].toUpperCase() + word.slice(1),
+  );
 
   return (
     <div className="position">
@@ -22,12 +22,9 @@ export const Breadcrumbs: React.FC = () => {
             <div className="position__icon position__icon-arrow"></div>
             <Link
               to={targetPath}
-              className={cn(
-                'position__name',
-                {
-                  'position__name--current': position === targetPath,
-                },
-              )}
+              className={cn('position__name', {
+                'position__name--current': position === targetPath,
+              })}
             >
               {formatSteps[i]}
             </Link>

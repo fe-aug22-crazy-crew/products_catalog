@@ -7,6 +7,7 @@ import { hotPhonesReducer } from '../features/hotPhones';
 
 import { cartReducer } from '../features/cart';
 import { tabletsReducer } from '../features/tablets';
+import { accessoriesReducer } from '../features/accessories';
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     hotPhones: hotPhonesReducer,
     cart: cartReducer,
     tablets: tabletsReducer,
+    accessories: accessoriesReducer,
   },
 });
 

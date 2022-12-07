@@ -1,2 +1,2 @@
 - [DEMO LINK](https://fe-aug22-crazy-crew.github.io/products_catalog)
-- [LAYOUT](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original?node-id=15875%3A36589&t=jMaozGJEbH1l8Akj-0)
+- [LAYOUT](<https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original?node-id=15875%3A36589&t=jMaozGJEbH1l8Akj-0>)

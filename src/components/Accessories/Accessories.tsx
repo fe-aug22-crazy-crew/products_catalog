@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../../app/hooks';
-import { actions as tabletsActions } from '../../features/tablets';
+import { actions as accessoriesActions } from '../../features/accessories';
 import { client } from '../../utils/fetchProducts';
 import { Loader } from '../Loader';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { CSSTransition } from 'react-transition-group';
 
-import './Tabltes.scss';
+import './Accessories.scss';
 
-export const Tabltes: React.FC = () => {
+export const Accessories: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
   const dispatch = useDispatch();
-  const tablets = useAppSelector((state) => state.tablets);
+  const accessories = useAppSelector((state) => state.accessories);
 
   const loadTablets = async() => {
     setIsLoading(true);
 
     try {
-      const data = await client.get('/tablets', 'GET', null);
+      const data = await client.get('/accessories', 'GET', null);
 
-      dispatch(tabletsActions.add(data));
+      dispatch(accessoriesActions.add(data));
     } catch {
       setIsError(true);
     } finally {
@@ -35,12 +35,12 @@ export const Tabltes: React.FC = () => {
   }, []);
 
   return (
-    <main className="tablets">
+    <main className="accessories">
       <div className="container">
-        <div className="tablets__content">
+        <div className="accessories__content">
           <Breadcrumbs />
-          <h1 className="tablets__title">Tablets</h1>
-          <ul className="tablets__list">
+          <h1 className="accessories__title">Accessories</h1>
+          <ul className="accessories__list">
             <CSSTransition
               in={isLoading}
               timeout={300}
@@ -51,11 +51,15 @@ export const Tabltes: React.FC = () => {
             </CSSTransition>
 
             {isError && (
-              <p className="tablets__message">Something went wrong &#x1F625;</p>
+              <p className="accessories__message">
+                Something went wrong &#x1F625;
+              </p>
             )}
 
-            {!isLoading && !tablets.length && (
-              <p className="tablets__message">No tablets yet &#x1F625;</p>
+            {!isLoading && !accessories.length && (
+              <p className="accessories__message">
+                No accessories yet &#x1F625;
+              </p>
             )}
           </ul>
         </div>

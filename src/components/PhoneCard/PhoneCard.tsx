@@ -18,9 +18,11 @@ type Props = {
 
 export const PhoneCard: React.FC<Props> = ({ phone }) => {
   const {
-    image, itemId,
+    image,
+    itemId,
     name: phoneName,
-    price, fullPrice,
+    price,
+    fullPrice,
     screen: phoneScreen,
     capacity,
     ram,
