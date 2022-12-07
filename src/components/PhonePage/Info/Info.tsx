@@ -5,7 +5,7 @@ import './Info.scss';
 
 type Props = {
   phone: PhoneData;
-}
+};
 
 export const Info: React.FC<Props> = ({ phone }) => {
   const {
@@ -30,27 +30,19 @@ export const Info: React.FC<Props> = ({ phone }) => {
         <div className="info__paragraph">
           <h4 className="info__subtitle">{description[0].title}</h4>
 
-          <p className="info__text">
-            {description[0].text}
-          </p>
+          <p className="info__text">{description[0].text}</p>
         </div>
 
         <div className="info__paragraph">
           <h4 className="info__subtitle">{description[1].title}</h4>
 
-          <p className="info__text">
-            {description[1].text}
-          </p>
+          <p className="info__text">{description[1].text}</p>
         </div>
 
         <div className="info__paragraph">
-          <h4 className="info__subtitle">
-            {description[2].title}
-          </h4>
+          <h4 className="info__subtitle">{description[2].title}</h4>
 
-          <p className="info__text">
-            {description[1].text}
-          </p>
+          <p className="info__text">{description[1].text}</p>
         </div>
       </article>
 

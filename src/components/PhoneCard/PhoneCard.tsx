@@ -57,7 +57,7 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
 
   return (
     <div className="product">
-      <Link to={itemId} >
+      <Link to={itemId}>
         <img
           className="product__image"
           src={`https://teal-tiramisu-13c82d.netlify.app/${image}`}

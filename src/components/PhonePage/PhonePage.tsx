@@ -8,12 +8,11 @@ export const PhonePage: React.FC = () => {
   const [phone, setPhone] = useState<null | PhoneData>(null);
 
   const getPhone = async() => {
-    const data = await client
-      .get(
-        'phones/' + location.pathname.split('/').slice(-1).join(''),
-        'GET',
-        null,
-      );
+    const data = await client.get(
+      'phones/' + location.pathname.split('/').slice(-1).join(''),
+      'GET',
+      null,
+    );
 
     setPhone(data);
   };

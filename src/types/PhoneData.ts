@@ -1,7 +1,7 @@
 export type Description = {
   title: string;
-  text: string[]
-}
+  text: string[];
+};
 
 export type PhoneData = {
   capacityAvailable: string[];
@@ -21,4 +21,4 @@ export type PhoneData = {
   ram: string;
   camera: string;
   zoom: string;
-}
+};
