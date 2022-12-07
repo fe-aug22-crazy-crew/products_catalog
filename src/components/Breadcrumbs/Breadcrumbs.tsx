@@ -7,19 +7,17 @@ import './Breadcrumbs.scss';
 export const Breadcrumbs: React.FC = () => {
   const position = window.location.pathname;
   const steps = position.slice(1).split('/');
-  const formatSteps = steps.map(
-    (text) => {
-      const words = text.split('-');
+  const formatSteps = steps.map((text) => {
+    const words = text.split('-');
 
-      if (words.length > 1) {
-        return words
-          .map(word => word[0].toUpperCase() + word.slice(1))
-          .join(' ');
-      } else {
-        return text[0].toUpperCase() + text.slice(1);
-      }
-    },
-  );
+    if (words.length > 1) {
+      return words
+        .map((word) => word[0].toUpperCase() + word.slice(1))
+        .join(' ');
+    } else {
+      return text[0].toUpperCase() + text.slice(1);
+    }
+  });
 
   return (
     <div className="breadcrumbs">

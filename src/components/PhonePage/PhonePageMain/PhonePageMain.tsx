@@ -159,8 +159,8 @@ export const PhonePageMain: React.FC<Props> = ({ phone }) => {
                     }}
                     to={distPath}
                     className={cn('phonePageMain__capacity-button', {
-                      'phonePageMain__capacity-button--active': capacity
-                        === phone.capacity,
+                      'phonePageMain__capacity-button--active':
+                        capacity === phone.capacity,
                     })}
                     type="button"
                   >
@@ -230,28 +230,20 @@ export const PhonePageMain: React.FC<Props> = ({ phone }) => {
                 </p>
               </div>
               <div className="phonePageMain__specs-category">
-                <p className="phonePageMain__specs-category-name">
-                  Resolution
-                </p>
+                <p className="phonePageMain__specs-category-name">Resolution</p>
                 <p className="phonePageMain__specs-category-value">
                   {resolution}
                 </p>
               </div>
               <div className="phonePageMain__specs-category">
-                <p className="phonePageMain__specs-category-name">
-                  Processor
-                </p>
+                <p className="phonePageMain__specs-category-name">Processor</p>
                 <p className="phonePageMain__specs-category-value">
                   {processor}
                 </p>
               </div>
               <div className="phonePageMain__specs-category">
-                <p className="phonePageMain__specs-category-name">
-                  RAM
-                </p>
-                <p className="phonePageMain__specs-category-value">
-                  {ram}
-                </p>
+                <p className="phonePageMain__specs-category-name">RAM</p>
+                <p className="phonePageMain__specs-category-value">{ram}</p>
               </div>
             </div>
           </div>

@@ -26,7 +26,7 @@ export const PhonePage: React.FC = () => {
     return (
       <main className="container">
         <Breadcrumbs />
-        <PhonePageMain phone={phone}/>
+        <PhonePageMain phone={phone} />
         <Info phone={phone} />
       </main>
     );
