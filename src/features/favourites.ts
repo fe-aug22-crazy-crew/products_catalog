@@ -30,7 +30,9 @@ export const favouriteReducer = (
   case 'favourite/ADD':
     return [...favourites, action.payload];
   case 'favourite/REMOVE':
-    return favourites.filter((phone) => phone.id !== action.payload.id);
+    return favourites.filter(
+      (phone) => phone.itemId !== action.payload.itemId,
+    );
   case 'favourite/LOAD':
     return [...action.payload];
 

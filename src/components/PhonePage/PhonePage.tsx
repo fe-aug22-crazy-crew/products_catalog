@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { Info } from './Info/Info';
-import { client } from '../../utils/fetchPhones';
+import { client } from '../../utils/fetchProducts';
 import { PhoneData } from '../../types/PhoneData';
 
 export const PhonePage: React.FC = () => {
@@ -25,6 +25,7 @@ export const PhonePage: React.FC = () => {
     return (
       <main>
         <div className="container">
+          <Breadcrumbs />
           <Info phone={phone} />
         </div>
       </main>

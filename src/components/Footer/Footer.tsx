@@ -10,7 +10,7 @@ export const Footer: React.FC = React.memo(() => (
   <footer className="page__footer footer">
     <div className="container">
       <div className="footer__content">
-        <Link to="/index.html" className="logo footer__logo">
+        <Link to="/home" className="logo footer__logo">
           <img src={logo} alt="logo Nice Gadgetes" className="logo__img" />
         </Link>
 
