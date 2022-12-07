@@ -16,15 +16,9 @@ export const HomePage: React.FC = () => {
     <main className="home_page">
       <h1 className="home_page__title">Welcome to Nice Gadgets store!</h1>
       <Promo />
-      <Slider
-        phones={newestPhones}
-        title={'Brand new models'}
-      />
+      <Slider phones={newestPhones} title={'Brand new models'} />
       <Categories />
-      <Slider
-        phones={hotPhones}
-        title={'Hot prices'}
-      />
+      <Slider phones={hotPhones} title={'Hot prices'} />
     </main>
   );
 };

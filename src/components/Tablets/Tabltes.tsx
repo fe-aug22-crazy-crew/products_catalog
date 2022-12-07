@@ -14,7 +14,7 @@ export const Tabltes: React.FC = () => {
   const [isError, setIsError] = useState(false);
 
   const dispatch = useDispatch();
-  const tablets = useAppSelector(state => state.tablets);
+  const tablets = useAppSelector((state) => state.tablets);
 
   const loadTablets = async() => {
     setIsLoading(true);
@@ -51,9 +51,7 @@ export const Tabltes: React.FC = () => {
             </CSSTransition>
 
             {isError && (
-              <p className="tablets__message">
-                Something went wrong &#x1F625;
-              </p>
+              <p className="tablets__message">Something went wrong &#x1F625;</p>
             )}
 
             {!isLoading && !tablets.length && (
