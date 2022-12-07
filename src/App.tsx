@@ -27,6 +27,7 @@ import { Cart } from './components/Cart';
 import { actions as cartActions } from './features/cart';
 import { CartItem } from './types/CartItem';
 import { PhonePage } from './components/PhonePage/PhonePage';
+import { Tabltes } from './components/Tablets';
 
 function App() {
   const dispatch = useDispatch();
@@ -112,6 +113,7 @@ function App() {
             />
           }
         />
+        <Route path="tablets" element={<Tabltes />} />
         <Route path="favourites" element={<Favourites />} />
         <Route path="cart" element={<Cart />} />
         <Route path="*" element={<NotFoundPage />} />

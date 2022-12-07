@@ -89,12 +89,18 @@
   @include resetLinkStyles;
   @include uppercaseTypography;
 
+  transition: color 0.3s;
+
   @include onPhone {
     display: none;
   }
 
   @include onDesktop {
     height: 64px;
+  }
+
+  &:hover {
+    color: $c-primary;
   }
 }
 

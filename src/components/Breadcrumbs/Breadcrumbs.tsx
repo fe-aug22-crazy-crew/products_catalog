@@ -2,9 +2,9 @@ import cn from 'classnames';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './Position.scss';
+import './Breadcrumbs.scss';
 
-export const Position: React.FC = () => {
+export const Breadcrumbs: React.FC = () => {
   const position = window.location.pathname;
   const steps = position
     .slice(1)

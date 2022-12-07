@@ -10,7 +10,7 @@ import arrowNext from '../../images/arrow-next.svg';
 import arrowPrev from '../../images/arrow-prev.svg';
 import { Select } from './Select/Select';
 import cl from 'classnames';
-import { Position } from '../Position';
+import { Breadcrumbs } from '../Breadcrumbs';
 
 type Props = {
   handleSearchParamsChange: (newParams: URLSearchParams) => void;
@@ -149,7 +149,7 @@ export const Phones: React.FC<Props> = ({
   return (
     <main className="phones">
       <div className="container">
-        <Position />
+        <Breadcrumbs />
 
         <h2 className="phones__title">Mobile phones</h2>
         <p className="phones__models-count">{`${totalItems} models`}</p>
