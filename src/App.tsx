@@ -103,23 +103,31 @@ function App() {
       <Routes>
         <Route path="products_catalog" element={<HomePage />} />
         <Route path="/" element={<HomePage />} />
-        <Route path="home" element={<HomePage />} />
-        <Route
-          path="phones"
-          element={
-            <Phones
-              handleSearchParamsChange={handleSearchParamsChange}
-              totalItems={totalItems}
-              searchParams={searchParams}
-            />
-          }
-        />
+
+        <Route path="home">
+          <Route index element={<HomePage />} />
+          <Route path=":itemId" element={<PhonePage />} />
+        </Route>
+
+        <Route path="phones">
+          <Route
+            index
+            element={
+              <Phones
+                handleSearchParamsChange={handleSearchParamsChange}
+                totalItems={totalItems}
+                searchParams={searchParams}
+              />
+            }
+          />
+          <Route path=":itemId" element={<PhonePage />} />
+        </Route>
+
         <Route path="accessories" element={<Accessories />} />
         <Route path="tablets" element={<Tabltes />} />
         <Route path="favourites" element={<Favourites />} />
         <Route path="cart" element={<Cart />} />
         <Route path="*" element={<NotFoundPage />} />
-        <Route path="phone_page" element={<PhonePage />} />
       </Routes>
 
       <Footer />
