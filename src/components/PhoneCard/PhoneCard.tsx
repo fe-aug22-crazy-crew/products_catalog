@@ -32,11 +32,15 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
   const favouritePhones: Phone[] = useAppSelector((state) => state.favourites);
   const cart: CartItem[] = useAppSelector((state) => state.cart);
 
-  const isSelected = favouritePhones.some((product) => product.id === phone.id);
-  const isItInCart = cart.some((itemInfo) => itemInfo.product.id === phone.id);
+  const isFavourite = favouritePhones.some((product) => (
+    product.itemId === phone.itemId
+  ));
+  const isItInCart = cart.some((itemInfo) => (
+    itemInfo.product.itemId === phone.itemId
+  ));
 
   const handleAddingToFavourites = (selectedPhone: Phone) => {
-    if (!isSelected) {
+    if (!isFavourite) {
       dispatch(favouritesActions.add(selectedPhone));
     } else {
       dispatch(favouritesActions.remove(selectedPhone));
@@ -124,13 +128,13 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
           onClick={() => handleAddingToFavourites(phone)}
         >
           <FavouriteIcon
-            condition={!isSelected}
+            condition={!isFavourite}
             image={notFavourite}
             alt={'notFavorite'}
           />
 
           <FavouriteIcon
-            condition={isSelected}
+            condition={isFavourite}
             image={favourite}
             alt={'favorite'}
           />

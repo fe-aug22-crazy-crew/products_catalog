@@ -3,7 +3,7 @@
 @import '../../styles/utils/mixins/typography.scss';
 @import '../../styles/utils/mixins/helpers.scss';
 
-.position {
+.breadcrumbs {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -24,6 +24,9 @@
   }
 
   &__name {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
     @include resetLinkStyles;
     @include smallTextTypography;
     color: $c-primary;
