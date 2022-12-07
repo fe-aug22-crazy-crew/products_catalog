@@ -6,7 +6,7 @@ import { useAppSelector } from '../../app/hooks';
 import { Phone } from '../../types/Phone';
 import { PhoneCard } from '../PhoneCard';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { Position } from '../Position';
+import { Breadcrumbs } from '../Breadcrumbs';
 
 export const Favourites: React.FC = () => {
   const favouritePhones: Phone[] = useAppSelector((state) => state.favourites);
@@ -14,7 +14,7 @@ export const Favourites: React.FC = () => {
   return (
     <main className="favourites">
       <div className="container">
-        <Position />
+        <Breadcrumbs />
 
         <h1 className="favourites__title">Favourites</h1>
         {!favouritePhones.length ? (
