@@ -3,7 +3,7 @@ import { Info } from './Info/Info';
 import { client } from '../../utils/fetchProducts';
 import { PhoneData } from '../../types/PhoneData';
 import { PhonePageMain } from './PhonePageMain';
-// import { Position } from '../Position';
+import { Breadcrumbs } from '../Breadcrumbs';
 
 export const PhonePage: React.FC = () => {
   const [phone, setPhone] = useState<null | PhoneData>(null);
@@ -25,9 +25,9 @@ export const PhonePage: React.FC = () => {
   if (phone) {
     return (
       <main className="container">
-          <Breadcrumbs />
-          <PhonePageMain phone={phone}/>
-          <Info phone={phone} />
+        <Breadcrumbs />
+        <PhonePageMain phone={phone}/>
+        <Info phone={phone} />
       </main>
     );
   } else {
