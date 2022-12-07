@@ -59,13 +59,13 @@ export const cartReducer = (cart: CartItem[] = [], action: Action) => {
   case 'cart/ADD':
     return [...cart, action.payload];
   case 'cart/REMOVE':
-    return cart.filter((state) => state.product.id !== action.payload.id);
+    return cart.filter((state) => state.product.itemId !== action.payload.itemId);
   case 'cart/LOAD':
     return [...action.payload];
 
   case 'cart/PLUSONE':
     return cart.map((item) => {
-      if (item.product.id === action.payload.id) {
+      if (item.product.itemId === action.payload.itemId) {
         return {
           ...item,
           count: item.count + 1,
@@ -77,7 +77,7 @@ export const cartReducer = (cart: CartItem[] = [], action: Action) => {
 
   case 'cart/MINUSONE':
     return cart.map((item) => {
-      if (item.product.id === action.payload.id) {
+      if (item.product.itemId === action.payload.itemId) {
         return {
           ...item,
           count: item.count - 1,

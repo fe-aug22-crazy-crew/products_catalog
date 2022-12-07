@@ -25,9 +25,9 @@ export const PhonePage: React.FC = () => {
   if (phone) {
     return (
       <main className="container">
-        {/* <Position /> */}
-        <PhonePageMain phone={phone}/>
-        <Info phone={phone} />
+          <Breadcrumbs />
+          <PhonePageMain phone={phone}/>
+          <Info phone={phone} />
       </main>
     );
   } else {
