@@ -11,25 +11,37 @@ import favourite from '../../images/selectedFavourite.svg';
 import { FavouriteIcon } from './FavouriteIcon';
 import { actions as cartActions } from '../../features/cart';
 import { CartItem } from '../../types/CartItem';
-/* eslint-disable no-shadow */
 
 type Props = {
   phone: Phone;
 };
 
 export const PhoneCard: React.FC<Props> = ({ phone }) => {
-  const { image, itemId, name, price, fullPrice, screen, capacity, ram }
-    = phone;
+  const {
+    image,
+    category,
+    itemId,
+    name: phoneName,
+    price,
+    fullPrice,
+    screen: phoneScreen,
+    capacity,
+    ram,
+  } = phone;
 
   const dispatch = useDispatch();
   const favouritePhones: Phone[] = useAppSelector((state) => state.favourites);
   const cart: CartItem[] = useAppSelector((state) => state.cart);
 
-  const isSelected = favouritePhones.some((product) => product.id === phone.id);
-  const isItInCart = cart.some((itemInfo) => itemInfo.product.id === phone.id);
+  const isFavourite = favouritePhones.some((product) => (
+    product.itemId === phone.itemId
+  ));
+  const isItInCart = cart.some((itemInfo) => (
+    itemInfo.product.itemId === phone.itemId
+  ));
 
   const handleAddingToFavourites = (selectedPhone: Phone) => {
-    if (!isSelected) {
+    if (!isFavourite) {
       dispatch(favouritesActions.add(selectedPhone));
     } else {
       dispatch(favouritesActions.remove(selectedPhone));
@@ -57,14 +69,14 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
 
   return (
     <div className="product">
-      <Link to="/phone_page">
+      <Link to={`/${category.name}/${itemId}`}>
         <img
           className="product__image"
           src={`https://teal-tiramisu-13c82d.netlify.app/${image}`}
           alt={itemId}
         />
 
-        <p className="product__name">{name}</p>
+        <p className="product__name">{phoneName}</p>
       </Link>
 
       <div className="product__price-block">
@@ -79,7 +91,7 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
       <ul className="product__properties">
         <li className="product__property">
           <p className="product__property-name">Screen</p>
-          <p className="product__property-value">{screen}</p>
+          <p className="product__property-value">{phoneScreen}</p>
         </li>
 
         <li className="product__property">
@@ -117,13 +129,13 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
           onClick={() => handleAddingToFavourites(phone)}
         >
           <FavouriteIcon
-            condition={!isSelected}
+            condition={!isFavourite}
             image={notFavourite}
             alt={'notFavorite'}
           />
 
           <FavouriteIcon
-            condition={isSelected}
+            condition={isFavourite}
             image={favourite}
             alt={'favorite'}
           />

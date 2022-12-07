@@ -1,36 +1,57 @@
 import React, { useEffect, useState } from 'react';
-import { Slider } from '../Slider';
-import { Info } from './Info/Info';
 
-import { client } from '../../utils/fetchPhones';
+import { Slider } from '../Slider';
+
+import { Info } from './Info/Info';
+import { client } from '../../utils/fetchProducts';
+import { PhoneData } from '../../types/PhoneData';
+import { PhonePageMain } from './PhonePageMain';
+import { Breadcrumbs } from '../Breadcrumbs';
+import { Phone } from '../../types/Phone';
 
 export const PhonePage: React.FC = () => {
-  const [recPhones, setRecPhones] = useState([]);
+  const [phone, setPhone] = useState<null | PhoneData>(null);
+  const [recommended, setRecommended] = useState<Phone[]>([]);
 
-  const getRecPhones = async() => {
+  const getPhone = async() => {
     const data = await client.get(
-      'phones/'
-      + location.pathname.split('/').slice(-1).join('') + '/recommended',
+      'phones/' + location.pathname.split('/').slice(-1).join(''),
       'GET',
       null,
     );
 
-    setRecPhones(data);
+    setPhone(data);
+  };
+
+  const getRecommended = async() => {
+    const data = await client.get(
+      'phones/' + location.pathname.split('/').slice(-1).join('')
+        + '/recommended',
+      'GET',
+      null,
+    );
+
+    setRecommended(data);
   };
 
   useEffect(() => {
-    getRecPhones();
+    getPhone();
+    getRecommended();
   }, []);
 
-  return (
-    <main>
-      <div className="container">
-        <Info />
+  if (phone) {
+    return (
+      <main className="container">
+        <Breadcrumbs />
+        <PhonePageMain phone={phone}/>
+        <Info phone={phone} />
         <Slider
-          phones={recPhones}
           title={'You may also like'}
+          phones={recommended}
         />
-      </div>
-    </main>
-  );
+      </main>
+    );
+  } else {
+    return null;
+  }
 };

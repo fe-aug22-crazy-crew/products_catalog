@@ -19,10 +19,7 @@ type Props = {
   title: string;
 };
 
-export const Slider: React.FC<Props> = ({
-  phones,
-  title,
-}) => {
+export const Slider: React.FC<Props> = ({ phones, title }) => {
   const navPrevButton = useRef<HTMLButtonElement>(null);
   const navNextButton = useRef<HTMLButtonElement>(null);
 
@@ -46,14 +43,12 @@ export const Slider: React.FC<Props> = ({
             ref={navPrevButton}
             type="button"
             className="button-box__button-prev"
-          >
-          </button>
+          ></button>
           <button
             ref={navNextButton}
             type="button"
             className="button-box__button-next"
-          >
-          </button>
+          ></button>
         </div>
       </div>
       <section className="slider">

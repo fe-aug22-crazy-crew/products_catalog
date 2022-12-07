@@ -9,7 +9,7 @@ import { HomePage } from './components/HomePage/HomePage';
 import { Phones } from './components/Phones/';
 import { Header } from './components/Header/';
 
-import { client } from './utils/fetchPhones';
+import { client } from './utils/fetchProducts';
 import { useDispatch } from 'react-redux';
 import { actions as phonesActions } from './features/phones';
 
@@ -27,6 +27,8 @@ import { Cart } from './components/Cart';
 import { actions as cartActions } from './features/cart';
 import { CartItem } from './types/CartItem';
 import { PhonePage } from './components/PhonePage/PhonePage';
+import { Tabltes } from './components/Tablets';
+import { Accessories } from './components/Accessories';
 
 function App() {
   const dispatch = useDispatch();
@@ -101,21 +103,32 @@ function App() {
       <Routes>
         <Route path="products_catalog" element={<HomePage />} />
         <Route path="/" element={<HomePage />} />
-        <Route path="home" element={<HomePage />} />
-        <Route
-          path="phones"
-          element={
-            <Phones
-              handleSearchParamsChange={handleSearchParamsChange}
-              totalItems={totalItems}
-              searchParams={searchParams}
-            />
-          }
-        />
+
+        <Route path="home">
+          <Route index element={<HomePage />} />
+          <Route path=":itemId" element={<PhonePage />} />
+        </Route>
+
+        <Route path="phones">
+          <Route
+            index
+            element={
+              <Phones
+                handleSearchParamsChange={handleSearchParamsChange}
+                totalItems={totalItems}
+                searchParams={searchParams}
+              />
+            }
+          />
+          <Route path=":itemId" element={<PhonePage />} />
+        </Route>
+        <Route path="phones/:id" element={<PhonePage />} />
+
+        <Route path="accessories" element={<Accessories />} />
+        <Route path="tablets" element={<Tabltes />} />
         <Route path="favourites" element={<Favourites />} />
         <Route path="cart" element={<Cart />} />
         <Route path="*" element={<NotFoundPage />} />
-        <Route path="phone_page" element={<PhonePage />} />
       </Routes>
 
       <Footer />

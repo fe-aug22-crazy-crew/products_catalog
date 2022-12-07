@@ -1,0 +1,259 @@
+@import '../../../styles/utils/mixins/typography.scss';
+@import '../../../styles/utils/variables.scss';
+
+.phonePageMain {
+  margin-bottom: 56px;
+
+  @include onTablet {
+    margin-bottom: 64px;
+  }
+
+  @include onDesktop {
+    margin-bottom: 81px;
+  }
+
+  &__link-back {
+    display: inline-block;
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 0;
+    margin-bottom: 16px;
+
+    border: none;
+    background-color: $c-white;
+
+    cursor: pointer;
+
+    @include smallTextTypography;
+    color: $c-secondary;
+  }
+
+  &__title {
+    @include h2Typography;
+
+    margin-bottom: 40px;
+  }
+
+  &__main-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    gap: 40px;
+
+    @include onTablet {
+      flex-direction: row;
+    }
+
+    @include onDesktop {
+      gap: 65px;
+    }
+  }
+
+  &__photos-section {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 23px;
+
+    width: 100%;
+
+    @include onTablet {
+      width: 100%;
+      flex-direction: row;
+    }
+  }
+
+  &__small-photos {
+    display: flex;
+    flex-direction: row;
+    gap: 23px;
+
+    @include onTablet {
+      flex-direction: column;
+    }
+  }
+
+  &__small-photo-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 7px;
+    border: 1px solid black;
+
+    cursor: pointer;
+  }
+
+  &__small-photo {
+    height: 60px;
+    max-width: 60px;
+  }
+
+  &__photo-box {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    max-height: 274px;
+
+    @include onDesktop {
+      max-height: 442px;
+    }
+  }
+
+  &__big-photo {
+    height: auto;
+    width: 100%;
+
+    object-fit: contain;
+  }
+
+  &__info-section {
+    width: 100%;
+
+    @include onTablet {
+      width: 100%;
+    }
+  }
+
+  &__subtitle-box {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__container {
+    @include onDesktop {
+      width: 60%;
+    }
+  }
+
+  &__selection {
+    margin-bottom: 8px;
+
+    @include smallTextTypography;
+    color: $c-secondary;
+  }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+
+    margin-bottom: 24px;
+  }
+
+  &__color-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 32px;
+    width: 32px;
+
+    border-radius: 50%;
+    border: 1px solid #e2e6e9;
+
+    &:hover {
+      border-color: #b4bdc3;
+      cursor: pointer;
+    }
+
+    &-inner {
+      height: 28px;
+      width: 28px;
+
+      border-radius: 50%;
+    }
+  }
+
+  &__line {
+    height: 1px;
+    width: 100%;
+
+    margin: 0 0 24px;
+
+    border: none;
+    background-color: #e2e6e9;
+
+    &--bottom {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__capacity {
+    display: flex;
+    gap: 8px;
+
+    margin-bottom: 24px;
+
+    &-button {
+      padding: 7px 8px;
+      background-color: $c-white;
+      border: 1px solid #b4bdc3;
+
+      color: $c-primary;
+
+      cursor: pointer;
+
+      &--active {
+        color: $c-white;
+        background-color: $c-primary;
+      }
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 16px;
+
+    &-regular {
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 28px;
+      text-decoration-line: line-through;
+
+      color: $c-secondary;
+    }
+
+    &-discount {
+      @include h2Typography;
+    }
+  }
+
+  &__options {
+    margin-bottom: 32px;
+  }
+
+  &__specs {
+    &-category {
+      display: flex;
+      justify-content: space-between;
+
+      &-name {
+        @include smallTextTypography;
+
+        color: $c-secondary;
+      }
+
+      &-value {
+        @include smallTextTypography;
+      }
+    }
+
+    &-category:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+}
+
+.active {
+  border-color: #313237;
+}

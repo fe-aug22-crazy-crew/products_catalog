@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import SwiperCore, { Navigation, Pagination } from 'swiper';
+import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ImageCreator } from './ImageCreator';
 
@@ -15,8 +15,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 export const Promo: React.FC = () => {
-  /* eslint-disable-next-line no-console */
-
   const navPrevButton = useRef<HTMLButtonElement>(null);
   const navNextButton = useRef<HTMLButtonElement>(null);
   const paginationLabel = useRef<HTMLHeadingElement>(null);
@@ -49,9 +47,14 @@ export const Promo: React.FC = () => {
         <img src={Prev} alt="prev promo slide button" />
       </button>
       <Swiper
-        modules={[Navigation, Pagination]}
+        modules={[Navigation, Pagination, Autoplay]}
         slidesPerView={1}
         loop={true}
+        autoplay={{
+          delay: 4000,
+          pauseOnMouseEnter: true,
+        }}
+        speed={2000}
         onBeforeInit={onBeforeInit}
         pagination={{ clickable: true }}
         className="promo__slider"

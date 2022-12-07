@@ -1,0 +1,41 @@
+@import '../../styles/utils/variables.scss';
+@import '../../styles/utils/mixins/screenWidth.scss';
+@import '../../styles/utils/mixins/helpers.scss';
+@import '../../styles/utils/mixins/typography.scss';
+
+.accessories {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    @include mainHeight;
+    color: $c-primary;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+
+    @include onTablet {
+      margin-bottom: 32px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+
+    width: 100%;
+    min-height: 180px;
+  }
+
+  &__message {
+    @include h2Typography;
+  }
+}
