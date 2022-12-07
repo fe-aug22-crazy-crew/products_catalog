@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../../app/hooks';
 import { actions as tabletsActions } from '../../features/tablets';
-import { client } from '../../utils/fetchPhones';
+import { client } from '../../utils/fetchProducts';
 import { Loader } from '../Loader';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { CSSTransition } from 'react-transition-group';
