@@ -122,6 +122,7 @@ function App() {
           />
           <Route path=":itemId" element={<PhonePage />} />
         </Route>
+        <Route path="phones/:id" element={<PhonePage />} />
 
         <Route path="accessories" element={<Accessories />} />
         <Route path="tablets" element={<Tabltes />} />
