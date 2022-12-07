@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Breadcrumbs } from '../Breadcrumbs';
 import { Info } from './Info/Info';
 import { client } from '../../utils/fetchProducts';
 import { PhoneData } from '../../types/PhoneData';
+import { PhonePageMain } from './PhonePageMain';
+// import { Position } from '../Position';
 
 export const PhonePage: React.FC = () => {
   const [phone, setPhone] = useState<null | PhoneData>(null);
@@ -23,11 +24,10 @@ export const PhonePage: React.FC = () => {
 
   if (phone) {
     return (
-      <main>
-        <div className="container">
+      <main className="container">
           <Breadcrumbs />
+          <PhonePageMain phone={phone}/>
           <Info phone={phone} />
-        </div>
       </main>
     );
   } else {
