@@ -1,3 +1,2 @@
-[DEMO LINK](https://fe-aug22-crazy-crew.github.io/products_catalog)
-
-[![Project build](https://github.com/fe-aug22-crazy-crew/products_catalog/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/fe-aug22-crazy-crew/products_catalog/actions/workflows/main.yml)
+- [DEMO LINK](https://fe-aug22-crazy-crew.github.io/products_catalog)
+- [LAYOUT](<https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original?node-id=15875%3A36589&t=jMaozGJEbH1l8Akj-0>)

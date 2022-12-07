@@ -1,5 +1,5 @@
-/* eslint-disable no-shadow */
 import React, { useEffect, useState } from 'react';
+import { Breadcrumbs } from '../Breadcrumbs';
 import { Info } from './Info/Info';
 import { client } from '../../utils/fetchPhones';
 import { PhoneData } from '../../types/PhoneData';

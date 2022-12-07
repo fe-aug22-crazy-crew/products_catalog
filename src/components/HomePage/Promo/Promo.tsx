@@ -15,8 +15,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 export const Promo: React.FC = () => {
-  /* eslint-disable-next-line no-console */
-
   const navPrevButton = useRef<HTMLButtonElement>(null);
   const navNextButton = useRef<HTMLButtonElement>(null);
   const paginationLabel = useRef<HTMLHeadingElement>(null);
