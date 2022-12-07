@@ -92,7 +92,9 @@
 
   &__small-photo {
     height: 60px;
-    max-width: 60px;
+    width: 60px;
+
+    object-fit: contain;
   }
 
   &__photo-box {
@@ -229,6 +231,7 @@
   }
 
   &__options {
+    gap: 8px;
     margin-bottom: 32px;
   }
 

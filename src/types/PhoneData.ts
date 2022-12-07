@@ -21,4 +21,5 @@ export type PhoneData = {
   ram: string;
   camera: string;
   zoom: string;
+  id: string;
 };

@@ -7,6 +7,7 @@ import { Breadcrumbs } from '../Breadcrumbs';
 
 export const PhonePage: React.FC = () => {
   const [phone, setPhone] = useState<null | PhoneData>(null);
+  const [update, setUpdate] = useState(1);
 
   const getPhone = async() => {
     const data = await client.get(
@@ -20,13 +21,13 @@ export const PhonePage: React.FC = () => {
 
   useEffect(() => {
     getPhone();
-  }, []);
+  }, [update]);
 
   if (phone) {
     return (
       <main className="container">
         <Breadcrumbs />
-        <PhonePageMain phone={phone}/>
+        <PhonePageMain phone={phone} setUpdate={setUpdate} />
         <Info phone={phone} />
       </main>
     );

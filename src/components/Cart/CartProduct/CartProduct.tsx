@@ -50,7 +50,10 @@ export const CartProduct: React.FC<Props> = ({ cartItemInfo }) => {
         alt={name}
       />
 
-      <Link to={`${category}/:${product.id}`} className="cart-item__title">
+      <Link
+        to={`/${category.name}/${product.itemId}`}
+        className="cart-item__title"
+      >
         {name}
       </Link>
 
