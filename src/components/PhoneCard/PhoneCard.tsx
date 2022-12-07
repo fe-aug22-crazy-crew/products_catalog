@@ -18,11 +18,14 @@ type Props = {
 
 export const PhoneCard: React.FC<Props> = ({ phone }) => {
   const {
-    image, itemId,
+    image,
+    itemId,
     name: phoneName,
-    price, fullPrice,
+    price,
+    fullPrice,
     screen: phoneScreen,
     capacity,
+    category,
     ram,
   } = phone;
 
@@ -62,7 +65,7 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
 
   return (
     <div className="product">
-      <Link to="/phone_page">
+      <Link to={`/${category.name}/${itemId}`}>
         <img
           className="product__image"
           src={`https://teal-tiramisu-13c82d.netlify.app/${image}`}

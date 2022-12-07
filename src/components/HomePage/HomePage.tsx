@@ -7,6 +7,7 @@ import './homePage.scss';
 import { useAppSelector } from '../../app/hooks';
 
 import { Categories } from './Categories';
+import { Loader } from '../Loader';
 
 export const HomePage: React.FC = () => {
   const newestPhones = useAppSelector((state) => state.newestPhones);
@@ -16,15 +17,16 @@ export const HomePage: React.FC = () => {
     <main className="home_page">
       <h1 className="home_page__title">Welcome to Nice Gadgets store!</h1>
       <Promo />
-      <Slider
-        phones={newestPhones}
-        title={'Brand new models'}
-      />
+
+      {(newestPhones.length !== 0 && (
+        <Slider title={'Brand new models'} phones={newestPhones} />
+      )) || <Loader />}
+
       <Categories />
-      <Slider
-        phones={hotPhones}
-        title={'Hot prices'}
-      />
+
+      {(hotPhones.length !== 0 && (
+        <Slider title={'Hot prices'} phones={hotPhones} />
+      )) || <Loader />}
     </main>
   );
 };
