@@ -7,8 +7,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import cn from 'classnames';
 
 import { FavouriteIcon } from '../../PhoneCard/FavouriteIcon';
-import notFavourite from '../../../images/favourites.svg';
-import favourite from '../../../images/selectedFavourite.svg';
+// import notFavourite from '../../../images/favourites.svg';
+// import favourite from '../../../images/selectedFavourite.svg';
 import { PhoneData } from '../../../types/PhoneData';
 
 import { useDispatch } from 'react-redux';
@@ -286,13 +286,13 @@ export const PhonePageMain: React.FC<Props> = ({ phone, setUpdate }) => {
               >
                 <FavouriteIcon
                   condition={!isSelected}
-                  image={notFavourite}
+                  image={'/images/favourites.svg'}
                   alt={'notFavorite'}
                 />
 
                 <FavouriteIcon
                   condition={isSelected}
-                  image={favourite}
+                  image={'/images/selectedFavourite.svg'}
                   alt={'favorite'}
                 />
               </button>
