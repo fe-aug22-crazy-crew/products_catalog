@@ -100,7 +100,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="products_catalog" element={<HomePage />} />
-        <Route path="/" element={<HomePage />} />
+        <Route path="" element={<HomePage />} />
 
         <Route path="home">
           <Route index element={<HomePage />} />
