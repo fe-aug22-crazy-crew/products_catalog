@@ -286,13 +286,13 @@ export const PhonePageMain: React.FC<Props> = ({ phone, setUpdate }) => {
               >
                 <FavouriteIcon
                   condition={!isSelected}
-                  image={'/images/favourites.svg'}
+                  image={'images/favourites.svg'}
                   alt={'notFavorite'}
                 />
 
                 <FavouriteIcon
                   condition={isSelected}
-                  image={'/images/selectedFavourite.svg'}
+                  image={'images/selectedFavourite.svg'}
                   alt={'favorite'}
                 />
               </button>
