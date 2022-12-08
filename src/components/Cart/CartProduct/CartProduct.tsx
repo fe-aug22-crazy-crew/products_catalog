@@ -1,6 +1,6 @@
 /* eslint-disable no-shadow */
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import './CartProduct.scss';
 import { CartItem } from '../../../types/CartItem';
@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { actions as cartActions } from '../../../features/cart';
 import { useAppSelector } from '../../../app/hooks';
 import cn from 'classnames';
+import { LinkToPhone } from './LinkToPhone';
 
 type Props = {
   cartItemInfo: CartItem;
@@ -18,7 +19,7 @@ export const CartProduct: React.FC<Props> = ({ cartItemInfo }) => {
   const dispatch = useDispatch();
   const cart: CartItem[] = useAppSelector((state) => state.cart);
   const { product, count } = cartItemInfo;
-  const { image, name, price, category } = product;
+  const { image, name, price, category, itemId } = product;
 
   const handleRemoveItem = (selectedProduct: Phone) => {
     dispatch(cartActions.remove(selectedProduct));
@@ -44,18 +45,23 @@ export const CartProduct: React.FC<Props> = ({ cartItemInfo }) => {
         onClick={() => handleRemoveItem(product)}
       ></button>
 
-      <img
-        className="cart-item__image"
-        src={`https://teal-tiramisu-13c82d.netlify.app/${image}`}
-        alt={name}
-      />
-
-      <Link
-        to={`/${category.name}/${product.itemId}`}
-        className="cart-item__title"
+      <LinkToPhone
+        categoryName={category.name}
+        itemId={itemId}
       >
-        {name}
-      </Link>
+        <img
+          src={`https://teal-tiramisu-13c82d.netlify.app/${image}`}
+          alt={name}
+          className="cart-item__image"
+        />
+      </LinkToPhone>
+
+      <LinkToPhone
+        categoryName={category.name}
+        itemId={itemId}
+      >
+        <p className="cart-item__title">{name}</p>
+      </LinkToPhone>
 
       <div className="cart-item__count-block">
         <button

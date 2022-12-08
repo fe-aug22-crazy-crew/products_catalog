@@ -14,14 +14,14 @@ export const actions = { add };
 
 export const newestPhonesReducer = (
   newestPhones: Phone[] = [],
-  action: Action | AnyAction,
+  action: Action | AnyAction
 ) => {
   switch (action.type) {
-  case 'newestPhones/ADD':
-    // eslint-disable-next-line no-param-reassign
-    return (newestPhones = action.payload);
+    case 'newestPhones/ADD':
+      // eslint-disable-next-line no-param-reassign
+      return (newestPhones = action.payload);
 
-  default:
-    return newestPhones;
+    default:
+      return newestPhones;
   }
 };

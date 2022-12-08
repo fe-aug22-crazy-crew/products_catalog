@@ -13,13 +13,13 @@ export const actions = { add };
 
 export const tabletsReducer = (
   tablets: [] = [],
-  action: Action | AnyAction,
+  action: Action | AnyAction
 ) => {
   switch (action.type) {
-  case 'tablets/ADD':
-    return action.payload;
+    case 'tablets/ADD':
+      return action.payload;
 
-  default:
-    return tablets;
+    default:
+      return tablets;
   }
 };

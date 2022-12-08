@@ -16,7 +16,7 @@ export const Tabltes: React.FC = () => {
   const dispatch = useDispatch();
   const tablets = useAppSelector((state) => state.tablets);
 
-  const loadTablets = async() => {
+  const loadTablets = async () => {
     setIsLoading(true);
 
     try {

@@ -1,0 +1,5 @@
+@import '../../../../styles/utils/mixins/helpers.scss';
+
+.link-to-phone {
+  @include resetLinkStyles;
+}

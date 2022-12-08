@@ -24,19 +24,19 @@ export const actions = { add, remove, load };
 
 export const favouriteReducer = (
   favourites: Phone[] = [],
-  action: Action | AnyAction,
+  action: Action | AnyAction
 ) => {
   switch (action.type) {
-  case 'favourite/ADD':
-    return [...favourites, action.payload];
-  case 'favourite/REMOVE':
-    return favourites.filter(
-      (phone) => phone.itemId !== action.payload.itemId,
-    );
-  case 'favourite/LOAD':
-    return [...action.payload];
+    case 'favourite/ADD':
+      return [...favourites, action.payload];
+    case 'favourite/REMOVE':
+      return favourites.filter(
+        (phone) => phone.itemId !== action.payload.itemId
+      );
+    case 'favourite/LOAD':
+      return [...action.payload];
 
-  default:
-    return favourites;
+    default:
+      return favourites;
   }
 };
