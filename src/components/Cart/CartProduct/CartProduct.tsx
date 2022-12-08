@@ -45,10 +45,7 @@ export const CartProduct: React.FC<Props> = ({ cartItemInfo }) => {
         onClick={() => handleRemoveItem(product)}
       ></button>
 
-      <LinkToPhone
-        categoryName={category.name}
-        itemId={itemId}
-      >
+      <LinkToPhone categoryName={category.name} itemId={itemId}>
         <img
           src={`https://teal-tiramisu-13c82d.netlify.app/${image}`}
           alt={name}
@@ -56,10 +53,7 @@ export const CartProduct: React.FC<Props> = ({ cartItemInfo }) => {
         />
       </LinkToPhone>
 
-      <LinkToPhone
-        categoryName={category.name}
-        itemId={itemId}
-      >
+      <LinkToPhone categoryName={category.name} itemId={itemId}>
         <p className="cart-item__title">{name}</p>
       </LinkToPhone>
 

@@ -16,7 +16,7 @@ export const Accessories: React.FC = () => {
   const dispatch = useDispatch();
   const accessories = useAppSelector((state) => state.accessories);
 
-  const loadTablets = async () => {
+  const loadTablets = async() => {
     setIsLoading(true);
 
     try {

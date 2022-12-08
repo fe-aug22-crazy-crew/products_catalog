@@ -27,8 +27,8 @@ export const PhonePage: React.FC = () => {
   const getRecommended = async() => {
     const data = await client.get(
       'phones/'
-      + location.pathname.split('/').slice(-1).join('')
-      + '/recommended',
+        + location.pathname.split('/').slice(-1).join('')
+        + '/recommended',
       'GET',
       null,
     );
