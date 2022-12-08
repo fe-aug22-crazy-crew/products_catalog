@@ -72,10 +72,14 @@
   &__small-photos {
     display: flex;
     flex-direction: row;
-    gap: 23px;
+    gap: 8px;
 
     @include onTablet {
       flex-direction: column;
+    }
+
+    @include onDesktop {
+      gap: 16px;
     }
   }
 
@@ -91,8 +95,18 @@
   }
 
   &__small-photo {
-    height: 60px;
-    width: 60px;
+    height: 50px;
+    width: 50px;
+
+    @include onTablet {
+      height: 34px;
+      width: 34px;
+    }
+
+    @include onDesktop {
+      height: 80px;
+      width: 80px;
+    }
 
     object-fit: contain;
   }
