@@ -1,26 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import ArrowPrev from '../../../images/arrow-prev.svg';
 
 import './phonePageMain.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import cn from 'classnames';
+
 import { FavouriteIcon } from '../../PhoneCard/FavouriteIcon';
 import notFavourite from '../../../images/favourites.svg';
 import favourite from '../../../images/selectedFavourite.svg';
 import { PhoneData } from '../../../types/PhoneData';
-// import { useDispatch } from 'react-redux';
-// import { Phone } from '../../../types/Phone';
-// import { useAppSelector } from '../../../app/hooks';
-// import { CartItem } from '../../../types/CartItem';
-// import { actions as favouritesActions } from '../../../features/favourites';
-// import { actions as cartActions } from '../../../features/cart';
+
+import { useDispatch } from 'react-redux';
+import { Phone } from '../../../types/Phone';
+import { useAppSelector } from '../../../app/hooks';
+import { CartItem } from '../../../types/CartItem';
+import { actions as favouritesActions } from '../../../features/favourites';
+import { actions as cartActions } from '../../../features/cart';
 
 type Props = {
   phone: PhoneData;
+  setUpdate: (value: (val: number) => number) => void;
 };
 
-export const PhonePageMain: React.FC<Props> = ({ phone }) => {
+export const PhonePageMain: React.FC<Props> = ({ phone, setUpdate }) => {
   const {
     images,
     colorsAvailable,
@@ -32,59 +35,130 @@ export const PhonePageMain: React.FC<Props> = ({ phone }) => {
     processor,
     ram,
     name: phoneName,
+    color: phoneColor,
+    capacity: phoneCapacity,
+    id,
+    namespaceId,
   } = phone;
 
-  const [bigPhoto, setBigPhoto] = useState(images[0]);
+  const [bigPhoto, setBigPhoto] = useState('');
 
-  // const dispatch = useDispatch();
-  // const favouritePhones: Phone[] = useAppSelector((state) => state
-  // .favourites);
-  // const cart: CartItem[] = useAppSelector((state) => state.cart);
-  //
-  // const isSelected = favouritePhones
-  // .some((product) => product.itemId === phone.itemId);
-  // const isItInCart = cart.some((itemInfo) => itemInfo
-  // .product.id === phone.id);
-  //
-  // const handleAddingToFavourites = (selectedPhone: Phone) => {
-  //   if (!isSelected) {
-  //     dispatch(favouritesActions.add(selectedPhone));
-  //   } else {
-  //     dispatch(favouritesActions.remove(selectedPhone));
-  //   }
-  // };
-  //
-  // const handleAddingToCart = (selectedPhone: Phone) => {
-  //   if (!isItInCart) {
-  //     const productInCart = {
-  //       product: selectedPhone,
-  //       count: 1,
-  //     };
-  //
-  //     dispatch(cartActions.add(productInCart));
-  //   }
-  // };
-  //
-  // useEffect(() => {
-  //   window
-  //   .localStorage.setItem('favourites', JSON.stringify(favouritePhones));
-  // }, [favouritePhones]);
-  //
-  // useEffect(() => {
-  //   window.localStorage.setItem('cart', JSON.stringify(cart));
-  // }, [cart]);
+  const [stateColor, setStateColor] = useState(phoneColor);
+  const [stateCapacity, setStateCapacity] = useState(phoneCapacity);
+  const [path, setPath] = useState('');
+
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+  const favouritePhones: Phone[] = useAppSelector((state) => state.favourites);
+  const cart: CartItem[] = useAppSelector((state) => state.cart);
+
+  const isSelected = favouritePhones.some(
+    (product) => product.itemId === phone.id,
+  );
+  const isItInCart = cart.some(
+    (itemInfo) => itemInfo.product.itemId === phone.id,
+  );
+
+  const handleAddingToFavourites = (selectedPhone: Phone) => {
+    if (!isSelected) {
+      dispatch(favouritesActions.add(selectedPhone));
+    } else {
+      dispatch(favouritesActions.remove(selectedPhone));
+    }
+  };
+
+  const handleAddingToCart = (selectedPhone: Phone) => {
+    if (!isItInCart) {
+      const productInCart = {
+        product: selectedPhone,
+        count: 1,
+      };
+
+      dispatch(cartActions.add(productInCart));
+    }
+  };
+
+  useEffect(() => {
+    window.localStorage.setItem('favourites', JSON.stringify(favouritePhones));
+  }, [favouritePhones]);
+
+  useEffect(() => {
+    window.localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   const Colors = {
     white: '#F0F0F0',
-    yellow: 'yellow',
-    red: 'red',
-    coral: 'orange',
-    black: 'black',
+    yellow: '#F3D060',
+    red: '#A5282C',
+    coral: '#EE7762',
+    blue: '#5EB0E5',
+    purple: '#D1CDDA',
+    black: '#1F2020',
+    green: '#AEE1CD',
+    rosegold: '#E6C7C2',
+    spacegray: '#25282A',
+    midnightgreen: '#004953',
+    gold: '#f0ae04',
+    silver: '#E4E4E2',
   };
 
-  const path = document.location.pathname.split('-');
+  const handleChangeColor = (color: string) => {
+    const currentPath = document.location.pathname.split('-');
+    const ind = currentPath.findIndex((part) => part === phoneColor);
 
-  let distPath = path.join('-');
+    currentPath.splice(ind, 1, color);
+
+    const newPath = currentPath.join('-');
+
+    setPath(newPath);
+    setStateColor(color);
+  };
+
+  const handleChangeCapacity = (capacity: string) => {
+    const normalizedCapacity = capacity.toLowerCase();
+    const currentPath = document.location.pathname.split('-');
+    const ind = currentPath.findIndex(
+      (part) => part === phoneCapacity.toLowerCase(),
+    );
+
+    currentPath.splice(ind, 1, normalizedCapacity);
+
+    const newPath = currentPath.join('-');
+
+    setPath(newPath);
+    setStateCapacity(normalizedCapacity);
+  };
+
+  useEffect(() => {
+    if (
+      stateColor !== phoneColor
+      || stateCapacity !== phoneCapacity.toLowerCase()
+    ) {
+      navigate(path);
+      setUpdate((prev) => prev + 1);
+    }
+  }, [stateColor, stateCapacity]);
+
+  useEffect(() => {
+    setBigPhoto(images[0]);
+  }, [images]);
+
+  const phoneToSave = {
+    id: Math.random(),
+    phoneId: namespaceId,
+    itemId: id,
+    name: phoneName,
+    fullPrice: priceRegular,
+    price: priceDiscount,
+    screen: phoneScreen,
+    capacity: phoneCapacity,
+    color: phoneColor,
+    ram,
+    year: Math.random(),
+    image: images[0],
+    category: { name: 'phone' },
+  };
 
   return (
     <section className="phonePageMain">
@@ -132,9 +206,11 @@ export const PhonePageMain: React.FC<Props> = ({ phone }) => {
                 return (
                   <div
                     className={cn('phonePageMain__color-circle', {
-                      active: false, // input here current color of phone
+                      active: phoneColor === color,
                     })}
                     key={Math.random()}
+                    title={color}
+                    onClick={() => handleChangeColor(color)}
                   >
                     <div
                       className="phonePageMain__color-circle-inner"
@@ -151,21 +227,17 @@ export const PhonePageMain: React.FC<Props> = ({ phone }) => {
             <div className="phonePageMain__capacity">
               {capacityAvailable.map((capacity) => {
                 return (
-                  <Link
+                  <button
                     key={Math.random()}
-                    onClick={() => {
-                      path.splice(3, 1, capacity + 'gb');
-                      distPath = path.join('-');
-                    }}
-                    to={distPath}
                     className={cn('phonePageMain__capacity-button', {
-                      'phonePageMain__capacity-button--active': capacity
-                        === phone.capacity,
+                      'phonePageMain__capacity-button--active':
+                        capacity === phoneCapacity,
                     })}
+                    onClick={() => handleChangeCapacity(capacity)}
                     type="button"
                   >
                     {capacity}
-                  </Link>
+                  </button>
                 );
               })}
             </div>
@@ -187,18 +259,21 @@ export const PhonePageMain: React.FC<Props> = ({ phone }) => {
               )}
             </div>
             <div className="product__options phonePageMain__options">
-              {bigPhoto ? ( // !isItInCart
+              {!isItInCart ? (
                 <button
-                  className="product__cart-adding"
+                  className="product__cart-adding
+                  product__cart-adding--product-page"
                   type="button"
-                  // onClick={() => handleAddingToCart(phone)}
+                  onClick={() => handleAddingToCart(phoneToSave)}
                 >
                   Add to cart
                 </button>
               ) : (
                 <Link
                   to="/cart"
-                  className="product__cart-adding product__cart-adding--added"
+                  className="product__cart-adding
+                  product__cart-adding--added
+                  product__cart-adding--product-page"
                 >
                   Added to cart
                 </Link>
@@ -207,16 +282,16 @@ export const PhonePageMain: React.FC<Props> = ({ phone }) => {
               <button
                 className="product__favourite-adding"
                 type="button"
-                // onClick={() => handleAddingToFavourites(phone)}
+                onClick={() => handleAddingToFavourites(phoneToSave)}
               >
                 <FavouriteIcon
-                  condition={false} // !isSelected
+                  condition={!isSelected}
                   image={notFavourite}
                   alt={'notFavorite'}
                 />
 
                 <FavouriteIcon
-                  condition={true} // isSelected
+                  condition={isSelected}
                   image={favourite}
                   alt={'favorite'}
                 />
@@ -230,28 +305,20 @@ export const PhonePageMain: React.FC<Props> = ({ phone }) => {
                 </p>
               </div>
               <div className="phonePageMain__specs-category">
-                <p className="phonePageMain__specs-category-name">
-                  Resolution
-                </p>
+                <p className="phonePageMain__specs-category-name">Resolution</p>
                 <p className="phonePageMain__specs-category-value">
                   {resolution}
                 </p>
               </div>
               <div className="phonePageMain__specs-category">
-                <p className="phonePageMain__specs-category-name">
-                  Processor
-                </p>
+                <p className="phonePageMain__specs-category-name">Processor</p>
                 <p className="phonePageMain__specs-category-value">
                   {processor}
                 </p>
               </div>
               <div className="phonePageMain__specs-category">
-                <p className="phonePageMain__specs-category-name">
-                  RAM
-                </p>
-                <p className="phonePageMain__specs-category-value">
-                  {ram}
-                </p>
+                <p className="phonePageMain__specs-category-name">RAM</p>
+                <p className="phonePageMain__specs-category-value">{ram}</p>
               </div>
             </div>
           </div>

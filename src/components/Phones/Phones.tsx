@@ -141,6 +141,7 @@ export const Phones: React.FC<Props> = ({
 
   useEffect(() => {
     setAmountOfPages(Math.ceil(totalItems / amount));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
   const isNextDisabled = currentPage === amountOfPages;

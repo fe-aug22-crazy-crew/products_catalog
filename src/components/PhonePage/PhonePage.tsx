@@ -11,6 +11,7 @@ import { Phone } from '../../types/Phone';
 
 export const PhonePage: React.FC = () => {
   const [phone, setPhone] = useState<null | PhoneData>(null);
+  const [update, setUpdate] = useState(1);
   const [recommended, setRecommended] = useState<Phone[]>([]);
 
   const getPhone = async() => {
@@ -36,6 +37,9 @@ export const PhonePage: React.FC = () => {
 
   useEffect(() => {
     getPhone();
+  }, [update]);
+  
+  useEffect(() => {
     getRecommended();
   }, []);
 
@@ -43,7 +47,7 @@ export const PhonePage: React.FC = () => {
     return (
       <main className="container">
         <Breadcrumbs />
-        <PhonePageMain phone={phone}/>
+        <PhonePageMain phone={phone} setUpdate={setUpdate} />
         <Info phone={phone} />
         <Slider
           title={'You may also like'}

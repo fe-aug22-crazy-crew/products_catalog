@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import './App.scss';
 
 import { Route, Routes, useSearchParams } from 'react-router-dom';
-import { HomePage } from './components/HomePage/HomePage';
+import { HomePage } from './components/HomePage';
 import { Phones } from './components/Phones/';
 import { Header } from './components/Header/';
 
@@ -22,7 +22,6 @@ import { actions as favouritesActions } from './features/favourites';
 import { actions as newestPhonesActions } from './features/newestPhones';
 import { actions as hotPhonesActions } from './features/hotPhones';
 
-import { useAppSelector } from './app/hooks';
 import { Cart } from './components/Cart';
 import { actions as cartActions } from './features/cart';
 import { CartItem } from './types/CartItem';
@@ -99,7 +98,6 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {/* Only content will change here */}
       <Routes>
         <Route path="products_catalog" element={<HomePage />} />
         <Route path="/" element={<HomePage />} />
@@ -122,7 +120,6 @@ function App() {
           />
           <Route path=":itemId" element={<PhonePage />} />
         </Route>
-        <Route path="phones/:id" element={<PhonePage />} />
 
         <Route path="accessories" element={<Accessories />} />
         <Route path="tablets" element={<Tabltes />} />
