@@ -38,7 +38,7 @@ export const PhonePage: React.FC = () => {
   useEffect(() => {
     getPhone();
   }, [update]);
-  
+
   useEffect(() => {
     getRecommended();
   }, []);
