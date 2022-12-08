@@ -33,12 +33,12 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
   const favouritePhones: Phone[] = useAppSelector((state) => state.favourites);
   const cart: CartItem[] = useAppSelector((state) => state.cart);
 
-  const isFavourite = favouritePhones.some((product) => (
-    product.itemId === phone.itemId
-  ));
-  const isItInCart = cart.some((itemInfo) => (
-    itemInfo.product.itemId === phone.itemId
-  ));
+  const isFavourite = favouritePhones.some(
+    (product) => product.itemId === phone.itemId,
+  );
+  const isItInCart = cart.some(
+    (itemInfo) => itemInfo.product.itemId === phone.itemId,
+  );
 
   const handleAddingToFavourites = (selectedPhone: Phone) => {
     if (!isFavourite) {
