@@ -21,10 +21,7 @@ export const Breadcrumbs: React.FC = () => {
 
   return (
     <div className="breadcrumbs">
-      <Link
-        to="/"
-        className="breadcrumbs__icon breadcrumbs__icon-home"
-      ></Link>
+      <Link to="/" className="breadcrumbs__icon breadcrumbs__icon-home"></Link>
       {steps.map((step, i) => {
         const targetPath = '/' + steps.slice(0, i + 1).join('/');
 
