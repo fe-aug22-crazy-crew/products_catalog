@@ -39,7 +39,8 @@ function App() {
 
   const [searchParams, setSearchParams] = useSearchParams(defaultSearchParams);
   const [totalItems, setTotalItems] = useState(0);
-
+  const [isLoadingPhones, setIsLoadingPhones] = useState(false);
+  const [isLoadingSliders, setIslodingSliders] = useState(false);
   const handleSearchParamsChange = (newParams: URLSearchParams) => {
     setSearchParams(newParams);
   };
@@ -87,23 +88,34 @@ function App() {
   }, []);
 
   useEffect(() => {
-    getNewestPhones();
-    getHotPhones();
+    (async() => {
+      setIslodingSliders(true);
+      await getNewestPhones();
+      await getHotPhones();
+      setIslodingSliders(false);
+    })();
   }, []);
 
   useEffect(() => {
-    getPhones();
+    (async() => {
+      setIsLoadingPhones(true);
+      await getPhones();
+      setIsLoadingPhones(false);
+    })();
   }, [searchParams]);
 
   return (
     <div className="App">
       <Header />
       <Routes>
-        <Route path="products_catalog" element={<HomePage />} />
-        <Route path="/" element={<HomePage />} />
+        <Route path="products_catalog" element={
+          <HomePage
+            isLoading={isLoadingSliders}
+          />} />
+        <Route path="/" element={<HomePage isLoading={isLoadingSliders} />} />
 
         <Route path="home">
-          <Route index element={<HomePage />} />
+          <Route index element={<HomePage isLoading={isLoadingSliders} />} />
           <Route path=":itemId" element={<PhonePage />} />
         </Route>
 
@@ -115,6 +127,7 @@ function App() {
                 handleSearchParamsChange={handleSearchParamsChange}
                 totalItems={totalItems}
                 searchParams={searchParams}
+                isLoading={isLoadingPhones}
               />
             }
           />

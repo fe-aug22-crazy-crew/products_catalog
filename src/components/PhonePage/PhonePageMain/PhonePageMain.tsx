@@ -20,10 +20,9 @@ import { actions as cartActions } from '../../../features/cart';
 
 type Props = {
   phone: PhoneData;
-  setUpdate: (value: (val: number) => number) => void;
 };
 
-export const PhonePageMain: React.FC<Props> = ({ phone, setUpdate }) => {
+export const PhonePageMain: React.FC<Props> = ({ phone }) => {
   const {
     images,
     colorsAvailable,
@@ -136,7 +135,6 @@ export const PhonePageMain: React.FC<Props> = ({ phone, setUpdate }) => {
       || stateCapacity !== phoneCapacity.toLowerCase()
     ) {
       navigate(path);
-      setUpdate((prev) => prev + 1);
     }
   }, [stateColor, stateCapacity]);
 

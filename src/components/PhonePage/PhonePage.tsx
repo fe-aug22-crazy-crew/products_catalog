@@ -8,11 +8,12 @@ import { PhoneData } from '../../types/PhoneData';
 import { PhonePageMain } from './PhonePageMain';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { Phone } from '../../types/Phone';
+import { Loader } from '../Loader';
 
 export const PhonePage: React.FC = () => {
   const [phone, setPhone] = useState<null | PhoneData>(null);
-  const [update, setUpdate] = useState(1);
   const [recommended, setRecommended] = useState<Phone[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getPhone = async() => {
     const data = await client.get(
@@ -36,26 +37,34 @@ export const PhonePage: React.FC = () => {
   };
 
   useEffect(() => {
-    getPhone();
-  }, [update]);
-  
-  useEffect(() => {
-    getRecommended();
-  }, []);
+    setIsLoading(false);
+  }, [phone]);
 
-  if (phone) {
-    return (
-      <main className="container">
-        <Breadcrumbs />
-        <PhonePageMain phone={phone} setUpdate={setUpdate} />
-        <Info phone={phone} />
-        <Slider
-          title={'You may also like'}
-          phones={recommended}
-        />
-      </main>
-    );
-  } else {
-    return null;
-  }
+  useEffect(() => {
+    (async() => {
+      setIsLoading(true);
+
+      await getPhone();
+      await getRecommended();
+    })();
+  }, [location.pathname]);
+
+  return (
+    <main className="container">
+      {!phone || isLoading
+        ? <Loader />
+        : <>
+          <Breadcrumbs />
+          <PhonePageMain
+            phone={phone}
+          />
+          <Info phone={phone} />
+          <Slider
+            title={'You may also like'}
+            phones={recommended}
+          />
+        </>
+      }
+    </main>
+  );
 };

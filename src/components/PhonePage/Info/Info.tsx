@@ -87,7 +87,7 @@ export const Info: React.FC<Props> = ({ phone }) => {
 
           <li className="info__item">
             <p className="info__property">Cell</p>
-            <p className="info__value">{cell}</p>
+            <p className="info__value">{cell.join(', ')}</p>
           </li>
         </ul>
       </article>

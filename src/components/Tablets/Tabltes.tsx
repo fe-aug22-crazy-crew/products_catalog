@@ -5,7 +5,6 @@ import { actions as tabletsActions } from '../../features/tablets';
 import { client } from '../../utils/fetchProducts';
 import { Loader } from '../Loader';
 import { Breadcrumbs } from '../Breadcrumbs';
-import { CSSTransition } from 'react-transition-group';
 
 import './Tabltes.scss';
 
@@ -22,11 +21,11 @@ export const Tabltes: React.FC = () => {
     try {
       const data = await client.get('/tablets', 'GET', null);
 
+      setIsLoading(() => false);
+
       dispatch(tabletsActions.add(data));
     } catch {
       setIsError(true);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -37,28 +36,25 @@ export const Tabltes: React.FC = () => {
   return (
     <main className="tablets">
       <div className="container">
-        <div className="tablets__content">
-          <Breadcrumbs />
-          <h1 className="tablets__title">Tablets</h1>
-          <ul className="tablets__list">
-            <CSSTransition
-              in={isLoading}
-              timeout={300}
-              classNames="loader"
-              unmountOnExit
-            >
-              <Loader />
-            </CSSTransition>
+        {isLoading
+          ? <Loader />
+          : <div className="tablets__content">
+            <Breadcrumbs />
+            <h1 className="tablets__title">Tablets</h1>
 
-            {isError && (
-              <p className="tablets__message">Something went wrong &#x1F625;</p>
-            )}
+            <ul className="tablets__list">
+              {isError && (
+                <p className="tablets__message">
+                  Something went wrong &#x1F625;
+                </p>
+              )}
 
-            {!isLoading && !tablets.length && (
-              <p className="tablets__message">No tablets yet &#x1F625;</p>
-            )}
-          </ul>
-        </div>
+              {!isLoading && !tablets.length && (
+                <p className="tablets__message">No tablets yet &#x1F625;</p>
+              )}
+            </ul>
+          </div>
+        }
       </div>
     </main>
   );
