@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import './Breadcrumbs.scss';
 
 export const Breadcrumbs: React.FC = () => {
-  const position = window.location.pathname;
+  const position = window.location.hash.slice(1);
   const steps = position.slice(1).split('/');
   const formatSteps = steps.map((text) => {
     const words = text.split('-');
@@ -21,10 +21,7 @@ export const Breadcrumbs: React.FC = () => {
 
   return (
     <div className="breadcrumbs">
-      <Link
-        to="/home"
-        className="breadcrumbs__icon breadcrumbs__icon-home"
-      ></Link>
+      <Link to="/" className="breadcrumbs__icon breadcrumbs__icon-home"></Link>
       {steps.map((step, i) => {
         const targetPath = '/' + steps.slice(0, i + 1).join('/');
 

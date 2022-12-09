@@ -14,7 +14,7 @@ export const LinkToPhone: React.FC<Props> = ({
   itemId,
   children,
 }) => (
-  <Link to={`/${categoryName}s/${itemId}`} className="link-to-phone">
+  <Link to={`/${categoryName}/${itemId}`} className="link-to-phone">
     {children}
   </Link>
 );
