@@ -51,7 +51,7 @@
 
   &__title {
     grid-area: title;
-    justify-self: self-start;
+    justify-self: start;
 
     @include resetLinkStyles;
     @include bodyTextTypography;

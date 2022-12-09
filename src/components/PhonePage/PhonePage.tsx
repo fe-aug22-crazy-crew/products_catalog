@@ -17,7 +17,7 @@ export const PhonePage: React.FC = () => {
 
   const getPhone = async() => {
     const data = await client.get(
-      'phones/' + location.pathname.split('/').slice(-1).join(''),
+      'phones/' + location.hash.split('/').slice(-1).join(''),
       'GET',
       null,
     );
@@ -27,9 +27,7 @@ export const PhonePage: React.FC = () => {
 
   const getRecommended = async() => {
     const data = await client.get(
-      'phones/'
-        + location.pathname.split('/').slice(-1).join('')
-        + '/recommended',
+      'phones/' + location.hash.split('/').slice(-1).join('') + '/recommended',
       'GET',
       null,
     );
@@ -48,7 +46,7 @@ export const PhonePage: React.FC = () => {
       await getPhone();
       await getRecommended();
     })();
-  }, [location.pathname]);
+  }, [location.hash]);
 
   return (
     <main className="container">

@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 
 import './App.scss';
@@ -108,18 +106,9 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route
-          path="products_catalog"
-          element={<HomePage isLoading={isLoadingSliders} />}
-        />
         <Route path="/" element={<HomePage isLoading={isLoadingSliders} />} />
 
-        <Route path="home">
-          <Route index element={<HomePage isLoading={isLoadingSliders} />} />
-          <Route path=":itemId" element={<PhonePage />} />
-        </Route>
-
-        <Route path="phones">
+        <Route path="/phones">
           <Route
             index
             element={
@@ -134,8 +123,8 @@ function App() {
           <Route path=":itemId" element={<PhonePage />} />
         </Route>
 
-        <Route path="accessories" element={<Accessories />} />
-        <Route path="tablets" element={<Tabltes />} />
+        <Route path="/accessories" element={<Accessories />} />
+        <Route path="/tablets" element={<Tabltes />} />
         <Route path="favourites" element={<Favourites />} />
         <Route path="cart" element={<Cart />} />
         <Route path="*" element={<NotFoundPage />} />

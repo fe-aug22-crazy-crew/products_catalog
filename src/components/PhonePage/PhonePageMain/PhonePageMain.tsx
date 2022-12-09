@@ -103,7 +103,7 @@ export const PhonePageMain: React.FC<Props> = ({ phone }) => {
   };
 
   const handleChangeColor = (color: string) => {
-    const currentPath = document.location.pathname.split('-');
+    const currentPath = document.location.hash.slice(1).split('-');
     const ind = currentPath.findIndex((part) => part === phoneColor);
 
     currentPath.splice(ind, 1, color);
@@ -116,7 +116,7 @@ export const PhonePageMain: React.FC<Props> = ({ phone }) => {
 
   const handleChangeCapacity = (capacity: string) => {
     const normalizedCapacity = capacity.toLowerCase();
-    const currentPath = document.location.pathname.split('-');
+    const currentPath = document.location.hash.slice(1).split('-');
     const ind = currentPath.findIndex(
       (part) => part === phoneCapacity.toLowerCase(),
     );

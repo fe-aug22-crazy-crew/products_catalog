@@ -26,7 +26,7 @@
 
     @include onTablet {
       flex-wrap: wrap;
-      justify-content: start;
+      justify-content: flex-start;
     }
 
     @include gridForPhones;
@@ -67,7 +67,7 @@
 
     @include onTablet {
       flex-wrap: wrap;
-      justify-content: start;
+      justify-content: flex-start;
     }
   }
 }
