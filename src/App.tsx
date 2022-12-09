@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 
 import './App.scss';
@@ -39,7 +37,8 @@ function App() {
 
   const [searchParams, setSearchParams] = useSearchParams(defaultSearchParams);
   const [totalItems, setTotalItems] = useState(0);
-
+  const [isLoadingPhones, setIsLoadingPhones] = useState(false);
+  const [isLoadingSliders, setIslodingSliders] = useState(false);
   const handleSearchParamsChange = (newParams: URLSearchParams) => {
     setSearchParams(newParams);
   };
@@ -87,19 +86,27 @@ function App() {
   }, []);
 
   useEffect(() => {
-    getNewestPhones();
-    getHotPhones();
+    (async() => {
+      setIslodingSliders(true);
+      await getNewestPhones();
+      await getHotPhones();
+      setIslodingSliders(false);
+    })();
   }, []);
 
   useEffect(() => {
-    getPhones();
+    (async() => {
+      setIsLoadingPhones(true);
+      await getPhones();
+      setIsLoadingPhones(false);
+    })();
   }, [searchParams]);
 
   return (
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage isLoading={isLoadingSliders} />} />
 
         <Route path="/phones">
           <Route
@@ -109,6 +116,7 @@ function App() {
                 handleSearchParamsChange={handleSearchParamsChange}
                 totalItems={totalItems}
                 searchParams={searchParams}
+                isLoading={isLoadingPhones}
               />
             }
           />

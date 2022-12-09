@@ -5,7 +5,12 @@ import { Link } from 'react-router-dom';
 import './Breadcrumbs.scss';
 
 export const Breadcrumbs: React.FC = () => {
-  const position = window.location.hash.slice(1);
+  const lastSymbol
+    = window.location.hash.indexOf('?') === -1
+      ? window.location.hash.length
+      : window.location.hash.indexOf('?');
+
+  const position = window.location.hash.slice(1, lastSymbol);
   const steps = position.slice(1).split('/');
   const formatSteps = steps.map((text) => {
     const words = text.split('-');

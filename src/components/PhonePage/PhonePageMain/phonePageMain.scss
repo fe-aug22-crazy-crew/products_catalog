@@ -72,10 +72,14 @@
   &__small-photos {
     display: flex;
     flex-direction: row;
-    gap: 23px;
+    gap: 8px;
 
     @include onTablet {
       flex-direction: column;
+    }
+
+    @include onDesktop {
+      gap: 16px;
     }
   }
 
@@ -91,8 +95,18 @@
   }
 
   &__small-photo {
-    height: 60px;
-    width: 60px;
+    height: 50px;
+    width: 50px;
+
+    @include onTablet {
+      height: 34px;
+      width: 34px;
+    }
+
+    @include onDesktop {
+      height: 80px;
+      width: 80px;
+    }
 
     object-fit: contain;
   }
@@ -151,17 +165,16 @@
 
   &__color-circle {
     display: flex;
-    align-items: center;
     justify-content: center;
-
-    height: 32px;
-    width: 32px;
+    align-items: center;
+    height: 34px;
+    width: 34px;
 
     border-radius: 50%;
-    border: 1px solid #e2e6e9;
+    border: 1px solid $c-gray;
 
     &:hover {
-      border-color: #b4bdc3;
+      border-color: $c-icons;
       cursor: pointer;
     }
 
@@ -180,7 +193,7 @@
     margin: 0 0 24px;
 
     border: none;
-    background-color: #e2e6e9;
+    background-color: $c-gray;
 
     &--bottom {
       margin-bottom: 32px;
@@ -196,11 +209,17 @@
     &-button {
       padding: 7px 8px;
       background-color: $c-white;
-      border: 1px solid #b4bdc3;
+      border: 1px solid $c-icons;
 
       color: $c-primary;
 
       cursor: pointer;
+
+      transition: border-color 0.3s linear;
+
+      &:hover {
+        border-color: $c-primary;
+      }
 
       &--active {
         color: $c-white;
@@ -258,5 +277,5 @@
 }
 
 .active {
-  border-color: #313237;
+  border-color: $c-primary;
 }

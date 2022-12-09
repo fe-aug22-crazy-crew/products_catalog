@@ -10,6 +10,7 @@ import { FavouriteIcon } from '../../PhoneCard/FavouriteIcon';
 import notFavourite from '../../../images/favourites.svg';
 import favourite from '../../../images/selectedFavourite.svg';
 import { PhoneData } from '../../../types/PhoneData';
+import { Colors } from '../../../utils/phoneColors';
 
 import { useDispatch } from 'react-redux';
 import { Phone } from '../../../types/Phone';
@@ -20,10 +21,9 @@ import { actions as cartActions } from '../../../features/cart';
 
 type Props = {
   phone: PhoneData;
-  setUpdate: (value: (val: number) => number) => void;
 };
 
-export const PhonePageMain: React.FC<Props> = ({ phone, setUpdate }) => {
+export const PhonePageMain: React.FC<Props> = ({ phone }) => {
   const {
     images,
     colorsAvailable,
@@ -87,22 +87,6 @@ export const PhonePageMain: React.FC<Props> = ({ phone, setUpdate }) => {
     window.localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-  const Colors = {
-    white: '#F0F0F0',
-    yellow: '#F3D060',
-    red: '#A5282C',
-    coral: '#EE7762',
-    blue: '#5EB0E5',
-    purple: '#D1CDDA',
-    black: '#1F2020',
-    green: '#AEE1CD',
-    rosegold: '#E6C7C2',
-    spacegray: '#25282A',
-    midnightgreen: '#004953',
-    gold: '#f0ae04',
-    silver: '#E4E4E2',
-  };
-
   const handleChangeColor = (color: string) => {
     const currentPath = document.location.hash.slice(1).split('-');
     const ind = currentPath.findIndex((part) => part === phoneColor);
@@ -135,8 +119,7 @@ export const PhonePageMain: React.FC<Props> = ({ phone, setUpdate }) => {
       stateColor !== phoneColor
       || stateCapacity !== phoneCapacity.toLowerCase()
     ) {
-      navigate(path, { replace: true });
-      setUpdate((prev) => prev + 1);
+      navigate(path);
     }
   }, [stateColor, stateCapacity]);
 
