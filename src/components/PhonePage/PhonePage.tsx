@@ -27,7 +27,8 @@ export const PhonePage: React.FC = () => {
 
   const getRecommended = async() => {
     const data = await client.get(
-      'phones/' + location.pathname.split('/').slice(-1).join('')
+      'phones/'
+        + location.pathname.split('/').slice(-1).join('')
         + '/recommended',
       'GET',
       null,
@@ -51,20 +52,16 @@ export const PhonePage: React.FC = () => {
 
   return (
     <main className="container">
-      {!phone || isLoading
-        ? <Loader />
-        : <>
+      {!phone || isLoading ? (
+        <Loader />
+      ) : (
+        <>
           <Breadcrumbs />
-          <PhonePageMain
-            phone={phone}
-          />
+          <PhonePageMain phone={phone} />
           <Info phone={phone} />
-          <Slider
-            title={'You may also like'}
-            phones={recommended}
-          />
+          <Slider title={'You may also like'} phones={recommended} />
         </>
-      }
+      )}
     </main>
   );
 };

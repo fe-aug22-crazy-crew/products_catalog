@@ -108,10 +108,10 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="products_catalog" element={
-          <HomePage
-            isLoading={isLoadingSliders}
-          />} />
+        <Route
+          path="products_catalog"
+          element={<HomePage isLoading={isLoadingSliders} />}
+        />
         <Route path="/" element={<HomePage isLoading={isLoadingSliders} />} />
 
         <Route path="home">

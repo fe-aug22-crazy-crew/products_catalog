@@ -179,16 +179,17 @@ export const Phones: React.FC<Props> = ({
           />
         </div>
 
-        {isLoading
-          ? <Loader />
-          : <ul className="phones__list">
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <ul className="phones__list">
             {phones.map((phone: Phone) => (
               <li key={phone.id} className="phones__item">
                 <PhoneCard phone={phone} />
               </li>
             ))}
           </ul>
-        }
+        )}
 
         <ReactPaginate
           breakLabel="..."

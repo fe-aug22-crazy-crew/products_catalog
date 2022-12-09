@@ -36,9 +36,10 @@ export const Tabltes: React.FC = () => {
   return (
     <main className="tablets">
       <div className="container">
-        {isLoading
-          ? <Loader />
-          : <div className="tablets__content">
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <div className="tablets__content">
             <Breadcrumbs />
             <h1 className="tablets__title">Tablets</h1>
 
@@ -54,7 +55,7 @@ export const Tabltes: React.FC = () => {
               )}
             </ul>
           </div>
-        }
+        )}
       </div>
     </main>
   );

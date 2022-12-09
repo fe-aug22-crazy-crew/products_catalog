@@ -36,9 +36,10 @@ export const Accessories: React.FC = () => {
   return (
     <main className="accessories">
       <div className="container">
-        {isLoading
-          ? <Loader />
-          : <div className="accessories__content">
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <div className="accessories__content">
             <Breadcrumbs />
             <h1 className="accessories__title">Accessories</h1>
             <ul className="accessories__list">
@@ -55,7 +56,7 @@ export const Accessories: React.FC = () => {
               )}
             </ul>
           </div>
-        }
+        )}
       </div>
     </main>
   );
