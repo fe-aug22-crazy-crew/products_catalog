@@ -11,17 +11,20 @@ import arrowPrev from '../../images/arrow-prev.svg';
 import { Select } from './Select/Select';
 import cl from 'classnames';
 import { Breadcrumbs } from '../Breadcrumbs';
+import { Loader } from '../Loader';
 
 type Props = {
   handleSearchParamsChange: (newParams: URLSearchParams) => void;
   totalItems: number;
   searchParams: URLSearchParams;
+  isLoading: boolean;
 };
 
 export const Phones: React.FC<Props> = ({
   handleSearchParamsChange,
   totalItems,
   searchParams,
+  isLoading,
 }) => {
   const phones = useAppSelector((state) => state.phones);
 
@@ -175,13 +178,19 @@ export const Phones: React.FC<Props> = ({
             fieldType="select__field--amount"
           />
         </div>
-        <ul className="phones__list">
-          {phones.map((phone: Phone) => (
-            <li key={phone.id} className="phones__item">
-              <PhoneCard phone={phone} />
-            </li>
-          ))}
-        </ul>
+
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <ul className="phones__list">
+            {phones.map((phone: Phone) => (
+              <li key={phone.id} className="phones__item">
+                <PhoneCard phone={phone} />
+              </li>
+            ))}
+          </ul>
+        )}
+
         <ReactPaginate
           breakLabel="..."
           nextLabel={<img src={arrowNext} alt="arrow-next" />}

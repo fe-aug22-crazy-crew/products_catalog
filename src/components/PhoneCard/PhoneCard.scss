@@ -108,13 +108,14 @@
   &__options {
     display: flex;
     justify-content: space-between;
+    gap: 8px;
   }
 
   &__cart-adding {
     @include primaryButton;
     border: none;
 
-    width: 160px;
+    width: 148px;
     height: 40px;
 
     &--added {
