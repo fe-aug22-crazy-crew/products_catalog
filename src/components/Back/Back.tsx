@@ -12,11 +12,7 @@ export const Back: React.FC = () => {
   };
 
   return (
-    <button
-      className="back"
-      type="button"
-      onClick={handleBack}
-    >
+    <button className="back" type="button" onClick={handleBack}>
       <img src={ArrowPrev} alt="return back button" />
       <p>Back</p>
     </button>

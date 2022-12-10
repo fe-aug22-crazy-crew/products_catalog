@@ -29,11 +29,7 @@ export const HomePage: React.FC<Props> = ({ isLoading }) => {
 
       <Categories />
 
-      <Slider
-        phones={hotPhones}
-        title={'Hot prices'}
-        isLoading={isLoading}
-      />
+      <Slider phones={hotPhones} title={'Hot prices'} isLoading={isLoading} />
     </main>
   );
 };

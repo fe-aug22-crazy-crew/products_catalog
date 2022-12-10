@@ -113,10 +113,7 @@ export const PhonePageMain: React.FC<Props> = ({ phone }) => {
   };
 
   useEffect(() => {
-    if (
-      stateColor !== phoneColor
-      || stateCapacity !== phoneCapacity
-    ) {
+    if (stateColor !== phoneColor || stateCapacity !== phoneCapacity) {
       navigate(path);
     }
   }, [stateColor, stateCapacity]);

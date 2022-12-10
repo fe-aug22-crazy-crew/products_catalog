@@ -52,9 +52,7 @@ export const Tabltes: React.FC = () => {
             </CSSTransition>
 
             {isError && (
-              <p className="tablets__message">
-                Something went wrong &#x1F625;
-              </p>
+              <p className="tablets__message">Something went wrong &#x1F625;</p>
             )}
 
             {!isLoading && !tablets.length && (

@@ -81,11 +81,7 @@ export const Header: React.FC = () => {
             <img src={shopping} alt="cart" className="icon" />
           </div>
         </NavLink>
-        <a
-          href=""
-          className="icon-link"
-          onClick={openMenuHandle}
-        >
+        <a href="" className="icon-link" onClick={openMenuHandle}>
           <div className="icon-box icon-box__menu">
             <img src={menu} alt="menu" className="icon" />
           </div>

@@ -21,11 +21,7 @@ type Props = {
   isLoading: boolean;
 };
 
-export const Slider: React.FC<Props> = ({
-  phones,
-  title,
-  isLoading,
-}) => {
+export const Slider: React.FC<Props> = ({ phones, title, isLoading }) => {
   const navPrevButton = useRef<HTMLButtonElement>(null);
   const navNextButton = useRef<HTMLButtonElement>(null);
 
@@ -68,15 +64,15 @@ export const Slider: React.FC<Props> = ({
             1200: { slidesPerView: 4 },
           }}
         >
-          {isLoading
-            ? <Loader />
-            : (
-              phones.map((phone) => (
-                <SwiperSlide key={phone.id}>
-                  <PhoneCard phone={phone} />
-                </SwiperSlide>
-              ))
-            )}
+          {isLoading ? (
+            <Loader />
+          ) : (
+            phones.map((phone) => (
+              <SwiperSlide key={phone.id}>
+                <PhoneCard phone={phone} />
+              </SwiperSlide>
+            ))
+          )}
         </Swiper>
       </section>
     </>

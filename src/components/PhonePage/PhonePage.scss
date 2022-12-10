@@ -2,7 +2,7 @@
 @import '../../styles/utils/mixins/typography.scss';
 @import '../../styles/utils/mixins/helpers.scss';
 
-.phonePage{ 
+.phonePage {
   display: flex;
   flex-direction: column;
   @include mainHeight;
