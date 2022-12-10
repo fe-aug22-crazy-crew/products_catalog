@@ -17,4 +17,10 @@
 
   @include smallTextTypography;
   color: $c-secondary;
+
+  transition: text-shadow 0.3s;
+  
+  &:hover {
+    text-shadow: $c-gray 1px 1px 1px;
+  }
 }

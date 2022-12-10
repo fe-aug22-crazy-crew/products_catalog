@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 export const Logo: React.FC = () => {
   return (
-    <Link to="products_catalog" className="logo">
+    <Link to="/" className="logo">
       <img src={logo} alt="logo" className="logo-img" />
     </Link>
   );
