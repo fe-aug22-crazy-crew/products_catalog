@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
 import { useAppSelector } from '../../app/hooks';
 import { actions as tabletsActions } from '../../features/tablets';
 import { client } from '../../utils/fetchProducts';
@@ -36,26 +37,31 @@ export const Tabltes: React.FC = () => {
   return (
     <main className="tablets">
       <div className="container">
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <div className="tablets__content">
-            <Breadcrumbs />
-            <h1 className="tablets__title">Tablets</h1>
+        <div className="tablets__content">
+          <Breadcrumbs />
+          <h1 className="tablets__title">Tablets</h1>
 
-            <ul className="tablets__list">
-              {isError && (
-                <p className="tablets__message">
-                  Something went wrong &#x1F625;
-                </p>
-              )}
+          <ul className="tablets__list">
+            <CSSTransition
+              in={isLoading}
+              timeout={300}
+              classNames="loader"
+              unmountOnExit
+            >
+              <Loader />
+            </CSSTransition>
 
-              {!isLoading && !tablets.length && (
-                <p className="tablets__message">No tablets yet &#x1F625;</p>
-              )}
-            </ul>
-          </div>
-        )}
+            {isError && (
+              <p className="tablets__message">
+                Something went wrong &#x1F625;
+              </p>
+            )}
+
+            {!isLoading && !tablets.length && (
+              <p className="tablets__message">No tablets yet &#x1F625;</p>
+            )}
+          </ul>
+        </div>
       </div>
     </main>
   );

@@ -4,8 +4,10 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { useAppSelector } from '../../app/hooks';
 import { actions as cartActions } from '../../features/cart';
 import { CartItem } from '../../types/CartItem';
+import { Back } from '../Back';
 
 import './Cart.scss';
+
 import { CartProduct } from './CartProduct';
 import { ModalWindow } from './CartProduct/ModalWindow';
 
@@ -39,6 +41,8 @@ export const Cart: React.FC = React.memo(() => {
   return (
     <main className="cart">
       <div className="container">
+        <Back />
+
         <div className="cart__title">Cart</div>
         <div className="cart__content">
           <ul className="cart__items">

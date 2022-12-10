@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { useAppSelector } from '../../app/hooks';
 import { actions as favouritesActions } from '../../features/favourites';
@@ -69,7 +69,7 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
 
   return (
     <div className="product">
-      <Link to={`/${category.name}/${itemId}`}>
+      <NavLink to={`/${category.name}/${itemId}`}>
         <img
           className="product__image"
           src={`https://teal-tiramisu-13c82d.netlify.app/${image}`}
@@ -77,7 +77,7 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
         />
 
         <p className="product__name">{phoneName}</p>
-      </Link>
+      </NavLink>
 
       <div className="product__price-block">
         {
@@ -115,12 +115,12 @@ export const PhoneCard: React.FC<Props> = ({ phone }) => {
             Add to cart
           </button>
         ) : (
-          <Link
+          <NavLink
             to="/cart"
             className="product__cart-adding product__cart-adding--added"
           >
             Added to cart
-          </Link>
+          </NavLink>
         )}
 
         <button

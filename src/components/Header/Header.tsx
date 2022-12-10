@@ -53,32 +53,42 @@ export const Header: React.FC = () => {
         <NavLink
           to="/favourites"
           className={({ isActive }) =>
-            cl('icon-box', { 'is-active': isActive })
+            cl('icon-link', { 'is-active': isActive })
           }
         >
-          <CountInfo
-            condition={countOfFavourites > 0}
-            count={countOfFavourites}
-            burgerMenu={false}
-          />
-          <img src={favouritesImg} alt="like" className="icon" />
+          <div className="icon-box">
+            <CountInfo
+              condition={countOfFavourites > 0}
+              count={countOfFavourites}
+              burgerMenu={false}
+            />
+            <img src={favouritesImg} alt="like" className="icon" />
+          </div>
         </NavLink>
 
         <NavLink
           to="/cart"
           className={({ isActive }) =>
-            cl('icon-box', { 'is-active': isActive })
+            cl('icon-link', { 'is-active': isActive })
           }
         >
-          <CountInfo
-            condition={countInCart > 0}
-            count={countInCart}
-            burgerMenu={false}
-          />
-          <img src={shopping} alt="cart" className="icon" />
+          <div className="icon-box">
+            <CountInfo
+              condition={countInCart > 0}
+              count={countInCart}
+              burgerMenu={false}
+            />
+            <img src={shopping} alt="cart" className="icon" />
+          </div>
         </NavLink>
-        <a href="" className="icon-box icon-box__menu" onClick={openMenuHandle}>
-          <img src={menu} alt="menu" className="icon" />
+        <a
+          href=""
+          className="icon-link"
+          onClick={openMenuHandle}
+        >
+          <div className="icon-box icon-box__menu">
+            <img src={menu} alt="menu" className="icon" />
+          </div>
         </a>
       </div>
       <BurgerMenu setMenuIsOpen={setMenuIsOpen} menuIsOpen={menuIsOpen} />

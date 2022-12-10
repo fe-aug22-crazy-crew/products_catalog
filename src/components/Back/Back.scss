@@ -1,0 +1,20 @@
+@import '../../styles/utils/mixins/typography.scss';
+@import '../../styles/utils/mixins/screenWidth.scss';
+@import '../../styles/utils/variables.scss';
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 0;
+  margin-bottom: 16px;
+
+  border: none;
+  background-color: $c-white;
+
+  cursor: pointer;
+
+  @include smallTextTypography;
+  color: $c-secondary;
+}

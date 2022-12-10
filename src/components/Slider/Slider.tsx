@@ -13,13 +13,19 @@ import '../HomePage/homePage.scss';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { Loader } from '../Loader';
 
 type Props = {
   phones: Phone[];
   title: string;
+  isLoading: boolean;
 };
 
-export const Slider: React.FC<Props> = ({ phones, title }) => {
+export const Slider: React.FC<Props> = ({
+  phones,
+  title,
+  isLoading,
+}) => {
   const navPrevButton = useRef<HTMLButtonElement>(null);
   const navNextButton = useRef<HTMLButtonElement>(null);
 
@@ -62,11 +68,15 @@ export const Slider: React.FC<Props> = ({ phones, title }) => {
             1200: { slidesPerView: 4 },
           }}
         >
-          {phones.map((phone) => (
-            <SwiperSlide key={phone.id}>
-              <PhoneCard phone={phone} />
-            </SwiperSlide>
-          ))}
+          {isLoading
+            ? <Loader />
+            : (
+              phones.map((phone) => (
+                <SwiperSlide key={phone.id}>
+                  <PhoneCard phone={phone} />
+                </SwiperSlide>
+              ))
+            )}
         </Swiper>
       </section>
     </>

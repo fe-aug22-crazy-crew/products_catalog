@@ -5,7 +5,6 @@ import { Promo } from './Promo';
 
 import './homePage.scss';
 import { useAppSelector } from '../../app/hooks';
-import { Loader } from '../Loader';
 
 import { Categories } from './Categories';
 
@@ -21,17 +20,20 @@ export const HomePage: React.FC<Props> = ({ isLoading }) => {
     <main className="home_page">
       <h1 className="home_page__title">Welcome to Nice Gadgets store!</h1>
       <Promo />
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <Slider phones={newestPhones} title={'Brand new models'} />
-      )}
+
+      <Slider
+        phones={newestPhones}
+        title={'Brand new models'}
+        isLoading={isLoading}
+      />
+
       <Categories />
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <Slider phones={hotPhones} title={'Hot prices'} />
-      )}
+
+      <Slider
+        phones={hotPhones}
+        title={'Hot prices'}
+        isLoading={isLoading}
+      />
     </main>
   );
 };

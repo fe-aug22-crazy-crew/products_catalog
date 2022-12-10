@@ -48,14 +48,20 @@
   }
 }
 
+.icon-link {
+  position: relative;
+
+  box-shadow: -1px 0px 0px $c-elements;
+}
+
 .icon-box {
   position: relative;
+
   height: 48px;
   width: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: -1px 0px 0px $c-elements;
 
   transition: transform 0.3s;
 

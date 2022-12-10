@@ -51,7 +51,7 @@ export const BurgerMenu: React.FC<Props> = ({ setMenuIsOpen, menuIsOpen }) => {
       <header className="header header--menu">
         <Logo />
         <div className="header__icons">
-          <div className="icon-box icon-box__menu">
+          <div className="icon-link icon-link__menu">
             <a href="" className="header__link" onClick={closeMenuHandle}>
               <img src={closeMenu} alt="close menu" className="icon" />
             </a>

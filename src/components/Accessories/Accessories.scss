@@ -5,7 +5,10 @@
 
 .accessories {
   &__content {
+    display: flex;
+    flex-direction: column;
     @include mainHeight;
+    
     color: $c-primary;
   }
 

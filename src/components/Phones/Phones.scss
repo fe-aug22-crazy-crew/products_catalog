@@ -4,6 +4,12 @@
 @import '../../styles/utils/mixins/typography.scss';
 
 .phones {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    @include mainHeight;
+  }
+
   &__title {
     font-family: 'Mont', sans-serif;
     font-weight: 800;
@@ -34,6 +40,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &-enter {
+      opacity: 0;
+    }
+    &-enter-active {
+      opacity: 1;
+      transition: opacity 300ms, transform 300ms;
+    }
+    &-exit {
+      opacity: 1;
+    }
+    &-exit-active {
+      opacity: 0;
+      transition: opacity 300ms, transform 300ms;
+    }
   }
 
   &__list {
