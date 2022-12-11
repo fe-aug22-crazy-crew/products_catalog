@@ -7,4 +7,15 @@
   flex-direction: column;
 
   @include mainHeight;
+
+  &__error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+
+    min-height: 180px;
+  
+    @include h2Typography;
+  }
 }
