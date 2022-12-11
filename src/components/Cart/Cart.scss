@@ -79,6 +79,6 @@
 
     @include resetLinkStyles;
     @include primaryButton;
-    border: none;
+    border: 1px solid transparent;
   }
 }

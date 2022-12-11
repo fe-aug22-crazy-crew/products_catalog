@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import './PhonePage.scss';
+
 import { Slider } from '../Slider';
 
 import { Info } from './Info/Info';
@@ -9,6 +11,7 @@ import { PhonePageMain } from './PhonePageMain';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { Phone } from '../../types/Phone';
 import { Loader } from '../Loader';
+import { Back } from '../Back';
 
 export const PhonePage: React.FC = () => {
   const [phone, setPhone] = useState<null | PhoneData>(null);
@@ -16,7 +19,7 @@ export const PhonePage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const getPhone = async() => {
-    const data = await client.get(
+    const data: PhoneData = await client.get(
       'phones/' + location.hash.split('/').slice(-1).join(''),
       'GET',
       null,
@@ -49,15 +52,22 @@ export const PhonePage: React.FC = () => {
   }, [location.hash]);
 
   return (
-    <main className="container">
+    <main className="phonePage container">
+      <Breadcrumbs />
+
+      <Back />
+
       {!phone || isLoading ? (
         <Loader />
       ) : (
         <>
-          <Breadcrumbs />
           <PhonePageMain phone={phone} />
           <Info phone={phone} />
-          <Slider title={'You may also like'} phones={recommended} />
+          <Slider
+            title={'You may also like'}
+            phones={recommended}
+            isLoading={isLoading}
+          />
         </>
       )}
     </main>

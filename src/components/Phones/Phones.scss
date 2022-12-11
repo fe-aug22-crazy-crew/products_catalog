@@ -4,6 +4,12 @@
 @import '../../styles/utils/mixins/typography.scss';
 
 .phones {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    @include mainHeight;
+  }
+
   &__title {
     font-family: 'Mont', sans-serif;
     font-weight: 800;

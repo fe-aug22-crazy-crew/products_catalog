@@ -1,8 +1,8 @@
-@import '../../../../styles/utils/variables.scss';
-@import '../../../../styles/utils/mixins/screenWidth.scss';
-@import '../../../../styles/utils/mixins/helpers.scss';
-@import '../../../../styles/utils/mixins/typography.scss';
-@import '../../../../styles/utils/mixins/typography.scss';
+@import '../../../styles/utils/variables.scss';
+@import '../../../styles/utils/mixins/screenWidth.scss';
+@import '../../../styles/utils/mixins/helpers.scss';
+@import '../../../styles/utils/mixins/typography.scss';
+@import '../../../styles/utils/mixins/typography.scss';
 
 .modal {
   position: fixed;
@@ -17,7 +17,7 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    z-index: 52;
+    z-index: 2;
     transform: translate(-50%, -50%);
 
     display: flex;
@@ -55,7 +55,7 @@
     width: 16px;
 
     border: none;
-    background: url(../../../../images/removeButton.svg) no-repeat center;
+    background: url(../../../images/removeButton.svg) no-repeat center;
     cursor: pointer;
   }
 }
