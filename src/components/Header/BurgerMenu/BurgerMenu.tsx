@@ -60,7 +60,7 @@ export const BurgerMenu: React.FC<Props> = ({ setMenuIsOpen, menuIsOpen }) => {
       </header>
       <nav className="burger_menu__nav">
         <NavigationLink
-          to="products_catalog"
+          to="/"
           text="Home"
           setMenuIsOpen={setMenuIsOpen}
         />

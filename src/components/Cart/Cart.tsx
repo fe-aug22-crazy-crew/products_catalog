@@ -9,7 +9,7 @@ import { Back } from '../Back';
 import './Cart.scss';
 
 import { CartProduct } from './CartProduct';
-import { ModalWindow } from './CartProduct/ModalWindow';
+import { ModalWindow } from './ModalWindow';
 
 export const Cart: React.FC = React.memo(() => {
   const dispatch = useDispatch();
