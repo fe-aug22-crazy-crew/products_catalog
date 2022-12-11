@@ -17,7 +17,7 @@ export const PhonePage: React.FC = () => {
   const [phone, setPhone] = useState<null | PhoneData>(null);
   const [recommended, setRecommended] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   const getPhone = async() => {
     setIsLoading(true);
