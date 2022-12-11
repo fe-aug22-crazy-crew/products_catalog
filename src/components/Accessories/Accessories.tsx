@@ -7,6 +7,7 @@ import { Loader } from '../Loader';
 import { Breadcrumbs } from '../Breadcrumbs';
 
 import './Accessories.scss';
+import { CSSTransition } from 'react-transition-group';
 
 export const Accessories: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -36,27 +37,32 @@ export const Accessories: React.FC = () => {
   return (
     <main className="accessories">
       <div className="container">
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <div className="accessories__content">
-            <Breadcrumbs />
-            <h1 className="accessories__title">Accessories</h1>
-            <ul className="accessories__list">
-              {isError && (
-                <p className="accessories__message">
-                  Something went wrong &#x1F625;
-                </p>
-              )}
+        <div className="accessories__content">
+          <Breadcrumbs />
+          <h1 className="accessories__title">Accessories</h1>
+          <ul className="accessories__list">
+            <CSSTransition
+              in={isLoading}
+              timeout={300}
+              classNames="loader"
+              unmountOnExit
+            >
+              <Loader />
+            </CSSTransition>
 
-              {!isLoading && !accessories.length && (
-                <p className="accessories__message">
-                  No accessories yet &#x1F625;
-                </p>
-              )}
-            </ul>
-          </div>
-        )}
+            {isError && (
+              <p className="accessories__message">
+                Something went wrong &#x1F625;
+              </p>
+            )}
+
+            {!isLoading && !accessories.length && (
+              <p className="accessories__message">
+                No accessories yet &#x1F625;
+              </p>
+            )}
+          </ul>
+        </div>
       </div>
     </main>
   );

@@ -12,27 +12,6 @@
     margin-bottom: 81px;
   }
 
-  &__link-back {
-    display: inline-block;
-  }
-
-  &__back {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-
-    padding: 0;
-    margin-bottom: 16px;
-
-    border: none;
-    background-color: $c-white;
-
-    cursor: pointer;
-
-    @include smallTextTypography;
-    color: $c-secondary;
-  }
-
   &__title {
     @include h2Typography;
 

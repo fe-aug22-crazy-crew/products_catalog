@@ -53,6 +53,7 @@ export const Promo: React.FC = () => {
         autoplay={{
           delay: 4000,
           pauseOnMouseEnter: true,
+          disableOnInteraction: false,
         }}
         speed={2000}
         onBeforeInit={onBeforeInit}
@@ -89,7 +90,7 @@ export const Promo: React.FC = () => {
       >
         <img src={Next} alt="next promo slide button" />
       </button>
-      <div ref={paginationLabel} className="promo__pagination" />
+      <div ref={paginationLabel} className="promo__pagination-custom" />
     </section>
   );
 };

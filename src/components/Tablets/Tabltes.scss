@@ -5,8 +5,11 @@
 
 .tablets {
   &__content {
-    color: $c-primary;
+    display: flex;
+    flex-direction: column;
     @include mainHeight;
+
+    color: $c-primary;
   }
 
   &__title {

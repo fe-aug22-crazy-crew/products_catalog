@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import ArrowPrev from '../../../images/arrow-prev.svg';
-
 import './phonePageMain.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import cn from 'classnames';
@@ -115,10 +113,7 @@ export const PhonePageMain: React.FC<Props> = ({ phone }) => {
   };
 
   useEffect(() => {
-    if (
-      stateColor !== phoneColor
-      || stateCapacity !== phoneCapacity.toLowerCase()
-    ) {
+    if (stateColor !== phoneColor || stateCapacity !== phoneCapacity) {
       navigate(path);
     }
   }, [stateColor, stateCapacity]);
@@ -140,17 +135,11 @@ export const PhonePageMain: React.FC<Props> = ({ phone }) => {
     ram,
     year: Math.random(),
     image: images[0],
-    category: { name: 'phone' },
+    category: { name: 'phones' },
   };
 
   return (
     <section className="phonePageMain">
-      <Link to="/phones" className="phonePageMain__link-back">
-        <button className="phonePageMain__back" type="button">
-          <img src={ArrowPrev} alt="return back button" />
-          <p>Back</p>
-        </button>
-      </Link>
       <h2 className="phonePageMain__title">{phoneName}</h2>
       <div className="phonePageMain__main-section">
         <div className="phonePageMain__photos-section">

@@ -153,64 +153,66 @@ export const Phones: React.FC<Props> = ({
   return (
     <main className="phones">
       <div className="container">
-        <Breadcrumbs />
+        <div className="phones__content">
+          <Breadcrumbs />
 
-        <h2 className="phones__title">Mobile phones</h2>
-        <p className="phones__models-count">{`${totalItems} models`}</p>
-        <div className="phones__selects">
-          <Select
-            handleOpen={handleSortOpen}
-            title="Sort by"
-            defaultValue={sortType}
-            options={sortTypes}
-            isOpen={isSortOpen}
-            handleSelect={handleSortSelect}
-            fieldType="select__field--sort"
-          />
+          <h2 className="phones__title">Mobile phones</h2>
+          <p className="phones__models-count">{`${totalItems} models`}</p>
+          <div className="phones__selects">
+            <Select
+              handleOpen={handleSortOpen}
+              title="Sort by"
+              defaultValue={sortType}
+              options={sortTypes}
+              isOpen={isSortOpen}
+              handleSelect={handleSortSelect}
+              fieldType="select__field--sort"
+            />
 
-          <Select
-            handleOpen={handleAmountOpen}
-            title="Items on page"
-            defaultValue={amount}
-            options={amounts}
-            isOpen={isAmountOpen}
-            handleSelect={handleAmountSelect}
-            fieldType="select__field--amount"
+            <Select
+              handleOpen={handleAmountOpen}
+              title="Items on page"
+              defaultValue={amount}
+              options={amounts}
+              isOpen={isAmountOpen}
+              handleSelect={handleAmountSelect}
+              fieldType="select__field--amount"
+            />
+          </div>
+
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <ul className="phones__list">
+              {phones.map((phone: Phone) => (
+                <li key={phone.id} className="phones__item">
+                  <PhoneCard phone={phone} />
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <ReactPaginate
+            breakLabel="..."
+            nextLabel={<img src={arrowNext} alt="arrow-next" />}
+            onPageChange={handlePageClick}
+            marginPagesDisplayed={0}
+            pageRangeDisplayed={2}
+            pageCount={amountOfPages}
+            previousLabel={<img src={arrowPrev} alt="arrow-prev" />}
+            containerClassName="pagination"
+            pageLinkClassName="pagination__item"
+            activeLinkClassName="pagination__item--active"
+            previousLinkClassName={cl('pagination__item', {
+              'pagination__item--disabled': isPrevDisabled,
+            })}
+            nextLinkClassName={cl('pagination__item', {
+              'pagination__item--disabled': isNextDisabled,
+            })}
+            breakLinkClassName="pagination__item"
+            forcePage={currentPage - 1}
           />
         </div>
-
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <ul className="phones__list">
-            {phones.map((phone: Phone) => (
-              <li key={phone.id} className="phones__item">
-                <PhoneCard phone={phone} />
-              </li>
-            ))}
-          </ul>
-        )}
-
-        <ReactPaginate
-          breakLabel="..."
-          nextLabel={<img src={arrowNext} alt="arrow-next" />}
-          onPageChange={handlePageClick}
-          marginPagesDisplayed={0}
-          pageRangeDisplayed={2}
-          pageCount={amountOfPages}
-          previousLabel={<img src={arrowPrev} alt="arrow-prev" />}
-          containerClassName="pagination"
-          pageLinkClassName="pagination__item"
-          activeLinkClassName="pagination__item--active"
-          previousLinkClassName={cl('pagination__item', {
-            'pagination__item--disabled': isPrevDisabled,
-          })}
-          nextLinkClassName={cl('pagination__item', {
-            'pagination__item--disabled': isNextDisabled,
-          })}
-          breakLinkClassName="pagination__item"
-          forcePage={currentPage - 1}
-        />
       </div>
     </main>
   );

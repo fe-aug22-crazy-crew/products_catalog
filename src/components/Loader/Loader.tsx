@@ -1,5 +1,5 @@
 import React from 'react';
-import MoonLoader from 'react-spinners/ClipLoader';
+import { MoonLoader } from 'react-spinners';
 import './Loader.scss';
 
 export const Loader: React.FC = () => (

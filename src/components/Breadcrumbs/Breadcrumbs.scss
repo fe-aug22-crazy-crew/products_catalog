@@ -16,6 +16,11 @@
 
     &-home {
       background: url(../../images/Home.svg) no-repeat center;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
 
     &-arrow {
@@ -32,8 +37,14 @@
     color: $c-primary;
     line-height: 15px;
 
+    transition: text-shadow 0.3s;
+
     &--current {
       color: $c-secondary;
+    }
+
+    &:hover {
+      text-shadow: $c-gray 1px 1px 1px;
     }
   }
 }

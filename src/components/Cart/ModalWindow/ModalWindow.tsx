@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import './ModalWindow.scss';
 
@@ -19,13 +19,13 @@ export const ModalWindow: React.FC<Props> = ({
         onClick={handleCloseModal}
       ></button>
       <p className="modal__message">Thanks for your order! &#x1F44C;</p>
-      <Link
-        to="/products_catalog"
+      <NavLink
+        to="/"
         className="modal__button-go"
         onClick={clearCart}
       >
         Back to Home
-      </Link>
+      </NavLink>
     </div>
   </div>
 );
