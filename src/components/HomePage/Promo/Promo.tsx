@@ -8,11 +8,11 @@ import Next from '../../../images/promo/next.svg';
 import Prev from '../../../images/promo/prev.svg';
 import BannerPhone from '../../../images/promo/Banner-phone.jpg';
 
-import './promo.scss';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import './promo.scss';
 
 export const Promo: React.FC = () => {
   const navPrevButton = useRef<HTMLButtonElement>(null);
@@ -57,7 +57,10 @@ export const Promo: React.FC = () => {
         }}
         speed={2000}
         onBeforeInit={onBeforeInit}
-        pagination={{ clickable: true }}
+        pagination={{
+          clickable: true,
+          el: '.promo__pagination-custom',
+        }}
         className="promo__slider"
       >
         <SwiperSlide className="promo__slide">

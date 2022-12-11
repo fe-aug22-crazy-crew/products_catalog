@@ -41,8 +41,8 @@ export const PhonePage: React.FC = () => {
     try {
       const data = await client.get(
         'phones/'
-        + location.hash.split('/').slice(-1).join('')
-        + '/recommended',
+          + location.hash.split('/').slice(-1).join('')
+          + '/recommended',
         'GET',
         null,
       );
@@ -68,29 +68,23 @@ export const PhonePage: React.FC = () => {
 
       <Back />
 
-      {!isLoading
-        && isError
-        && (
-          <p className="phonePage__error">
-            Something went wrong &#x1F625;
-          </p>
-        )}
+      {!isLoading && isError && (
+        <p className="phonePage__error">Something went wrong &#x1F625;</p>
+      )}
 
       {isLoading && <Loader />}
 
-      {!isLoading
-        && phone
-        && (
-          <>
-            <PhonePageMain phone={phone} />
-            <Info phone={phone} />
-            <Slider
-              title={'You may also like'}
-              phones={recommended}
-              isLoading={isLoading}
-            />
-          </>
-        )}
+      {!isLoading && phone && (
+        <>
+          <PhonePageMain phone={phone} />
+          <Info phone={phone} />
+          <Slider
+            title={'You may also like'}
+            phones={recommended}
+            isLoading={isLoading}
+          />
+        </>
+      )}
     </main>
   );
 };
