@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { PhoneCard } from '../PhoneCard';
 import { Phone } from '../../types/Phone';
 
-import SwiperCore, { Navigation, Pagination } from 'swiper';
+import { Navigation } from 'swiper';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -21,60 +21,44 @@ type Props = {
   isLoading: boolean;
 };
 
-export const Slider: React.FC<Props> = ({ phones, title, isLoading }) => {
-  const navPrevButton = useRef<HTMLButtonElement>(null);
-  const navNextButton = useRef<HTMLButtonElement>(null);
-
-  const onBeforeInit = (swiper: SwiperCore): void => {
-    if (typeof swiper.params.navigation !== 'boolean') {
-      const navigation = swiper.params.navigation;
-
-      if (navigation) {
-        navigation.prevEl = navPrevButton.current;
-        navigation.nextEl = navNextButton.current;
-      }
-    }
-  };
-
-  return (
-    <>
-      <div className="home_page__title-box">
-        <h2 className="home_page__subtitle">{title}</h2>
-        <div className="button-box">
-          <button
-            ref={navPrevButton}
-            type="button"
-            className="button-box__button-prev"
-          ></button>
-          <button
-            ref={navNextButton}
-            type="button"
-            className="button-box__button-next"
-          ></button>
-        </div>
+export const Slider: React.FC<Props> = ({ phones, title, isLoading }) => (
+  <section className="slider">
+    <div className="slider__title-box">
+      <h2 className="slider__title">{title}</h2>
+      <div className="slider__button-box">
+        <button
+          type="button"
+          className="slider__button slider__button-prev"
+        ></button>
+        <button
+          type="button"
+          className="slider__button slider__button-next"
+        ></button>
       </div>
-      <section className="slider">
-        <Swiper
-          modules={[Navigation, Pagination]}
-          onBeforeInit={onBeforeInit}
-          spaceBetween={18}
-          slidesPerView={1.4}
-          breakpoints={{
-            640: { slidesPerView: 2.5 },
-            1200: { slidesPerView: 4 },
-          }}
-        >
-          {isLoading ? (
-            <Loader />
-          ) : (
-            phones.map((phone) => (
-              <SwiperSlide key={phone.id}>
-                <PhoneCard phone={phone} />
-              </SwiperSlide>
-            ))
-          )}
-        </Swiper>
-      </section>
-    </>
-  );
-};
+    </div>
+
+    <Swiper
+      modules={[Navigation]}
+      navigation={{
+        nextEl: '.slider__button-next',
+        prevEl: '.slider__button-prev',
+      }}
+      spaceBetween={16}
+      slidesPerView={1.4}
+      breakpoints={{
+        640: { slidesPerView: 2.5 },
+        1200: { slidesPerView: 4 },
+      }}
+    >
+      {isLoading ? (
+        <Loader />
+      ) : (
+        phones.map((phone) => (
+          <SwiperSlide key={phone.id}>
+            <PhoneCard phone={phone} />
+          </SwiperSlide>
+        ))
+      )}
+    </Swiper>
+  </section>
+);
