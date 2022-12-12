@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/products_catalog/static/css/main.97cef903.css",
-    "main.js": "/products_catalog/static/js/main.abdfff8e.js",
+    "main.css": "/products_catalog/static/css/main.300b3c85.css",
+    "main.js": "/products_catalog/static/js/main.4a311a3c.js",
     "static/js/787.81037485.chunk.js": "/products_catalog/static/js/787.81037485.chunk.js",
     "static/media/logo.svg": "/products_catalog/static/media/logo.91a19eb81636d7dc4f91314b104aaee1.svg",
     "static/media/Mont-Regular.ttf": "/products_catalog/static/media/Mont-Regular.e797167c18f9897bb607.ttf",
@@ -24,19 +24,17 @@
     "static/media/sliderright.svg": "/products_catalog/static/media/sliderright.afe04ff654f92cc75ca8.svg",
     "static/media/arrow-next.svg": "/products_catalog/static/media/arrow-next.99d40db8a0ccef0e4be3e3835aee4103.svg",
     "static/media/arrow-down.svg": "/products_catalog/static/media/arrow-down.9f45a3d49ec3677bca5acaf269950882.svg",
-    "static/media/next.svg": "/products_catalog/static/media/next.a96d198de7ec6e137ad0ba81dfd3fab2.svg",
     "static/media/arrow-prev.svg": "/products_catalog/static/media/arrow-prev.8131a0952022c0ad1ddc1aa983ab0b0b.svg",
     "static/media/arrow-up.svg": "/products_catalog/static/media/arrow-up.99040a199ecdc967febb.svg",
-    "static/media/prev.svg": "/products_catalog/static/media/prev.f8da456077b13aabd737f29d77535f12.svg",
     "static/media/arrow-right.svg": "/products_catalog/static/media/arrow-right.7ec4fc6dd97400e39f37.svg",
     "static/media/minus.svg": "/products_catalog/static/media/minus.3c43a86b437245eeda6e.svg",
     "static/media/minusDisabled.svg": "/products_catalog/static/media/minusDisabled.4b7c4fa33c66c0b35185.svg",
-    "main.97cef903.css.map": "/products_catalog/static/css/main.97cef903.css.map",
-    "main.abdfff8e.js.map": "/products_catalog/static/js/main.abdfff8e.js.map",
+    "main.300b3c85.css.map": "/products_catalog/static/css/main.300b3c85.css.map",
+    "main.4a311a3c.js.map": "/products_catalog/static/js/main.4a311a3c.js.map",
     "787.81037485.chunk.js.map": "/products_catalog/static/js/787.81037485.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.97cef903.css",
-    "static/js/main.abdfff8e.js"
+    "static/css/main.300b3c85.css",
+    "static/js/main.4a311a3c.js"
   ]
 }
