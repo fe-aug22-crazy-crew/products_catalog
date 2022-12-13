@@ -15,9 +15,13 @@ export const ImageCreator: React.FC<Props> = ({
   description,
 }) => {
   return (
-    <picture className="promo__pic">
+    <picture>
       <source srcSet={photoSm} media="(max-width: 639px)" type="image/jpeg" />
-      <img src={photoLg} alt={description} className="promo__img" />
+      <img
+        src={photoLg}
+        alt={description}
+        className="promo__image"
+      />
     </picture>
   );
 };

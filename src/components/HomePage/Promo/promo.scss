@@ -2,84 +2,94 @@
 @import '../../../styles/utils/variables.scss';
 
 .promo {
-  position: relative;
-  display: flex;
-
-  max-width: 1136px;
-  margin: 0 auto;
-  padding-bottom: 40px;
-
   @include onTablet {
-    padding: 0 24px 40px 24px;
+    padding: 0 24px;
   }
 
   @include onDesktop {
-    padding: 0 0 40px 0;
+    max-width: 1136px;
   }
+  margin: 0 auto;
 
-  &__slide {
-    display: flex;
-    justify-content: center;
-  }
-
-  &__button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 0 12px;
-
-    background-color: $c-white;
-
-    border: 1px solid $c-icons;
-
-    transition: background-color 0.3s linear;
-
-    &:hover {
-      cursor: pointer;
-
-      background-color: #f6f8faff;
-    }
-
-    @include onPhone {
-      display: none;
-    }
-  }
-
-  &__pic {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+  &__image {
+    display: block;
     width: 100%;
     height: auto;
-  }
 
-  &__img {
-    width: 96%;
-
-    @include onPhone {
-      height: auto;
-      width: 100%;
+    @include onTablet {
+     padding: 0 48px;
     }
   }
 
   &__pagination-custom {
-    position: absolute;
-
-    display: flex;
-    justify-content: center;
-
-    bottom: 0;
-    right: 0;
-    left: 0;
+    margin-top: 10px;
+    text-align: center;
   }
 }
 
 .swiper-pagination-bullet {
-  border-radius: 0 !important;
-  height: 4px !important;
-  width: 14px !important;
+  width: 14px;
+  height: 4px;
 
-  --swiper-theme-color: #313237;
+  opacity: 1;
+  background-color: $c-gray;
+  border-radius: 0;
+
+  transition: background-color 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $c-primary;
+
+  transition: background-color 0.3s ease;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  display: none;
+
+  @include onTablet {
+    position: absolute;
+
+    display: block;
+    margin: 0;
+    width: 32px;
+    height: 100%;
+
+    border: 1px solid $c-icons;
+    background-color: $c-white;
+
+    transition: border-color 0.3s ease;
+
+    &:hover {
+      border-color: $c-secondary;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 5px;
+      height: 10px;
+    }
+  }
+}
+
+.swiper-button-prev {
+  left: 0;
+  top: 0;
+
+  &::after {
+    background: url(../../../images/arrow-prev.svg) no-repeat center;
+  }
+}
+
+.swiper-button-next {
+  right: 0;
+  top: 0;
+
+  &::after {
+    background: url(../../../images/arrow-next.svg) no-repeat center;
+  }
 }

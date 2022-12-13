@@ -30,20 +30,7 @@
   }
 
   &__button {
-    display: block;
-
-    width: max-content;
-    padding: 10px;
-
-    text-decoration: none;
-    color: $c-white;
-    text-align: center;
-
-    @include buttonsTypography;
-
-    background-color: $c-primary;
-
-    transition: all 0.3s;
+    @include primaryButton;
 
     @include onTablet {
       padding: 20px;
@@ -53,16 +40,6 @@
     @include onDesktop {
       padding: 30px;
       font-size: 24px;
-    }
-
-    &:hover {
-      box-shadow: 0px 3px 13px 0px #17203166;
-    }
-
-    &:active {
-      background-color: $c-white;
-      border: 1px solid $c-elements;
-      color: $c-green;
     }
   }
 }

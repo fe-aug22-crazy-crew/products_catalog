@@ -17,35 +17,46 @@ export const PhonePage: React.FC = () => {
   const [phone, setPhone] = useState<null | PhoneData>(null);
   const [recommended, setRecommended] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   const getPhone = async() => {
-    const data: PhoneData = await client.get(
-      'phones/' + location.hash.split('/').slice(-1).join(''),
-      'GET',
-      null,
-    );
+    setIsLoading(true);
 
-    setPhone(data);
+    try {
+      const data: PhoneData = await client.get(
+        'phones/' + location.hash.split('/').slice(-1).join(''),
+        'GET',
+        null,
+      );
+
+      setPhone(data);
+    } catch (e) {
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const getRecommended = async() => {
-    const data = await client.get(
-      'phones/' + location.hash.split('/').slice(-1).join('') + '/recommended',
-      'GET',
-      null,
-    );
+    try {
+      const data = await client.get(
+        'phones/'
+          + location.hash.split('/').slice(-1).join('')
+          + '/recommended',
+        'GET',
+        null,
+      );
 
-    setRecommended(data);
+      setRecommended(data);
+    } catch (e) {
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
-    setIsLoading(false);
-  }, [phone]);
-
-  useEffect(() => {
     (async() => {
-      setIsLoading(true);
-
       await getPhone();
       await getRecommended();
     })();
@@ -57,9 +68,13 @@ export const PhonePage: React.FC = () => {
 
       <Back />
 
-      {!phone || isLoading ? (
-        <Loader />
-      ) : (
+      {!isLoading && isError && (
+        <p className="phonePage__error">Something went wrong &#x1F625;</p>
+      )}
+
+      {isLoading && <Loader />}
+
+      {!isLoading && phone && (
         <>
           <PhonePageMain phone={phone} />
           <Info phone={phone} />

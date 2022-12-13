@@ -19,11 +19,7 @@ export const ModalWindow: React.FC<Props> = ({
         onClick={handleCloseModal}
       ></button>
       <p className="modal__message">Thanks for your order! &#x1F44C;</p>
-      <NavLink
-        to="/"
-        className="modal__button-go"
-        onClick={clearCart}
-      >
+      <NavLink to="/" className="modal__button-go" onClick={clearCart}>
         Back to Home
       </NavLink>
     </div>

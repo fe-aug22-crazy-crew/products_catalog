@@ -37,13 +37,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+
+  border: 1px solid transparent;
 
   @include buttonsTypography;
 
   color: $c-white;
   background: $c-primary;
 
+  cursor: pointer;
   transition: all 0.3s;
 
   &:hover {
