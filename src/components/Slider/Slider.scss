@@ -1,17 +1,70 @@
 @import '../../styles/utils/mixins/screenWidth.scss';
+@import '../../styles/utils/mixins/typography.scss';
+@import '../../styles/utils/variables.scss';
 
 .slider {
   max-width: 1136px;
   margin: 0 auto 16px;
-  padding: 0 0 0 17px;
+  padding-left: 16px;
 
   @include onTablet {
     margin-bottom: 24px;
-    padding: 0 0 0 25px;
+    padding-left: 24px;
   }
 
   @include onDesktop {
     margin-bottom: 40px;
     padding: 0;
+  }
+
+  &__title {
+    display: inline-block;
+
+    @include h2Typography;
+  }
+
+  &__title-box {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    max-width: 1136px;
+    margin: 40px auto;
+    padding-right: 16px;
+
+    @include onTablet {
+      padding-right: 24px;
+    }
+
+    @include onDesktop {
+      padding-right: 0;
+    }
+  }
+
+  &__button {
+    position: relative;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $c-icons;
+
+    background-color: $c-white;
+    outline: none;
+
+    cursor: pointer;
+    transition: border 0.3s;
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+
+    &-prev {
+      margin-right: 16px;
+
+      background: url(../../images/sliderleft.svg) no-repeat center;
+    }
+
+    &-next {
+      background: url(../../images/sliderright.svg) no-repeat center;
+    }
   }
 }

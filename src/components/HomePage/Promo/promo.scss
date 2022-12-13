@@ -2,14 +2,17 @@
 @import '../../../styles/utils/variables.scss';
 
 .promo {
+  margin: 0 auto;
+
   @include onTablet {
     padding: 0 24px;
   }
 
   @include onDesktop {
     max-width: 1136px;
+
+    padding: 0;
   }
-  margin: 0 auto;
 
   &__image {
     display: block;
@@ -17,7 +20,7 @@
     height: auto;
 
     @include onTablet {
-     padding: 0 48px;
+      padding: 0 48px;
     }
   }
 
@@ -66,7 +69,7 @@
     }
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 50%;
       left: 50%;
